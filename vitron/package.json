@@ -1,0 +1,20 @@
+{
+  "name": "vitron",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "keywords": [
+    "build",
+    "dev"
+  ],
+  "bin": {
+    "vitron": "bin/vitron"
+  },
+  "dependencies": {
+    "tsc": "^2.0.4",
+    "typescript": "^5.9.3"
+  }
+}

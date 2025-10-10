@@ -1,0 +1,10 @@
+{
+  "include": [
+    "src/renderer/**/*",
+    "src/preload/**.d.ts"
+  ],
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "baseUrl": "."
+  }
+}

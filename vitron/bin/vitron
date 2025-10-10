@@ -1,0 +1,20 @@
+#!/usr/bin/env node
+import { dev } from '../dist/dev.js'
+
+const command = process.argv[2]
+
+console.log(process.argv)
+
+switch (command) {
+  case 'dev': {
+    dev()
+    break
+  }
+  case 'build': {
+    // build()
+    break
+  }
+  default: {
+    console.log('test')
+  }
+}
