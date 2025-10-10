@@ -1,7 +1,6 @@
 import { contextBridge } from "electron/renderer";
-import { orchestratorApi } from 'vitron'
+import { orchestratorApi } from 'vitron/preload'
 import '../store/userdata'
-
 
 orchestratorApi()
 

@@ -50,7 +50,7 @@ export function start_electron() {
     console.log(g('electron is shut down'))
   })
 
-  process.env.ELECTRON_STARTED = true
+  process.env.ELECTRON_STARTED = 'true'
 
   console.log(g('electron is started'))
 

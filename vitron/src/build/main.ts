@@ -3,7 +3,6 @@ import * as vite from 'vite';
 
 export async function build_main() {
 
-
   return await vite.build({
     build: {
       minify: process.env.DEV ? false : true,
@@ -28,11 +27,8 @@ export async function build_main() {
     resolve: {
       alias: {
         // 'vitron' deve puntare al file di ingresso (entry point) del tuo modulo.
-        'vitron': resolve(import.meta.dirname, './dist/index.js'), // o './vitron/dist/index.js'
+        'vitron': resolve(process.cwd(), './vitron/dist/index.js'), // o './vitron/dist/index.js'
       },
-    },
-    optimizeDeps: {
-      include: ['vitron']
     }
   })
 }

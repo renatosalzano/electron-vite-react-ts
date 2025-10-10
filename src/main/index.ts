@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron'
+import { app } from 'electron'
 import { resolve } from 'path'
 import { Store, ViteBrowserWindow } from 'vitron'
 import '../store/userdata'
@@ -18,12 +18,15 @@ function createWindow() {
     }
   })
 
-  main.show()
-  main.webContents.openDevTools()
+  main.webContents.on('dom-ready', () => {
+    main.show()
+    main.webContents.openDevTools()
+
+  })
+
 }
 
 app.whenReady().then(() => {
-  console.log('is ready')
   createWindow()
 })
 

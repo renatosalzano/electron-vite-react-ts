@@ -4,9 +4,13 @@
     "src/preload/**/*.ts",
     "src/store/**/*.ts",
   ],
-
+  "exclude": [
+    "renderer/**/*"
+  ],
   "compilerOptions": {
-    "types": ["node"],
+    "types": [
+      "node"
+    ],
     "target": "esnext",
     "module": "esnext",
     "moduleResolution": "bundler",

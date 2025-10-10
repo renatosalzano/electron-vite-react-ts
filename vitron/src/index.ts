@@ -1,9 +1,7 @@
 import { Store } from "./store/index.js";
-import { ViteBrowserWindow } from "./electron/ViteWindow.js";
-import { orchestratorApi } from "./rerender/orchestratorApi.js";
+import { ViteBrowserWindow } from "./electron/ViteBrowserWindow.js";
 
 export {
   Store,
-  ViteBrowserWindow,
-  orchestratorApi
+  ViteBrowserWindow
 }

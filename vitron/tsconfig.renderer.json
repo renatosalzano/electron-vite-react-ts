@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "declaration": true,
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
+    ],
+    "module": "esnext",
+    "target": "esnext",
+    "jsx": "react-jsx",
+    "strict": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "rootDir": "./renderer",
+    "outDir": "./dist/renderer",
+    "declarationDir": "./dist/renderer",
+  },
+  "include": [
+    "renderer/**/*",
+    "renderer/index.d.ts",
+    "global.d.ts"
+  ]
+}

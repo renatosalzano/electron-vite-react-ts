@@ -1,6 +1,0 @@
-{
-  "orchestrator": {
-    "api": "__orchestrator__api__",
-    "render": "__orchestrator__render__"
-  }
-}

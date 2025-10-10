@@ -3,8 +3,9 @@
   "type": "module",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc",
-    "dev": "tsc --watch"
+    "tsc": "tsc --noEmit",
+    "build": "tsc --build",
+    "dev": "tsc -p tsconfig.node.json --watch"
   },
   "keywords": [
     "build",
@@ -16,5 +17,10 @@
   "dependencies": {
     "tsc": "^2.0.4",
     "typescript": "^5.9.3"
+  },
+  "exports": {
+    ".": "./dist/index.js",
+    "./preload": "./dist/preload/index.js",
+    "./renderer": "./dist/renderer/index.js"
   }
 }
