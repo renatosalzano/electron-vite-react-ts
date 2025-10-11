@@ -34,10 +34,8 @@ export function vite_orchestrator(): PluginOption {
           return `${dirname(path)}: './${path}'`
         })
 
-        // console.log(modules.toString())
-
         code = code.replace('/* MODULES */', modules.join(',\n'))
-        console.log(code)
+
         return {
           code,
           map: null
