@@ -21,6 +21,7 @@
     "vite-tsconfig-paths": "^5.1.4"
   },
   "dependencies": {
+    "@electron-toolkit/utils": "^4.0.0",
     "vitron": "file:vitron"
   }
 }

@@ -1,8 +1,8 @@
 import { createRoot } from 'react-dom/client'
 
-const root = createRoot(document.getElementById('root'))
+const root = createRoot(document.getElementById('root')!)
 
-const modules = { /* MODULES */ };
+const modules: Record<string, string> = { /* MODULES */ };
 
 const ID = window.__orchestrator__api__.batch()
 

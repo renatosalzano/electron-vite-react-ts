@@ -6,6 +6,7 @@ import { dirname, relative, resolve } from "path"
 import { start_electron } from "./start_electron.js"
 import './env.js'
 import './utils/color.js'
+import { vite_orchestrator } from "./plugins/vite_orchestrator.js"
 
 const MAIN_PATH = 'src/main/**/*'
 const STORE_PATH = 'src/store/**/*'
@@ -95,61 +96,7 @@ export async function dev() {
         port: Number(process.env.VITE_DEV_PORT)
       },
       plugins: [
-        {
-          name: 'vitron-orchestrator',
-          enforce: 'pre',
-          buildStart() {
-            console.log('build start')
-            console.log(globSync(resolve(process.cwd(), './renderer/*/index.{tsx,jsx,js}')))
-            console.log(globSync('src/renderer/*/index.*'))
-            // @ts-ignore
-          },
-          resolveId(id, importer) {
-            // console.log(id, importer)
-            if (id === '/orchestrator.js') {
-              return { id: '/orchestrator' }
-            }
-          },
-          load(id, options) {
-            if (id === '/orchestrator') {
-              const code = readFileSync(resolve(process.cwd(), 'vitron/renderer/orchestrator.js'), 'utf-8')
-              return code
-            }
-          },
-          transform(code, id) {
-            if (id === '/orchestrator') {
-              const files = globSync('src/renderer/*/index.{js,jsx,tsx}')
-
-              const modules = files.map((path) => {
-                path = path
-                  .replaceAll('\\', '/')
-                  .replace('src/renderer/', '')
-                return `${dirname(path)}: './${path}'`
-              })
-
-              // console.log(modules.toString())
-
-              code = code.replace('/* MODULES */', modules.join(',\n'))
-              console.log(code)
-              return {
-                code,
-                map: null
-              }
-            }
-          },
-          transformIndexHtml(html) {
-            return [
-              {
-                tag: 'script',
-                attrs: {
-                  type: 'module',
-                  src: '/orchestrator.js'
-                },
-                injectTo: 'body'
-              }
-            ]
-          }
-        }
+        vite_orchestrator()
       ]
     })
 
