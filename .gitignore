@@ -1,7 +1,10 @@
 node_modules
 dist
 out
+.vscode
 .DS_Store
 .eslintcache
 *.log*
 *.tsbuildinfo
+
+src/renderer/*

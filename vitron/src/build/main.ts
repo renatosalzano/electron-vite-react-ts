@@ -19,15 +19,14 @@ export async function build_main() {
           'electron',
           'fs',
           'path',
-          'vitron',
           'electron/renderer'
         ],
       },
     },
     resolve: {
       alias: {
-        // 'vitron' deve puntare al file di ingresso (entry point) del tuo modulo.
-        'vitron': resolve(process.cwd(), './vitron/dist/index.js'), // o './vitron/dist/index.js'
+        'vitron/store': resolve(process.cwd(), './vitron/dist/store/index.js'),
+        'vitron/electron': resolve(process.cwd(), './vitron/dist/electron/index.js')
       },
     }
   })

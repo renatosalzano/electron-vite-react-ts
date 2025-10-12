@@ -1,4 +1,4 @@
-import { OrchestratorApi } from "./src/preload/orchestratorApi"
+import type { OrchestratorApi } from "./src/preload/orchestratorApi"
 
 declare global {
   function bb(str: string): string
@@ -18,7 +18,10 @@ declare global {
   function W(str: string): string
 
   interface Window {
-    __orchestrator__api__: OrchestratorApi
+    __orchestrator__api__: {
+      batch(): void
+      render(callback: (config: any) => void): void
+    }
   }
 
   namespace NodeJS {
@@ -32,6 +35,7 @@ declare global {
 
       CHANNEL_ORCHESTRATOR_API: string
       CHANNEL_ORCHESTRATOR_RENDER: string
+      CHANNEL_ORCHESTRATOR_BATCH: string
     }
   }
 }

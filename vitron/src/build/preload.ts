@@ -23,7 +23,21 @@ export const build_preload = async (path: string) => {
     output = output.replace(substring, '')
     output += `
     ${CONTEXT_BRIDGE}.exposeInMainWorld('${store_name}', {
-      getStore() { ${IPC_RENDERER}.sendSync('${store_name}:sync') }
+      connect(ID) {
+        return ${IPC_RENDERER}.sendSync('${store_name}:connect', ID);
+      },
+      set(partial) { ${IPC_RENDERER}.send('${store_name}:set', partial) },
+      get(key) { return ${IPC_RENDERER}.sendSync('${store_name}:get', key) },
+      on_sync(func) {
+        // ${IPC_RENDERER}.removeAllListeners('${store_name}:sync');
+        ${IPC_RENDERER}.on(
+          '${store_name}:sync',
+          (_, ...args) => {
+            console.log('${store_name}:sync');
+            func(...args);
+          }
+        );
+      }
     });
     `
 
@@ -37,10 +51,6 @@ export const build_preload = async (path: string) => {
       var ${CONTEXT_BRIDGE} = require('electron/renderer').contextBridge;
     ` + output
   }
-
-  // while ((match = VITRON_IMPORT_REG.exec(output)) !== null) {
-  //   output = output.replace(match[0], '')
-  // }
 
   let result = await esbuild.build({
     stdin: {

@@ -1,32 +1,72 @@
 import { app, BaseWindow } from 'electron'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import { resolve } from 'path'
-import { Store, ViteBrowserWindow } from 'vitron'
+import { Store } from 'vitron/store'
+import { ViteBrowserWindow, ViteWebContents } from 'vitron/electron'
 import '../store/userdata'
 
 function createWindow() {
 
   Store.initializer()
 
+
   const main = new ViteBrowserWindow({
     width: 900,
     height: 670,
+    frame: false,
+    // transparent: true,
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
       preload: resolve(__dirname, '../preload/preload.js')
     },
-    appConfig: {
-      // this tell to orchestrator to load src/rendered/main/index
-      id: 'main'
+    viteConfig: {
+      // tell to vite how to search index.html
+      // renderer/main/index.html
+      root: 'main'
     }
   })
+
+
+  if (process.platform === 'win32') {
+    // main.setBackgroundMaterial(transparency ? 'acrylic' : 'none')
+    main.setBackgroundMaterial('acrylic')
+  } else if (process.platform === 'darwin') {
+    // main.setVibrancy(transparency ? 'fullscreen-ui' : null)
+    main.setVibrancy('fullscreen-ui')
+  }
+
+  const options = new ViteWebContents({
+    webPreferences: {
+      nodeIntegration: false,
+      contextIsolation: true,
+      preload: resolve(__dirname, '../preload/preload.js')
+    },
+    viteConfig: {
+      root: 'options',
+    }
+  })
+
+  options.setBounds({
+    x: 100,
+    y: 100,
+    width: 100,
+    height: 100
+  })
+
+  main.contentView.addChildView(options)
+
+  options.webContents.openDevTools()
+
+  // main.orchestrator()
+
 
   // main.webContents.on('dom-ready', () => {
   //   main.show()
   //   main.webContents.openDevTools()
 
   // })
+
 
 }
 

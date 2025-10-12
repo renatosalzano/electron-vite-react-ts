@@ -5,6 +5,8 @@
   ],
   "compilerOptions": {
     "jsx": "react-jsx",
-    "baseUrl": "."
+    "baseUrl": ".",
+    "module": "esnext",
+    "moduleResolution": "bundler"
   }
 }

@@ -1,39 +1,35 @@
-import { BrowserWindow, BrowserWindowConstructorOptions, ipcMain } from "electron";
-import { orchestratorMain } from "../preload/orchestratorMain.js";
-
-type AppConfig = {
-  id: string
-}
+import { app, BrowserWindow, BrowserWindowConstructorOptions, ipcMain, WebContentsView } from "electron";
+import { ViteWebContents } from "./ViteWebContents.js";
+import { ViteConfig } from "./index.js";
+// import { orchestratorMain } from "../preload/orchestratorMain.js";
 
 export type ViteBrowserWindowOptions = BrowserWindowConstructorOptions & {
-  appConfig?: AppConfig
+  viteConfig: ViteConfig
 }
 
-const APP_DEFAULT: AppConfig = {
-  id: 'main'
-}
 
 export class ViteBrowserWindow extends BrowserWindow {
 
-  constructor(options?: ViteBrowserWindowOptions) {
+  viteConfig: ViteConfig
+
+  constructor(options: ViteBrowserWindowOptions) {
 
     const {
-      appConfig = APP_DEFAULT,
+      viteConfig,
       ...electrionOptions
     } = options ?? {};
 
     super(electrionOptions)
 
-    console.log(appConfig)
-
-    orchestratorMain(appConfig.id)
+    this.viteConfig = viteConfig
 
     if (process.env.VITE_DEV_URL) {
-      this.loadURL(process.env.VITE_DEV_URL)
+      this.loadURL(`${process.env.VITE_DEV_URL}/${viteConfig.root}/index.html`)
     } else {
       // TODO PRODUCTION
     }
 
+    // this.on('resize')
 
   }
 

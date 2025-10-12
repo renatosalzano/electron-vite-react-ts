@@ -1,12 +1,12 @@
 import { build_main } from "./build/main.js"
 import * as vite from 'vite'
 import { build_preload } from "./build/preload.js"
-import { globSync, readFileSync } from "fs"
-import { dirname, relative, resolve } from "path"
+import { globSync } from "fs"
+import { resolve } from "path"
 import { start_electron } from "./start_electron.js"
+import * as http from 'http'
 import './env.js'
 import './utils/color.js'
-import { vite_orchestrator } from "./plugins/vite_orchestrator.js"
 
 const MAIN_PATH = 'src/main/**/*'
 const STORE_PATH = 'src/store/**/*'
@@ -89,20 +89,60 @@ export async function dev() {
 
     await builder.listen()
 
+    const input = globSync('src/renderer/*/index.html')
+      .map((path) => resolve(process.cwd(), path))
+
     const client_server = await vite.createServer({
       root: resolve(process.cwd(), './src/renderer'),
       configFile: resolve(process.cwd(), './vite.config.renderer.ts'),
-      server: {
-        port: Number(process.env.VITE_DEV_PORT)
+      build: {
+        rollupOptions: {
+          input: input
+        }
       },
-      plugins: [
-        vite_orchestrator()
-      ]
+      server: {
+        port: Number(process.env.VITE_DEV_PORT),
+        middlewareMode: true,
+        hmr: {
+          port: 4080
+        }
+      },
+      plugins: [{
+        name: 'vitron:html-dev',
+        transformIndexHtml() {
+          return [{
+            tag: 'meta',
+            attrs: {
+              'http-equiv': 'Content-Security-Policy',
+              'contents': `
+                default-src 'self';
+                connect-src 'self' ws://localhost:4080;
+                script-src 'self';
+                style-src 'self' 'unsafe-inline';
+                img-src 'self' data:"
+              `
+            }
+          }]
+        }
+      }]
     })
 
-    process.env.VITE_DEV_URL = `http://localhost:${process.env.VITE_DEV_PORT}`
+    const app = http.createServer(async (req, res) => {
 
-    await client_server.listen()
+      // console.log(req.url)
+      // qui ho la richiesta di localhost:PORT/main
+
+      client_server.middlewares(req, res, () => {
+        console.log('not found:', req.url)
+        res.statusCode = 404;
+        res.end('404');
+      });
+
+    })
+
+    app.listen(Number(process.env.VITE_DEV_PORT))
+
+    process.env.VITE_DEV_URL = `http://localhost:${process.env.VITE_DEV_PORT}`
 
     console.log(g('vite server listen to:'), process.env.VITE_DEV_URL)
 

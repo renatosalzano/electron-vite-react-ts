@@ -4,7 +4,7 @@
   "main": "dist/index.js",
   "scripts": {
     "tsc": "npx tsc --noEmit",
-    "build": "npx tsc --build",
+    "build": "npx tsc --build --clean",
     "dev": "npx tsc --watch"
   },
   "keywords": [
@@ -16,10 +16,9 @@
   },
   "exports": {
     ".": "./dist/index.js",
-    "./preload": "./dist/preload/index.js",
+    "./electron": "./dist/electron/index.js",
+    "./store": "./dist/store/index.js",
+    "./client": "./dist/client/index.js",
     "./renderer": "./dist/renderer/index.js"
-  },
-  "devDependencies": {
-    "typescript": "^5.9.3"
   }
 }

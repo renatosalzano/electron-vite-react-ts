@@ -1,8 +1,11 @@
-export default () => {
+import '../style/base.css';
+import { Header } from './src/layout/header/header';
+import { createRoot } from 'react-dom/client'
 
-  return (
-    <div>
-      main
-    </div>
-  )
-}
+const root = createRoot(document.getElementById('root')!)
+
+root.render(
+  <>
+    <Header />
+  </>
+)
