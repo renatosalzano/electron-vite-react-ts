@@ -1,18 +1,15 @@
 import { Store } from 'vitron/store'
 
-export interface UserData {
+export interface Global {
   count: number
   increment(): void
 }
 
 
-const userdata = Store.persist<UserData>('userdata', (set, get) => ({
+export const userdata = Store.create<Global>('global', (set, get) => ({
   count: 0,
   increment() {
     const { count } = get()
     set({ count: count + 1 })
   }
 }))
-
-
-export { userdata }

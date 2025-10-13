@@ -1,5 +1,6 @@
 import { ViteBrowserWindow } from "./ViteBrowserWindow.js";
 import { ViteWebContents } from "./ViteWebContents.js";
+import { ElectronStore } from "../store/ElectronStore.js";
 
 export type ViteConfig = {
   root: string
@@ -8,5 +9,6 @@ export type ViteConfig = {
 
 export {
   ViteBrowserWindow,
-  ViteWebContents
+  ViteWebContents,
+  ElectronStore
 }

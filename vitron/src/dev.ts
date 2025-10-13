@@ -98,6 +98,14 @@ export async function dev() {
       build: {
         rollupOptions: {
           input: input
+        },
+        commonjsOptions: {
+          include: [/store/],
+        },
+      },
+      resolve: {
+        alias: {
+          'store': resolve(process.cwd(), 'src/store')
         }
       },
       server: {

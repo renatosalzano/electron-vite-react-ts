@@ -3,12 +3,11 @@ import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import { resolve } from 'path'
 import { Store } from 'vitron/store'
 import { ViteBrowserWindow, ViteWebContents } from 'vitron/electron'
-import '../store/userdata'
+// import '../store/userdata'
 
 function createWindow() {
 
   Store.initializer()
-
 
   const main = new ViteBrowserWindow({
     width: 900,

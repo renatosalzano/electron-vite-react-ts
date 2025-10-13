@@ -1,5 +1,6 @@
 import { contextBridge } from "electron/renderer";
-import '../store/userdata'
+
+console.log(process.env.PRELOAD_STORE_CHANNEL)
 
 if (process.contextIsolated) {
   console.log('context isolated')

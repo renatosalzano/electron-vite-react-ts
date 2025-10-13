@@ -4,7 +4,7 @@
   "main": "dist/index.js",
   "scripts": {
     "tsc": "npx tsc --noEmit",
-    "build": "npx tsc --build --clean",
+    "build": "npx tsc --build",
     "dev": "npx tsc --watch"
   },
   "keywords": [

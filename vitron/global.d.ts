@@ -32,10 +32,8 @@ declare global {
       ELECTRON_EXEC_PATH: string
       ELECTRON_STARTED: string
       VITE_DEV_PORT: string
+      PRELOAD_STORE_CHANNEL: strin
 
-      CHANNEL_ORCHESTRATOR_API: string
-      CHANNEL_ORCHESTRATOR_RENDER: string
-      CHANNEL_ORCHESTRATOR_BATCH: string
     }
   }
 }

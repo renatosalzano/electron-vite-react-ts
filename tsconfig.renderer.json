@@ -7,6 +7,11 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "module": "esnext",
-    "moduleResolution": "bundler"
+    "moduleResolution": "bundler",
+    "paths": {
+      "store/*": [
+        "src/store/*"
+      ]
+    }
   }
 }

@@ -10,7 +10,6 @@ export default defineConfig({
   },
 
   plugins: [
-    // tsconfigPaths(),
     react({
       babel: {
         plugins: ['babel-plugin-react-compiler']
