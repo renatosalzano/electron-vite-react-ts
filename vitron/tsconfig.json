@@ -11,6 +11,7 @@
     "outDir": "./dist",
     "declarationDir": "./dist",
     "removeComments": false,
+    "jsx": "react-jsx",
     "lib": [
       "DOM",
       "ESNext"

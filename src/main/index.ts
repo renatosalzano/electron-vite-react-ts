@@ -9,6 +9,8 @@ function createWindow() {
 
   Store.initializer()
 
+  console.log(__dirname)
+
   const main = new ViteBrowserWindow({
     width: 900,
     height: 670,
@@ -35,27 +37,29 @@ function createWindow() {
     main.setVibrancy('fullscreen-ui')
   }
 
-  const options = new ViteWebContents({
-    webPreferences: {
-      nodeIntegration: false,
-      contextIsolation: true,
-      preload: resolve(__dirname, '../preload/preload.js')
-    },
-    viteConfig: {
-      root: 'options',
-    }
-  })
+  main.webContents.openDevTools()
 
-  options.setBounds({
-    x: 100,
-    y: 100,
-    width: 100,
-    height: 100
-  })
+  // const options = new ViteWebContents({
+  //   webPreferences: {
+  //     nodeIntegration: false,
+  //     contextIsolation: true,
+  //     preload: resolve(__dirname, '../preload/preload.js')
+  //   },
+  //   viteConfig: {
+  //     root: 'options',
+  //   }
+  // })
 
-  main.contentView.addChildView(options)
+  // options.setBounds({
+  //   x: 100,
+  //   y: 100,
+  //   width: 100,
+  //   height: 100
+  // })
 
-  options.webContents.openDevTools()
+  // main.contentView.addChildView(options)
+
+  // options.webContents.openDevTools()
 
   // main.orchestrator()
 

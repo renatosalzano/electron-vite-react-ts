@@ -19,6 +19,7 @@
     "./electron": "./dist/electron/index.js",
     "./store": "./dist/store/index.js",
     "./client": "./dist/client/index.js",
-    "./renderer": "./dist/renderer/index.js"
+    "./renderer": "./dist/renderer/index.js",
+    "./material-color": "./dist/material-color/index.js"
   }
 }

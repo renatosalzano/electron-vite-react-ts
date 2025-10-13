@@ -1,4 +1,5 @@
 import * as _ from 'electron/renderer'
+import type { SlotApi } from '../client/index.js'
 
 const store_channels: string[][] = process.env.PRELOAD_STORE_CHANNEL
   .split(';')
@@ -38,3 +39,11 @@ for (const channels of store_channels) {
 
   _.contextBridge.exposeInMainWorld(window_key, api)
 }
+
+console.log('SLOT_CHANNEL', process.env.SLOT_CHANNEL)
+
+_.contextBridge.exposeInMainWorld('slot', {
+  set(...args) {
+    _.ipcRenderer.send(process.env.SLOT_CHANNEL, ...args)
+  }
+} as SlotApi)

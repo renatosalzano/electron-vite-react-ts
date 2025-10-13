@@ -1,4 +1,5 @@
 import type { OrchestratorApi } from "./src/preload/orchestratorApi"
+import type { SlotApi } from "./src/client/index.ts"
 
 declare global {
   function bb(str: string): string
@@ -18,10 +19,7 @@ declare global {
   function W(str: string): string
 
   interface Window {
-    __orchestrator__api__: {
-      batch(): void
-      render(callback: (config: any) => void): void
-    }
+    slot: SlotApi
   }
 
   namespace NodeJS {
@@ -32,8 +30,11 @@ declare global {
       ELECTRON_EXEC_PATH: string
       ELECTRON_STARTED: string
       VITE_DEV_PORT: string
-      PRELOAD_STORE_CHANNEL: strin
+      PRELOAD_STORE_CHANNEL: string
 
+      SLOT_CHANNEL: string
+      SLOT_SET_BOUNDS_CHANNEL: string
+      SLOT_RENDER: string
     }
   }
 }

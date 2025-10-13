@@ -1,9 +1,10 @@
-import { globSync, mkdir, mkdirSync, readFileSync, writeFileSync } from 'fs';
-import { basename, extname, join, resolve } from 'path';
-import * as vite from 'vite';
+import { globSync, readFileSync } from 'fs';
+import { basename, extname, resolve } from 'path';
 import esbuild from 'esbuild'
 
 export async function build_main() {
+
+  // build_material_colors()
 
   const store_files = globSync('src/store/**.*')
     .map((path) => resolve(process.cwd(), path))

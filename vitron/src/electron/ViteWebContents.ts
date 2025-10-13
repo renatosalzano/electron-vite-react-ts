@@ -1,13 +1,13 @@
 import { WebContentsView, WebContentsViewConstructorOptions } from "electron";
 
 import { ViteConfig } from "./index.js";
+import { existsSync } from "fs";
 // import { orchestratorMain } from "../preload/orchestratorMain.js";
-
-
 
 export type ViteWebContentsOptions = WebContentsViewConstructorOptions & {
   viteConfig: ViteConfig
 }
+
 
 export class ViteWebContents extends WebContentsView {
 
