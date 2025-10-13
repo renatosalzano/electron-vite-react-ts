@@ -1,11 +1,18 @@
 {
   "include": [
-    "src/renderer/**/*",
-    "src/preload/**.d.ts"
+    "src/renderer/**/*.tsx",
+    "src/renderer/**/*.ts",
+    "src/renderer/**/*.d.ts",
+    "src/renderer/global.ts",
+    "src/renderer/global.d.ts",
+    "src/store/**/*"
   ],
   "compilerOptions": {
+    "composite": true,
+    "declaration": true,
     "jsx": "react-jsx",
     "baseUrl": ".",
+    "declarationDir": "./types",
     "module": "esnext",
     "moduleResolution": "bundler",
     "paths": {
