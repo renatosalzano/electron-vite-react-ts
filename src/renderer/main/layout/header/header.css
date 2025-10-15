@@ -1,0 +1,36 @@
+header {
+  -webkit-app-region: drag;
+
+  position: relative;
+
+  display: flex;
+  justify-content: space-between;
+
+  height: 36px;
+
+  .controls {
+    -webkit-app-region: no-drag;
+    display: flex;
+    align-items: stretch;
+
+    &.left {
+      padding-left: 8px;
+      padding-top: 8px;
+      padding-bottom: 8px;
+    }
+
+    .control-with-options {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+
+      .options-anchor {
+        position: absolute;
+        bottom: -16px;
+        height: 1px;
+        width: 10px;
+        background-color: red;
+      }
+    }
+  }
+}

@@ -9,6 +9,8 @@
       "node"
     ],
     "composite": true,
-    "baseUrl": "."
+    "baseUrl": ".",
+    "module": "esnext",
+    "moduleResolution": "bundler"
   }
 }

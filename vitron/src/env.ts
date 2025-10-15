@@ -1,3 +1,6 @@
-process.env.SLOT_RENDER = '__SLOT_RENDER__'
-process.env.SLOT_SET_BOUNDS_CHANNEL = '__SLOT_SET_BOUNDS__'
-process.env.SLOT_CHANNEL = '__SLOT__'
+
+process.env.THEME_CHANNEL = '__THEME__'
+process.env.THEME_API = 'theme_api'
+
+process.env.WEBVIEW_CHANNEL = '__WEBVIEW__'
+process.env.WEBVIEW = 'webview'

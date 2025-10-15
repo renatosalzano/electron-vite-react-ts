@@ -1,5 +1,5 @@
 import type { OrchestratorApi } from "./src/preload/orchestratorApi"
-import type { SlotApi } from "./src/client/index.ts"
+import type { WebviewApi, ThemeApi } from "./src/client/index.ts"
 
 declare global {
   function bb(str: string): string
@@ -19,7 +19,8 @@ declare global {
   function W(str: string): string
 
   interface Window {
-    slot: SlotApi
+    webview: WebviewApi
+    [process.env.THEME_API]: ThemeApi
   }
 
   namespace NodeJS {
@@ -32,9 +33,13 @@ declare global {
       VITE_DEV_PORT: string
       PRELOAD_STORE_CHANNEL: string
 
-      SLOT_CHANNEL: string
-      SLOT_SET_BOUNDS_CHANNEL: string
-      SLOT_RENDER: string
+      WEBVIEW: string
+      WEBVIEW_CHANNEL: string
+      THEME_CHANNEL: string
+      THEME_API: string
+
+      APP_RESIZE_CHANNEL: string
+      APP_RESIZE_API: string
     }
   }
 }

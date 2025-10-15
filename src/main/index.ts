@@ -1,18 +1,18 @@
-import { app, BaseWindow } from 'electron'
+import { app, BaseWindow, nativeTheme } from 'electron'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import { resolve } from 'path'
 import { Store } from 'vitron/store'
-import { ViteBrowserWindow, ViteWebContents } from 'vitron/electron'
+import { ViteBrowserWindow } from 'vitron/electron'
 // import '../store/userdata'
 
 function createWindow() {
 
   Store.initializer()
 
-  console.log(__dirname)
+  // console.log(__dirname)
 
   const main = new ViteBrowserWindow({
-    width: 900,
+    width: 1080,
     height: 670,
     frame: false,
     // transparent: true,
@@ -32,12 +32,13 @@ function createWindow() {
   if (process.platform === 'win32') {
     // main.setBackgroundMaterial(transparency ? 'acrylic' : 'none')
     main.setBackgroundMaterial('acrylic')
+    // main.setBackgroundColor('rgba(0, 0, 0, 0.6)')
   } else if (process.platform === 'darwin') {
     // main.setVibrancy(transparency ? 'fullscreen-ui' : null)
     main.setVibrancy('fullscreen-ui')
   }
 
-  main.webContents.openDevTools()
+  // main.webContents.openDevTools()
 
   // const options = new ViteWebContents({
   //   webPreferences: {

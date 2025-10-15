@@ -1,16 +1,21 @@
-import { connectStore } from "./connect_store.js";
 import { Store } from '../store/Store.js'
-import { Slot } from './Slot.js'
+import { WebView, WebViewConsumer } from './WebView.js'
+import { isDark } from "./isDark.js";
 
 
-export type SlotCommand = 'setBounds' | 'render'
+export type SlotCommand = 'create' | 'setBounds' | 'render' | 'css'
 
-export type SlotApi = {
+export type WebviewApi = {
   set(name: string, command: SlotCommand, props?: any): void
+}
+
+export type ThemeApi = {
+  isDark(): boolean
 }
 
 export {
   Store,
-  Slot,
-  connectStore
+  WebView,
+  WebViewConsumer,
+  isDark
 }

@@ -1,0 +1,28 @@
+.base-button {
+
+  border: none;
+  background-color: transparent;
+  opacity: 0.6;
+
+  transition: opacity 200ms ease;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &.variant-control {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    color: var(--text-color);
+    background-color: var(--primary-color);
+  }
+
+  &.variant-head {
+    display: flex;
+    color: var(--text-color);
+    background-color: var(--primary-color);
+  }
+
+  &.variant-icon {}
+}

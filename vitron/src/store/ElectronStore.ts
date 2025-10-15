@@ -103,10 +103,16 @@ export class ElectronStore {
 
         const file = readFileSync(path, 'utf-8')
         const data = JSON.parse(file)
+        const initial_data = this.store.getState()
 
-        this.store.setState(data)
+        const store_data = {
+          ...initial_data,
+          ...data
+        }
 
-        console.log(data)
+        this.store.setState(store_data)
+
+        console.log(store_data)
 
         // this.notify(this.store)
 

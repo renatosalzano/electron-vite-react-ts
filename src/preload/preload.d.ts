@@ -1,8 +1,12 @@
-import { UserData } from '../store/userdata'
+import { UserData, WebviewConfig } from '../store/userdata'
+import { Classname } from 'src/renderer/global'
 
 declare global {
 
   type Userdata = UserData
+  type WebViewConfig = WebviewConfig
+
+  const cls: Classname
 
   interface Window {
     userdata: {

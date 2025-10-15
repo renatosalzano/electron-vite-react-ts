@@ -5,7 +5,8 @@
     "src/renderer/**/*.d.ts",
     "src/renderer/global.ts",
     "src/renderer/global.d.ts",
-    "src/store/**/*"
+    "src/store/**/*",
+    "src/preload/preload.d.ts"
   ],
   "compilerOptions": {
     "composite": true,
@@ -18,6 +19,9 @@
     "paths": {
       "store/*": [
         "src/store/*"
+      ],
+      "components/*": [
+        "src/renderer/components/*"
       ]
     }
   }

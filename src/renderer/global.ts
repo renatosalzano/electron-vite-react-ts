@@ -6,7 +6,7 @@ type ClassValue =
 
 export type Classname = (...props: ClassValue[]) => string
 
-var cls = (...props: ClassValue[]) => {
+(window as any).cls = (...props: ClassValue[]) => {
 
   let out = ''
 
