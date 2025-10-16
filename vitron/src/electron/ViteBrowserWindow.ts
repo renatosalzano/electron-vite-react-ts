@@ -27,7 +27,8 @@ export class ViteBrowserWindow extends BrowserWindow {
     this.viteConfig = viteConfig
 
     if (process.env.VITE_DEV_URL) {
-      this.loadURL(`${process.env.VITE_DEV_URL}/${viteConfig.root}/index.html`)
+      this.loadURL(`${process.env.VITE_DEV_URL}/src/renderer/${viteConfig.root}/index.html`)
+      // this.loadURL(`${process.env.VITE_DEV_URL}/${viteConfig.root}/index.html`)
     } else {
       // TODO PRODUCTION
     }
@@ -71,7 +72,7 @@ export class ViteBrowserWindow extends BrowserWindow {
 
           webContent.setBackgroundColor('rgba(255, 255, 255, 0)')
 
-          webContent.webContents.openDevTools()
+          // webContent.webContents.openDevTools()
 
           webview_map.set(id, webContent)
           break
@@ -96,19 +97,26 @@ export class ViteBrowserWindow extends BrowserWindow {
           }
           break;
         }
-        case 'css': {
+        case 'dev': {
           if (webview_map.has(id)) {
             const webContent = webview_map.get(id)!
-            webContent.webContents.executeJavaScript(`
-              window.addEventListener('DOMContentLoaded', () => {
-                console.log('executeJavaScript')
-                const style = document.createElement('style');
-                style.textContent = 'body { border-radius: 8px !important; overflow: hidden !important; }';
-                style.setAttribute('type', 'text/css');
-                document.head.appendChild(style);
-              })
-            `).catch(error => console.log(error))
+            webContent.webContents.openDevTools()
           }
+          break
+        }
+        case 'css': {
+          // if (webview_map.has(id)) {
+          //   const webContent = webview_map.get(id)!
+          //   webContent.webContents.executeJavaScript(`
+          //     window.addEventListener('DOMContentLoaded', () => {
+          //       console.log('executeJavaScript')
+          //       const style = document.createElement('style');
+          //       style.textContent = 'body { border-radius: 8px !important; overflow: hidden !important; }';
+          //       style.setAttribute('type', 'text/css');
+          //       document.head.appendChild(style);
+          //     })
+          //   `).catch(error => console.log(error))
+          // }
         }
       }
 

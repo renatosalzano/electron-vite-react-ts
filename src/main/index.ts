@@ -31,14 +31,13 @@ function createWindow() {
 
   if (process.platform === 'win32') {
     // main.setBackgroundMaterial(transparency ? 'acrylic' : 'none')
-    main.setBackgroundMaterial('acrylic')
-    // main.setBackgroundColor('rgba(0, 0, 0, 0.6)')
+    main.setBackgroundMaterial('mica')
   } else if (process.platform === 'darwin') {
     // main.setVibrancy(transparency ? 'fullscreen-ui' : null)
     main.setVibrancy('fullscreen-ui')
   }
 
-  // main.webContents.openDevTools()
+  main.webContents.openDevTools()
 
   // const options = new ViteWebContents({
   //   webPreferences: {

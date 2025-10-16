@@ -1,12 +1,17 @@
 header {
   -webkit-app-region: drag;
 
+  --header-border-color: var(--primary-40);
+
   position: relative;
 
   display: flex;
-  justify-content: space-between;
 
   height: 36px;
+
+  /* background-color: var(--primary-40); */
+
+  /* border-bottom: 1px solid var(--primary); */
 
   .controls {
     -webkit-app-region: no-drag;
@@ -19,6 +24,11 @@ header {
       padding-bottom: 8px;
     }
 
+    &.center {
+
+      /* padding-top: 8px; */
+    }
+
     .control-with-options {
       position: relative;
       display: flex;
@@ -26,11 +36,22 @@ header {
 
       .options-anchor {
         position: absolute;
-        bottom: -16px;
+        bottom: -10px;
         height: 1px;
         width: 10px;
-        background-color: red;
+        background-color: rgb(0, 255, 13);
       }
     }
   }
+}
+
+.floating {
+  position: absolute;
+  display: block;
+
+  transform: scaleZ(1);
+  width: 100px;
+  height: 40px;
+  backdrop-filter: blur(16px);
+  z-index: 100;
 }

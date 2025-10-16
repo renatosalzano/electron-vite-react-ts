@@ -93,7 +93,7 @@ export async function dev() {
       .map((path) => resolve(process.cwd(), path))
 
     const client_server = await vite.createServer({
-      root: resolve(process.cwd(), './src/renderer'),
+      root: resolve(process.cwd()),
       configFile: resolve(process.cwd(), './vite.config.renderer.ts'),
       build: {
         rollupOptions: {
@@ -113,7 +113,7 @@ export async function dev() {
         }
       },
       plugins: [{
-        name: 'vitron:html-dev',
+        name: 'vitron:dev',
         transformIndexHtml() {
           return [{
             tag: 'meta',
@@ -134,8 +134,8 @@ export async function dev() {
 
     const app = http.createServer(async (req, res) => {
 
+      // console.log('---- req ----')
       // console.log(req.url)
-      // qui ho la richiesta di localhost:PORT/main
 
       client_server.middlewares(req, res, () => {
         console.log('not found:', req.url)

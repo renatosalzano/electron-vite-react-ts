@@ -12,6 +12,7 @@ export type WebViewProps = {
   partition?: string,
   render: boolean,
   zIndex?: number
+  dev?: boolean
 }
 
 
@@ -29,7 +30,8 @@ export const WebView: FC<WebViewProps> = ({
   className,
   partition,
   render = false,
-  zIndex = 0
+  zIndex = 0,
+  dev
 }) => {
 
   const ref = useRef<HTMLElement>(null)
@@ -38,11 +40,14 @@ export const WebView: FC<WebViewProps> = ({
 
   if (ref.current === null) {
     window.webview.set(id, 'create', { src, partition, render, zIndex })
-    window.webview.set(id, 'css')
+
+    if (dev) {
+      window.webview.set(id, 'dev')
+    }
     webview_map.set(id, { x, y, width, height })
   }
 
-  const on_resize = () => {
+  const onResize = () => {
 
     const slot = ref.current
 
@@ -61,22 +66,25 @@ export const WebView: FC<WebViewProps> = ({
   }
 
   useEffect(() => {
+    if (render) {
+      onResize()
+    }
     window.webview.set(id, 'render', { render })
   }, [render])
 
   useEffect(() => {
 
-    on_resize()
+    onResize()
 
   }, [x, y, width, height])
 
 
   useEffect(() => {
-    on_resize()
-    addEventListener('resize', on_resize)
+    onResize()
+    addEventListener('resize', onResize)
 
     return () => {
-      removeEventListener('resize', on_resize)
+      removeEventListener('resize', onResize)
     }
   }, [])
 

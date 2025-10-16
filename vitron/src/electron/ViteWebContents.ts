@@ -27,8 +27,8 @@ export class ViteWebContents extends WebContentsView {
     if (viteConfig) {
 
       if (process.env.VITE_DEV_URL) {
-        console.log(`LOAD URL: ${process.env.VITE_DEV_URL}/${viteConfig.root}/index.html`)
-        this.webContents.loadURL(`${process.env.VITE_DEV_URL}/${viteConfig.root}/index.html`)
+        this.webContents.loadURL(`${process.env.VITE_DEV_URL}/src/renderer/${viteConfig.root}/index.html`)
+        // this.webContents.loadURL(`${process.env.VITE_DEV_URL}/${viteConfig.root}/index.html`)
       } else {
         // TODO PRODUCTION
       }

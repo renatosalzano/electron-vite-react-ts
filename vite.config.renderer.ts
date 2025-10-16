@@ -10,7 +10,7 @@ export default defineConfig({
   },
 
   plugins: [
-    tsconfigPaths({ projects: ['../../tsconfig.renderer.json'] }),
+    tsconfigPaths(),
     react({
       babel: {
         plugins: ['babel-plugin-react-compiler']

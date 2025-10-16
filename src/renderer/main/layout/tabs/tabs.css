@@ -1,0 +1,46 @@
+.tabs {
+  --padding-x: 8px;
+
+  position: relative;
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0 var(--padding-x);
+
+  .tab {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    width: 100px;
+    color: var(--text-color);
+    /* transition: transform 40ms; */
+    /* x: var(--offset-x); */
+    transform: translate(var(--offset-x));
+
+    .content {
+      flex: 1;
+      display: flex;
+      align-items: stretch;
+      opacity: 0.6;
+      padding: 0 8px;
+      border-right: 1px solid var(--header-border-color);
+    }
+
+    &.active {
+      background-color: var(--header-border-color);
+
+      .content {
+        opacity: 1;
+        border-right-color: transparent;
+      }
+    }
+
+    &.is-dragging {
+      z-index: 10;
+      backdrop-filter: blur(var(--ui-blur));
+      -webkit-backdrop-filter: blur(var(--ui-blur));
+      /* background-color: var(--primary-80); */
+    }
+  }
+}

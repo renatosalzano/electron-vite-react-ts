@@ -3,7 +3,7 @@ import { WebView, WebViewConsumer } from './WebView.js'
 import { isDark } from "./isDark.js";
 
 
-export type SlotCommand = 'create' | 'setBounds' | 'render' | 'css'
+export type SlotCommand = 'create' | 'setBounds' | 'render' | 'css' | 'dev'
 
 export type WebviewApi = {
   set(name: string, command: SlotCommand, props?: any): void

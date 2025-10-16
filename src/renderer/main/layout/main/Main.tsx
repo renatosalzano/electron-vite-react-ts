@@ -8,13 +8,13 @@ export const Main: FC<Props> = () => {
 
   return (
     <main>
-      <WebView
+      {/* <WebView
         id='reply'
         src='https://outlook.office.com/mail/'
         className='webview'
         partition='persist:reply'
         render
-      />
+      /> */}
     </main>
   )
 }
