@@ -1,18 +1,20 @@
 import './options.css'
-import type { FC } from 'react';
-import { userdata } from 'store/userdata';
-import { global } from 'store/global'
+import { forwardRef, useEffect, type FC } from 'react';
+import { userdata } from '@store/userdata';
+import { global } from '@store/global'
+import { useWebviewEffect } from 'vitron/client';
 
 type Props = {}
 
 const useStore = userdata.useClientStore()
 const useGlobal = global.useClientStore()
 
-export const Options: FC<Props> = () => {
+export const Options = forwardRef<HTMLUListElement, Props>((props, ref) => {
 
-  const { setTabs } = useGlobal()
+  const { setTabs, openOptions } = useGlobal()
 
   const onClick = (id: string) => {
+
     setTabs((tabs) => {
 
       if (!(id in tabs)) {
@@ -22,12 +24,22 @@ export const Options: FC<Props> = () => {
         }
       }
 
+      for (const _id in tabs) {
+        tabs[_id].active = id === _id
+      }
+
       return tabs
     })
+
+    openOptions(false)
   }
 
+
   return (
-    <ul className="options">
+    <ul
+      ref={ref}
+      className="options"
+    >
       <li
         className='option'
         onClick={() => onClick('settings')}
@@ -42,4 +54,4 @@ export const Options: FC<Props> = () => {
       </li>
     </ul>
   )
-}
+})

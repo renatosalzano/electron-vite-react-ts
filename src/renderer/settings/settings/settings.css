@@ -1,0 +1,23 @@
+.settings {
+  flex: 1;
+  display: flex;
+  color: var(--text-color);
+  background-color: var(--primary);
+
+  .navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 160px;
+  }
+
+  section {
+    flex: 1;
+    border-radius: 8px;
+    padding: 8px;
+    margin: 8px
+  }
+
+  /* background-color: var(--primary-dark); */
+  /* background-color: var(--primary); */
+}

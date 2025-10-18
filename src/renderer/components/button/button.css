@@ -2,12 +2,16 @@
 
   border: none;
   background-color: transparent;
-  opacity: 0.6;
 
-  transition: opacity 200ms ease;
+  &.size-small {
+    width: 24px;
+    height: 24px;
+    padding: 4px;
+  }
 
-  &:hover {
-    opacity: 1;
+  &.size-normal {
+    height: 40px;
+    padding: 8px 16px;
   }
 
   &.variant-control {
@@ -19,6 +23,11 @@
     padding: 0 4px;
 
     border-radius: 4px;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
   }
 
   &.variant-head {
@@ -27,5 +36,57 @@
     background-color: var(--primary);
   }
 
-  &.variant-icon {}
+  &.variant-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &.variant-side {
+    display: flex;
+    align-items: end;
+    gap: 16px;
+
+    padding-bottom: 12px;
+
+    color: var(--text-color);
+
+    font-size: 16px;
+    line-height: 12px;
+    border-radius: var(--ui-border-radius);
+
+    svg {
+      width: 14px;
+      height: 14px;
+    }
+
+
+
+    &:hover {
+      background-color: var(--primary-60);
+    }
+
+    &.active {
+      background-color: var(--primary);
+    }
+  }
+
+  &.delete-color {
+    color: var(--text-color);
+
+    &:hover {
+      /* color: #F44336; */
+      background-color: #b71c1c4a;
+    }
+  }
+
+  &.shape-round {
+    border-radius: 50%;
+  }
+
 }

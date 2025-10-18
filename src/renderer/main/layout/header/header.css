@@ -1,26 +1,24 @@
 header {
   -webkit-app-region: drag;
 
-  --header-border-color: var(--primary-40);
+  --header-border-color: var(--primary-dark);
 
   position: relative;
 
   display: flex;
 
-  height: 36px;
+  height: 38px;
 
-  /* background-color: var(--primary-40); */
-
-  /* border-bottom: 1px solid var(--primary); */
+  border-bottom: 2px solid var(--primary);
 
   .controls {
     -webkit-app-region: no-drag;
     display: flex;
     align-items: stretch;
+    padding-top: 6px;
 
     &.left {
       padding-left: 8px;
-      padding-top: 8px;
       padding-bottom: 8px;
     }
 
@@ -34,24 +32,27 @@ header {
       display: flex;
       flex-direction: column;
 
-      .options-anchor {
+      .control-mask {
         position: absolute;
-        bottom: -10px;
+        top: -6px;
+        left: -8px;
         height: 1px;
-        width: 10px;
-        background-color: rgb(0, 255, 13);
+        width: 36px;
+        height: 38px;
+        background-color: rgb(0, 255, 13, 0.5);
+      }
+
+      .options-position {
+        position: absolute;
+        bottom: -18px;
+        height: 2px;
+        width: 32px;
+        background-color: rgba(120, 0, 0, 0.5);
+
+        &.open {
+          height: 36px;
+        }
       }
     }
   }
-}
-
-.floating {
-  position: absolute;
-  display: block;
-
-  transform: scaleZ(1);
-  width: 100px;
-  height: 40px;
-  backdrop-filter: blur(16px);
-  z-index: 100;
 }

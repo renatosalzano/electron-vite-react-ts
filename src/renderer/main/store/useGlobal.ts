@@ -1,3 +1,3 @@
-import { global } from "store/global";
+import { global } from "@store/global";
 
 export const useGlobal = global.useClientStore()

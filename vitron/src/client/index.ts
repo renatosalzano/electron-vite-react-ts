@@ -1,12 +1,38 @@
-import { Store } from '../store/Store.js'
-import { WebView, WebViewConsumer } from './WebView.js'
+import { WebView, WebViewProps, useWebviewEffect } from './WebView.js'
+import { createWebView } from './createWebView.js';
 import { isDark } from "./isDark.js";
 
+export type ipcCommand =
+  | 'create'
+  | 'setBounds'
+  | 'render'
+  | 'dev'
+  | 'close'
 
-export type SlotCommand = 'create' | 'setBounds' | 'render' | 'css' | 'dev'
+export type WebViewEvents =
+  | 'update'
+  | 'focus'
+  | 'blur'
+
+export type ipcWebViewProps = Omit<WebViewProps, 'onBlur'> & {
+  destroy?: boolean
+  onBlur?: boolean
+  currentBounds: {
+    x: number
+    y: number
+    width: number
+    height: number
+  }
+}
+
+type ReceiverProps = WebViewProps & {
+  event: WebViewEvents
+}
 
 export type WebviewApi = {
-  set(name: string, command: SlotCommand, props?: any): void
+  set(id: string, command: ipcCommand, props?: any): void
+  get(id: string): ipcWebViewProps
+  on(callback: (id: string, props: ReceiverProps) => void): void
 }
 
 export type ThemeApi = {
@@ -14,8 +40,8 @@ export type ThemeApi = {
 }
 
 export {
-  Store,
   WebView,
-  WebViewConsumer,
+  useWebviewEffect,
+  createWebView,
   isDark
 }

@@ -1,11 +1,14 @@
-import { DetailedHTMLProps, FC } from "react"
 import './button.css'
-import { CommonProps } from "components/types"
+import { DetailedHTMLProps, FC, FormEvent } from "react"
+import { CommonProps } from "@components/types"
 
 type ReactButtonProps = DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
-type ButtonProps = ReactButtonProps & Omit<CommonProps, 'id' | 'onChange'> & {
+type ButtonProps = Omit<ReactButtonProps, 'onClick'> & Omit<CommonProps, 'id' | 'onChange'> & {
   id?: string
-  variant: 'head' | 'control' | 'icon'
+  variant: 'head' | 'control' | 'icon' | 'side'
+  shape?: 'round'
+  active?: boolean
+  onClick?(evt: FormEvent<HTMLButtonElement>, id?: string): void
 }
 
 
@@ -13,8 +16,17 @@ export const Button: FC<ButtonProps> = ({
   variant,
   color,
   size,
+  shape,
+  active = false,
+  onClick,
+  readonly,
   ...props
 }) => {
+
+  const handleClick = (evt: FormEvent<HTMLButtonElement>) => {
+    console.log(readonly)
+    if (onClick && !readonly) onClick(evt, props.id)
+  }
 
   return (
     <button
@@ -24,9 +36,14 @@ export const Button: FC<ButtonProps> = ({
         {
           [`variant-${variant}`]: !!variant,
           [`${color}-color`]: !!color,
-          [`size-${size}`]: !!size
+          [`size-${size}`]: !!size,
+          [`shape-${shape}`]: !!shape,
+          active
         }
       )}
-    />
+
+      onClick={handleClick}
+    >
+    </button>
   )
 }

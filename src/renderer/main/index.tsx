@@ -1,4 +1,5 @@
 import '../style/base.css';
+import './index.css';
 import { createRoot } from 'react-dom/client'
 import { Header } from './layout/header/header';
 import { Main } from './layout/main/Main';

@@ -1,0 +1,2050 @@
+body {
+
+  --amber-50: #FFF8E1;
+  --amber-50_80: #FFF8E1CC;
+  --amber-50_60: #FFF8E199;
+  --amber-50_40: #FFF8E166;
+  --amber-50_20: #FFF8E133;
+  --amber-50_10: #FFF8E11A;
+
+
+  --amber-100: #FFECB3;
+  --amber-100_80: #FFECB3CC;
+  --amber-100_60: #FFECB399;
+  --amber-100_40: #FFECB366;
+  --amber-100_20: #FFECB333;
+  --amber-100_10: #FFECB31A;
+
+
+  --amber-200: #FFE082;
+  --amber-200_80: #FFE082CC;
+  --amber-200_60: #FFE08299;
+  --amber-200_40: #FFE08266;
+  --amber-200_20: #FFE08233;
+  --amber-200_10: #FFE0821A;
+
+
+  --amber-300: #FFD54F;
+  --amber-300_80: #FFD54FCC;
+  --amber-300_60: #FFD54F99;
+  --amber-300_40: #FFD54F66;
+  --amber-300_20: #FFD54F33;
+  --amber-300_10: #FFD54F1A;
+
+
+  --amber-400: #FFCA28;
+  --amber-400_80: #FFCA28CC;
+  --amber-400_60: #FFCA2899;
+  --amber-400_40: #FFCA2866;
+  --amber-400_20: #FFCA2833;
+  --amber-400_10: #FFCA281A;
+
+
+  --amber-500: #FFC107;
+  --amber-500_80: #FFC107CC;
+  --amber-500_60: #FFC10799;
+  --amber-500_40: #FFC10766;
+  --amber-500_20: #FFC10733;
+  --amber-500_10: #FFC1071A;
+
+
+  --amber-600: #FFB300;
+  --amber-600_80: #FFB300CC;
+  --amber-600_60: #FFB30099;
+  --amber-600_40: #FFB30066;
+  --amber-600_20: #FFB30033;
+  --amber-600_10: #FFB3001A;
+
+
+  --amber-700: #FFA000;
+  --amber-700_80: #FFA000CC;
+  --amber-700_60: #FFA00099;
+  --amber-700_40: #FFA00066;
+  --amber-700_20: #FFA00033;
+  --amber-700_10: #FFA0001A;
+
+
+  --amber-800: #FF8F00;
+  --amber-800_80: #FF8F00CC;
+  --amber-800_60: #FF8F0099;
+  --amber-800_40: #FF8F0066;
+  --amber-800_20: #FF8F0033;
+  --amber-800_10: #FF8F001A;
+
+
+  --amber-900: #FF6F00;
+  --amber-900_80: #FF6F00CC;
+  --amber-900_60: #FF6F0099;
+  --amber-900_40: #FF6F0066;
+  --amber-900_20: #FF6F0033;
+  --amber-900_10: #FF6F001A;
+
+
+  --amber-A100: #FFE57F;
+  --amber-A100_80: #FFE57FCC;
+  --amber-A100_60: #FFE57F99;
+  --amber-A100_40: #FFE57F66;
+  --amber-A100_20: #FFE57F33;
+  --amber-A100_10: #FFE57F1A;
+
+
+  --amber-A200: #FFD740;
+  --amber-A200_80: #FFD740CC;
+  --amber-A200_60: #FFD74099;
+  --amber-A200_40: #FFD74066;
+  --amber-A200_20: #FFD74033;
+  --amber-A200_10: #FFD7401A;
+
+
+  --amber-A400: #FFC400;
+  --amber-A400_80: #FFC400CC;
+  --amber-A400_60: #FFC40099;
+  --amber-A400_40: #FFC40066;
+  --amber-A400_20: #FFC40033;
+  --amber-A400_10: #FFC4001A;
+
+
+  --amber-A700: #FFAB00;
+  --amber-A700_80: #FFAB00CC;
+  --amber-A700_60: #FFAB0099;
+  --amber-A700_40: #FFAB0066;
+  --amber-A700_20: #FFAB0033;
+  --amber-A700_10: #FFAB001A;
+
+
+  --black: #000000;
+  --black_80: #000000CC;
+  --black_60: #00000099;
+  --black_40: #00000066;
+  --black_20: #00000033;
+  --black_10: #0000001A;
+
+
+  --blue-50: #E3F2FD;
+  --blue-50_80: #E3F2FDCC;
+  --blue-50_60: #E3F2FD99;
+  --blue-50_40: #E3F2FD66;
+  --blue-50_20: #E3F2FD33;
+  --blue-50_10: #E3F2FD1A;
+
+
+  --blue-100: #BBDEFB;
+  --blue-100_80: #BBDEFBCC;
+  --blue-100_60: #BBDEFB99;
+  --blue-100_40: #BBDEFB66;
+  --blue-100_20: #BBDEFB33;
+  --blue-100_10: #BBDEFB1A;
+
+
+  --blue-200: #90CAF9;
+  --blue-200_80: #90CAF9CC;
+  --blue-200_60: #90CAF999;
+  --blue-200_40: #90CAF966;
+  --blue-200_20: #90CAF933;
+  --blue-200_10: #90CAF91A;
+
+
+  --blue-300: #64B5F6;
+  --blue-300_80: #64B5F6CC;
+  --blue-300_60: #64B5F699;
+  --blue-300_40: #64B5F666;
+  --blue-300_20: #64B5F633;
+  --blue-300_10: #64B5F61A;
+
+
+  --blue-400: #42A5F5;
+  --blue-400_80: #42A5F5CC;
+  --blue-400_60: #42A5F599;
+  --blue-400_40: #42A5F566;
+  --blue-400_20: #42A5F533;
+  --blue-400_10: #42A5F51A;
+
+
+  --blue-500: #2196F3;
+  --blue-500_80: #2196F3CC;
+  --blue-500_60: #2196F399;
+  --blue-500_40: #2196F366;
+  --blue-500_20: #2196F333;
+  --blue-500_10: #2196F31A;
+
+
+  --blue-600: #1E88E5;
+  --blue-600_80: #1E88E5CC;
+  --blue-600_60: #1E88E599;
+  --blue-600_40: #1E88E566;
+  --blue-600_20: #1E88E533;
+  --blue-600_10: #1E88E51A;
+
+
+  --blue-700: #1976D2;
+  --blue-700_80: #1976D2CC;
+  --blue-700_60: #1976D299;
+  --blue-700_40: #1976D266;
+  --blue-700_20: #1976D233;
+  --blue-700_10: #1976D21A;
+
+
+  --blue-800: #1565C0;
+  --blue-800_80: #1565C0CC;
+  --blue-800_60: #1565C099;
+  --blue-800_40: #1565C066;
+  --blue-800_20: #1565C033;
+  --blue-800_10: #1565C01A;
+
+
+  --blue-900: #0D47A1;
+  --blue-900_80: #0D47A1CC;
+  --blue-900_60: #0D47A199;
+  --blue-900_40: #0D47A166;
+  --blue-900_20: #0D47A133;
+  --blue-900_10: #0D47A11A;
+
+
+  --blue-A100: #82B1FF;
+  --blue-A100_80: #82B1FFCC;
+  --blue-A100_60: #82B1FF99;
+  --blue-A100_40: #82B1FF66;
+  --blue-A100_20: #82B1FF33;
+  --blue-A100_10: #82B1FF1A;
+
+
+  --blue-A200: #448AFF;
+  --blue-A200_80: #448AFFCC;
+  --blue-A200_60: #448AFF99;
+  --blue-A200_40: #448AFF66;
+  --blue-A200_20: #448AFF33;
+  --blue-A200_10: #448AFF1A;
+
+
+  --blue-A400: #2979FF;
+  --blue-A400_80: #2979FFCC;
+  --blue-A400_60: #2979FF99;
+  --blue-A400_40: #2979FF66;
+  --blue-A400_20: #2979FF33;
+  --blue-A400_10: #2979FF1A;
+
+
+  --blue-A700: #2962FF;
+  --blue-A700_80: #2962FFCC;
+  --blue-A700_60: #2962FF99;
+  --blue-A700_40: #2962FF66;
+  --blue-A700_20: #2962FF33;
+  --blue-A700_10: #2962FF1A;
+
+
+  --blueGrey-50: #ECEFF1;
+  --blueGrey-50_80: #ECEFF1CC;
+  --blueGrey-50_60: #ECEFF199;
+  --blueGrey-50_40: #ECEFF166;
+  --blueGrey-50_20: #ECEFF133;
+  --blueGrey-50_10: #ECEFF11A;
+
+
+  --blueGrey-100: #CFD8DC;
+  --blueGrey-100_80: #CFD8DCCC;
+  --blueGrey-100_60: #CFD8DC99;
+  --blueGrey-100_40: #CFD8DC66;
+  --blueGrey-100_20: #CFD8DC33;
+  --blueGrey-100_10: #CFD8DC1A;
+
+
+  --blueGrey-200: #B0BEC5;
+  --blueGrey-200_80: #B0BEC5CC;
+  --blueGrey-200_60: #B0BEC599;
+  --blueGrey-200_40: #B0BEC566;
+  --blueGrey-200_20: #B0BEC533;
+  --blueGrey-200_10: #B0BEC51A;
+
+
+  --blueGrey-300: #90A4AE;
+  --blueGrey-300_80: #90A4AECC;
+  --blueGrey-300_60: #90A4AE99;
+  --blueGrey-300_40: #90A4AE66;
+  --blueGrey-300_20: #90A4AE33;
+  --blueGrey-300_10: #90A4AE1A;
+
+
+  --blueGrey-400: #78909C;
+  --blueGrey-400_80: #78909CCC;
+  --blueGrey-400_60: #78909C99;
+  --blueGrey-400_40: #78909C66;
+  --blueGrey-400_20: #78909C33;
+  --blueGrey-400_10: #78909C1A;
+
+
+  --blueGrey-500: #607D8B;
+  --blueGrey-500_80: #607D8BCC;
+  --blueGrey-500_60: #607D8B99;
+  --blueGrey-500_40: #607D8B66;
+  --blueGrey-500_20: #607D8B33;
+  --blueGrey-500_10: #607D8B1A;
+
+
+  --blueGrey-600: #546E7A;
+  --blueGrey-600_80: #546E7ACC;
+  --blueGrey-600_60: #546E7A99;
+  --blueGrey-600_40: #546E7A66;
+  --blueGrey-600_20: #546E7A33;
+  --blueGrey-600_10: #546E7A1A;
+
+
+  --blueGrey-700: #455A64;
+  --blueGrey-700_80: #455A64CC;
+  --blueGrey-700_60: #455A6499;
+  --blueGrey-700_40: #455A6466;
+  --blueGrey-700_20: #455A6433;
+  --blueGrey-700_10: #455A641A;
+
+
+  --blueGrey-800: #37474F;
+  --blueGrey-800_80: #37474FCC;
+  --blueGrey-800_60: #37474F99;
+  --blueGrey-800_40: #37474F66;
+  --blueGrey-800_20: #37474F33;
+  --blueGrey-800_10: #37474F1A;
+
+
+  --blueGrey-900: #263238;
+  --blueGrey-900_80: #263238CC;
+  --blueGrey-900_60: #26323899;
+  --blueGrey-900_40: #26323866;
+  --blueGrey-900_20: #26323833;
+  --blueGrey-900_10: #2632381A;
+
+
+  --brown-50: #EFEBE9;
+  --brown-50_80: #EFEBE9CC;
+  --brown-50_60: #EFEBE999;
+  --brown-50_40: #EFEBE966;
+  --brown-50_20: #EFEBE933;
+  --brown-50_10: #EFEBE91A;
+
+
+  --brown-100: #D7CCC8;
+  --brown-100_80: #D7CCC8CC;
+  --brown-100_60: #D7CCC899;
+  --brown-100_40: #D7CCC866;
+  --brown-100_20: #D7CCC833;
+  --brown-100_10: #D7CCC81A;
+
+
+  --brown-200: #BCAAA4;
+  --brown-200_80: #BCAAA4CC;
+  --brown-200_60: #BCAAA499;
+  --brown-200_40: #BCAAA466;
+  --brown-200_20: #BCAAA433;
+  --brown-200_10: #BCAAA41A;
+
+
+  --brown-300: #A1887F;
+  --brown-300_80: #A1887FCC;
+  --brown-300_60: #A1887F99;
+  --brown-300_40: #A1887F66;
+  --brown-300_20: #A1887F33;
+  --brown-300_10: #A1887F1A;
+
+
+  --brown-400: #8D6E63;
+  --brown-400_80: #8D6E63CC;
+  --brown-400_60: #8D6E6399;
+  --brown-400_40: #8D6E6366;
+  --brown-400_20: #8D6E6333;
+  --brown-400_10: #8D6E631A;
+
+
+  --brown-500: #795548;
+  --brown-500_80: #795548CC;
+  --brown-500_60: #79554899;
+  --brown-500_40: #79554866;
+  --brown-500_20: #79554833;
+  --brown-500_10: #7955481A;
+
+
+  --brown-600: #6D4C41;
+  --brown-600_80: #6D4C41CC;
+  --brown-600_60: #6D4C4199;
+  --brown-600_40: #6D4C4166;
+  --brown-600_20: #6D4C4133;
+  --brown-600_10: #6D4C411A;
+
+
+  --brown-700: #5D4037;
+  --brown-700_80: #5D4037CC;
+  --brown-700_60: #5D403799;
+  --brown-700_40: #5D403766;
+  --brown-700_20: #5D403733;
+  --brown-700_10: #5D40371A;
+
+
+  --brown-800: #4E342E;
+  --brown-800_80: #4E342ECC;
+  --brown-800_60: #4E342E99;
+  --brown-800_40: #4E342E66;
+  --brown-800_20: #4E342E33;
+  --brown-800_10: #4E342E1A;
+
+
+  --brown-900: #3E2723;
+  --brown-900_80: #3E2723CC;
+  --brown-900_60: #3E272399;
+  --brown-900_40: #3E272366;
+  --brown-900_20: #3E272333;
+  --brown-900_10: #3E27231A;
+
+
+  --cyan-50: #E0F7FA;
+  --cyan-50_80: #E0F7FACC;
+  --cyan-50_60: #E0F7FA99;
+  --cyan-50_40: #E0F7FA66;
+  --cyan-50_20: #E0F7FA33;
+  --cyan-50_10: #E0F7FA1A;
+
+
+  --cyan-100: #B2EBF2;
+  --cyan-100_80: #B2EBF2CC;
+  --cyan-100_60: #B2EBF299;
+  --cyan-100_40: #B2EBF266;
+  --cyan-100_20: #B2EBF233;
+  --cyan-100_10: #B2EBF21A;
+
+
+  --cyan-200: #80DEEA;
+  --cyan-200_80: #80DEEACC;
+  --cyan-200_60: #80DEEA99;
+  --cyan-200_40: #80DEEA66;
+  --cyan-200_20: #80DEEA33;
+  --cyan-200_10: #80DEEA1A;
+
+
+  --cyan-300: #4DD0E1;
+  --cyan-300_80: #4DD0E1CC;
+  --cyan-300_60: #4DD0E199;
+  --cyan-300_40: #4DD0E166;
+  --cyan-300_20: #4DD0E133;
+  --cyan-300_10: #4DD0E11A;
+
+
+  --cyan-400: #26C6DA;
+  --cyan-400_80: #26C6DACC;
+  --cyan-400_60: #26C6DA99;
+  --cyan-400_40: #26C6DA66;
+  --cyan-400_20: #26C6DA33;
+  --cyan-400_10: #26C6DA1A;
+
+
+  --cyan-500: #00BCD4;
+  --cyan-500_80: #00BCD4CC;
+  --cyan-500_60: #00BCD499;
+  --cyan-500_40: #00BCD466;
+  --cyan-500_20: #00BCD433;
+  --cyan-500_10: #00BCD41A;
+
+
+  --cyan-600: #00ACC1;
+  --cyan-600_80: #00ACC1CC;
+  --cyan-600_60: #00ACC199;
+  --cyan-600_40: #00ACC166;
+  --cyan-600_20: #00ACC133;
+  --cyan-600_10: #00ACC11A;
+
+
+  --cyan-700: #0097A7;
+  --cyan-700_80: #0097A7CC;
+  --cyan-700_60: #0097A799;
+  --cyan-700_40: #0097A766;
+  --cyan-700_20: #0097A733;
+  --cyan-700_10: #0097A71A;
+
+
+  --cyan-800: #00838F;
+  --cyan-800_80: #00838FCC;
+  --cyan-800_60: #00838F99;
+  --cyan-800_40: #00838F66;
+  --cyan-800_20: #00838F33;
+  --cyan-800_10: #00838F1A;
+
+
+  --cyan-900: #006064;
+  --cyan-900_80: #006064CC;
+  --cyan-900_60: #00606499;
+  --cyan-900_40: #00606466;
+  --cyan-900_20: #00606433;
+  --cyan-900_10: #0060641A;
+
+
+  --cyan-A100: #84FFFF;
+  --cyan-A100_80: #84FFFFCC;
+  --cyan-A100_60: #84FFFF99;
+  --cyan-A100_40: #84FFFF66;
+  --cyan-A100_20: #84FFFF33;
+  --cyan-A100_10: #84FFFF1A;
+
+
+  --cyan-A200: #18FFFF;
+  --cyan-A200_80: #18FFFFCC;
+  --cyan-A200_60: #18FFFF99;
+  --cyan-A200_40: #18FFFF66;
+  --cyan-A200_20: #18FFFF33;
+  --cyan-A200_10: #18FFFF1A;
+
+
+  --cyan-A400: #00E5FF;
+  --cyan-A400_80: #00E5FFCC;
+  --cyan-A400_60: #00E5FF99;
+  --cyan-A400_40: #00E5FF66;
+  --cyan-A400_20: #00E5FF33;
+  --cyan-A400_10: #00E5FF1A;
+
+
+  --cyan-A700: #00B8D4;
+  --cyan-A700_80: #00B8D4CC;
+  --cyan-A700_60: #00B8D499;
+  --cyan-A700_40: #00B8D466;
+  --cyan-A700_20: #00B8D433;
+  --cyan-A700_10: #00B8D41A;
+
+
+  --deepOrange-50: #FBE9E7;
+  --deepOrange-50_80: #FBE9E7CC;
+  --deepOrange-50_60: #FBE9E799;
+  --deepOrange-50_40: #FBE9E766;
+  --deepOrange-50_20: #FBE9E733;
+  --deepOrange-50_10: #FBE9E71A;
+
+
+  --deepOrange-100: #FFCCBC;
+  --deepOrange-100_80: #FFCCBCCC;
+  --deepOrange-100_60: #FFCCBC99;
+  --deepOrange-100_40: #FFCCBC66;
+  --deepOrange-100_20: #FFCCBC33;
+  --deepOrange-100_10: #FFCCBC1A;
+
+
+  --deepOrange-200: #FFAB91;
+  --deepOrange-200_80: #FFAB91CC;
+  --deepOrange-200_60: #FFAB9199;
+  --deepOrange-200_40: #FFAB9166;
+  --deepOrange-200_20: #FFAB9133;
+  --deepOrange-200_10: #FFAB911A;
+
+
+  --deepOrange-300: #FF8A65;
+  --deepOrange-300_80: #FF8A65CC;
+  --deepOrange-300_60: #FF8A6599;
+  --deepOrange-300_40: #FF8A6566;
+  --deepOrange-300_20: #FF8A6533;
+  --deepOrange-300_10: #FF8A651A;
+
+
+  --deepOrange-400: #FF7043;
+  --deepOrange-400_80: #FF7043CC;
+  --deepOrange-400_60: #FF704399;
+  --deepOrange-400_40: #FF704366;
+  --deepOrange-400_20: #FF704333;
+  --deepOrange-400_10: #FF70431A;
+
+
+  --deepOrange-500: #FF5722;
+  --deepOrange-500_80: #FF5722CC;
+  --deepOrange-500_60: #FF572299;
+  --deepOrange-500_40: #FF572266;
+  --deepOrange-500_20: #FF572233;
+  --deepOrange-500_10: #FF57221A;
+
+
+  --deepOrange-600: #F4511E;
+  --deepOrange-600_80: #F4511ECC;
+  --deepOrange-600_60: #F4511E99;
+  --deepOrange-600_40: #F4511E66;
+  --deepOrange-600_20: #F4511E33;
+  --deepOrange-600_10: #F4511E1A;
+
+
+  --deepOrange-700: #E64A19;
+  --deepOrange-700_80: #E64A19CC;
+  --deepOrange-700_60: #E64A1999;
+  --deepOrange-700_40: #E64A1966;
+  --deepOrange-700_20: #E64A1933;
+  --deepOrange-700_10: #E64A191A;
+
+
+  --deepOrange-800: #D84315;
+  --deepOrange-800_80: #D84315CC;
+  --deepOrange-800_60: #D8431599;
+  --deepOrange-800_40: #D8431566;
+  --deepOrange-800_20: #D8431533;
+  --deepOrange-800_10: #D843151A;
+
+
+  --deepOrange-900: #BF360C;
+  --deepOrange-900_80: #BF360CCC;
+  --deepOrange-900_60: #BF360C99;
+  --deepOrange-900_40: #BF360C66;
+  --deepOrange-900_20: #BF360C33;
+  --deepOrange-900_10: #BF360C1A;
+
+
+  --deepOrange-A100: #FF9E80;
+  --deepOrange-A100_80: #FF9E80CC;
+  --deepOrange-A100_60: #FF9E8099;
+  --deepOrange-A100_40: #FF9E8066;
+  --deepOrange-A100_20: #FF9E8033;
+  --deepOrange-A100_10: #FF9E801A;
+
+
+  --deepOrange-A200: #FF6E40;
+  --deepOrange-A200_80: #FF6E40CC;
+  --deepOrange-A200_60: #FF6E4099;
+  --deepOrange-A200_40: #FF6E4066;
+  --deepOrange-A200_20: #FF6E4033;
+  --deepOrange-A200_10: #FF6E401A;
+
+
+  --deepOrange-A400: #FF3D00;
+  --deepOrange-A400_80: #FF3D00CC;
+  --deepOrange-A400_60: #FF3D0099;
+  --deepOrange-A400_40: #FF3D0066;
+  --deepOrange-A400_20: #FF3D0033;
+  --deepOrange-A400_10: #FF3D001A;
+
+
+  --deepOrange-A700: #DD2C00;
+  --deepOrange-A700_80: #DD2C00CC;
+  --deepOrange-A700_60: #DD2C0099;
+  --deepOrange-A700_40: #DD2C0066;
+  --deepOrange-A700_20: #DD2C0033;
+  --deepOrange-A700_10: #DD2C001A;
+
+
+  --deepPurple-50: #EDE7F6;
+  --deepPurple-50_80: #EDE7F6CC;
+  --deepPurple-50_60: #EDE7F699;
+  --deepPurple-50_40: #EDE7F666;
+  --deepPurple-50_20: #EDE7F633;
+  --deepPurple-50_10: #EDE7F61A;
+
+
+  --deepPurple-100: #D1C4E9;
+  --deepPurple-100_80: #D1C4E9CC;
+  --deepPurple-100_60: #D1C4E999;
+  --deepPurple-100_40: #D1C4E966;
+  --deepPurple-100_20: #D1C4E933;
+  --deepPurple-100_10: #D1C4E91A;
+
+
+  --deepPurple-200: #B39DDB;
+  --deepPurple-200_80: #B39DDBCC;
+  --deepPurple-200_60: #B39DDB99;
+  --deepPurple-200_40: #B39DDB66;
+  --deepPurple-200_20: #B39DDB33;
+  --deepPurple-200_10: #B39DDB1A;
+
+
+  --deepPurple-300: #9575CD;
+  --deepPurple-300_80: #9575CDCC;
+  --deepPurple-300_60: #9575CD99;
+  --deepPurple-300_40: #9575CD66;
+  --deepPurple-300_20: #9575CD33;
+  --deepPurple-300_10: #9575CD1A;
+
+
+  --deepPurple-400: #7E57C2;
+  --deepPurple-400_80: #7E57C2CC;
+  --deepPurple-400_60: #7E57C299;
+  --deepPurple-400_40: #7E57C266;
+  --deepPurple-400_20: #7E57C233;
+  --deepPurple-400_10: #7E57C21A;
+
+
+  --deepPurple-500: #673AB7;
+  --deepPurple-500_80: #673AB7CC;
+  --deepPurple-500_60: #673AB799;
+  --deepPurple-500_40: #673AB766;
+  --deepPurple-500_20: #673AB733;
+  --deepPurple-500_10: #673AB71A;
+
+
+  --deepPurple-600: #5E35B1;
+  --deepPurple-600_80: #5E35B1CC;
+  --deepPurple-600_60: #5E35B199;
+  --deepPurple-600_40: #5E35B166;
+  --deepPurple-600_20: #5E35B133;
+  --deepPurple-600_10: #5E35B11A;
+
+
+  --deepPurple-700: #512DA8;
+  --deepPurple-700_80: #512DA8CC;
+  --deepPurple-700_60: #512DA899;
+  --deepPurple-700_40: #512DA866;
+  --deepPurple-700_20: #512DA833;
+  --deepPurple-700_10: #512DA81A;
+
+
+  --deepPurple-800: #4527A0;
+  --deepPurple-800_80: #4527A0CC;
+  --deepPurple-800_60: #4527A099;
+  --deepPurple-800_40: #4527A066;
+  --deepPurple-800_20: #4527A033;
+  --deepPurple-800_10: #4527A01A;
+
+
+  --deepPurple-900: #311B92;
+  --deepPurple-900_80: #311B92CC;
+  --deepPurple-900_60: #311B9299;
+  --deepPurple-900_40: #311B9266;
+  --deepPurple-900_20: #311B9233;
+  --deepPurple-900_10: #311B921A;
+
+
+  --deepPurple-A100: #B388FF;
+  --deepPurple-A100_80: #B388FFCC;
+  --deepPurple-A100_60: #B388FF99;
+  --deepPurple-A100_40: #B388FF66;
+  --deepPurple-A100_20: #B388FF33;
+  --deepPurple-A100_10: #B388FF1A;
+
+
+  --deepPurple-A200: #7C4DFF;
+  --deepPurple-A200_80: #7C4DFFCC;
+  --deepPurple-A200_60: #7C4DFF99;
+  --deepPurple-A200_40: #7C4DFF66;
+  --deepPurple-A200_20: #7C4DFF33;
+  --deepPurple-A200_10: #7C4DFF1A;
+
+
+  --deepPurple-A400: #651FFF;
+  --deepPurple-A400_80: #651FFFCC;
+  --deepPurple-A400_60: #651FFF99;
+  --deepPurple-A400_40: #651FFF66;
+  --deepPurple-A400_20: #651FFF33;
+  --deepPurple-A400_10: #651FFF1A;
+
+
+  --deepPurple-A700: #6200EA;
+  --deepPurple-A700_80: #6200EACC;
+  --deepPurple-A700_60: #6200EA99;
+  --deepPurple-A700_40: #6200EA66;
+  --deepPurple-A700_20: #6200EA33;
+  --deepPurple-A700_10: #6200EA1A;
+
+
+  --green-50: #E8F5E9;
+  --green-50_80: #E8F5E9CC;
+  --green-50_60: #E8F5E999;
+  --green-50_40: #E8F5E966;
+  --green-50_20: #E8F5E933;
+  --green-50_10: #E8F5E91A;
+
+
+  --green-100: #C8E6C9;
+  --green-100_80: #C8E6C9CC;
+  --green-100_60: #C8E6C999;
+  --green-100_40: #C8E6C966;
+  --green-100_20: #C8E6C933;
+  --green-100_10: #C8E6C91A;
+
+
+  --green-200: #A5D6A7;
+  --green-200_80: #A5D6A7CC;
+  --green-200_60: #A5D6A799;
+  --green-200_40: #A5D6A766;
+  --green-200_20: #A5D6A733;
+  --green-200_10: #A5D6A71A;
+
+
+  --green-300: #81C784;
+  --green-300_80: #81C784CC;
+  --green-300_60: #81C78499;
+  --green-300_40: #81C78466;
+  --green-300_20: #81C78433;
+  --green-300_10: #81C7841A;
+
+
+  --green-400: #66BB6A;
+  --green-400_80: #66BB6ACC;
+  --green-400_60: #66BB6A99;
+  --green-400_40: #66BB6A66;
+  --green-400_20: #66BB6A33;
+  --green-400_10: #66BB6A1A;
+
+
+  --green-500: #4CAF50;
+  --green-500_80: #4CAF50CC;
+  --green-500_60: #4CAF5099;
+  --green-500_40: #4CAF5066;
+  --green-500_20: #4CAF5033;
+  --green-500_10: #4CAF501A;
+
+
+  --green-600: #43A047;
+  --green-600_80: #43A047CC;
+  --green-600_60: #43A04799;
+  --green-600_40: #43A04766;
+  --green-600_20: #43A04733;
+  --green-600_10: #43A0471A;
+
+
+  --green-700: #388E3C;
+  --green-700_80: #388E3CCC;
+  --green-700_60: #388E3C99;
+  --green-700_40: #388E3C66;
+  --green-700_20: #388E3C33;
+  --green-700_10: #388E3C1A;
+
+
+  --green-800: #2E7D32;
+  --green-800_80: #2E7D32CC;
+  --green-800_60: #2E7D3299;
+  --green-800_40: #2E7D3266;
+  --green-800_20: #2E7D3233;
+  --green-800_10: #2E7D321A;
+
+
+  --green-900: #1B5E20;
+  --green-900_80: #1B5E20CC;
+  --green-900_60: #1B5E2099;
+  --green-900_40: #1B5E2066;
+  --green-900_20: #1B5E2033;
+  --green-900_10: #1B5E201A;
+
+
+  --green-A100: #B9F6CA;
+  --green-A100_80: #B9F6CACC;
+  --green-A100_60: #B9F6CA99;
+  --green-A100_40: #B9F6CA66;
+  --green-A100_20: #B9F6CA33;
+  --green-A100_10: #B9F6CA1A;
+
+
+  --green-A200: #69F0AE;
+  --green-A200_80: #69F0AECC;
+  --green-A200_60: #69F0AE99;
+  --green-A200_40: #69F0AE66;
+  --green-A200_20: #69F0AE33;
+  --green-A200_10: #69F0AE1A;
+
+
+  --green-A400: #00E676;
+  --green-A400_80: #00E676CC;
+  --green-A400_60: #00E67699;
+  --green-A400_40: #00E67666;
+  --green-A400_20: #00E67633;
+  --green-A400_10: #00E6761A;
+
+
+  --green-A700: #00C853;
+  --green-A700_80: #00C853CC;
+  --green-A700_60: #00C85399;
+  --green-A700_40: #00C85366;
+  --green-A700_20: #00C85333;
+  --green-A700_10: #00C8531A;
+
+
+  --grey-50: #FAFAFA;
+  --grey-50_80: #FAFAFACC;
+  --grey-50_60: #FAFAFA99;
+  --grey-50_40: #FAFAFA66;
+  --grey-50_20: #FAFAFA33;
+  --grey-50_10: #FAFAFA1A;
+
+
+  --grey-100: #F5F5F5;
+  --grey-100_80: #F5F5F5CC;
+  --grey-100_60: #F5F5F599;
+  --grey-100_40: #F5F5F566;
+  --grey-100_20: #F5F5F533;
+  --grey-100_10: #F5F5F51A;
+
+
+  --grey-200: #EEEEEE;
+  --grey-200_80: #EEEEEECC;
+  --grey-200_60: #EEEEEE99;
+  --grey-200_40: #EEEEEE66;
+  --grey-200_20: #EEEEEE33;
+  --grey-200_10: #EEEEEE1A;
+
+
+  --grey-300: #E0E0E0;
+  --grey-300_80: #E0E0E0CC;
+  --grey-300_60: #E0E0E099;
+  --grey-300_40: #E0E0E066;
+  --grey-300_20: #E0E0E033;
+  --grey-300_10: #E0E0E01A;
+
+
+  --grey-400: #BDBDBD;
+  --grey-400_80: #BDBDBDCC;
+  --grey-400_60: #BDBDBD99;
+  --grey-400_40: #BDBDBD66;
+  --grey-400_20: #BDBDBD33;
+  --grey-400_10: #BDBDBD1A;
+
+
+  --grey-500: #9E9E9E;
+  --grey-500_80: #9E9E9ECC;
+  --grey-500_60: #9E9E9E99;
+  --grey-500_40: #9E9E9E66;
+  --grey-500_20: #9E9E9E33;
+  --grey-500_10: #9E9E9E1A;
+
+
+  --grey-600: #757575;
+  --grey-600_80: #757575CC;
+  --grey-600_60: #75757599;
+  --grey-600_40: #75757566;
+  --grey-600_20: #75757533;
+  --grey-600_10: #7575751A;
+
+
+  --grey-700: #616161;
+  --grey-700_80: #616161CC;
+  --grey-700_60: #61616199;
+  --grey-700_40: #61616166;
+  --grey-700_20: #61616133;
+  --grey-700_10: #6161611A;
+
+
+  --grey-800: #424242;
+  --grey-800_80: #424242CC;
+  --grey-800_60: #42424299;
+  --grey-800_40: #42424266;
+  --grey-800_20: #42424233;
+  --grey-800_10: #4242421A;
+
+
+  --grey-900: #212121;
+  --grey-900_80: #212121CC;
+  --grey-900_60: #21212199;
+  --grey-900_40: #21212166;
+  --grey-900_20: #21212133;
+  --grey-900_10: #2121211A;
+
+
+  --indigo-50: #E8EAF6;
+  --indigo-50_80: #E8EAF6CC;
+  --indigo-50_60: #E8EAF699;
+  --indigo-50_40: #E8EAF666;
+  --indigo-50_20: #E8EAF633;
+  --indigo-50_10: #E8EAF61A;
+
+
+  --indigo-100: #C5CAE9;
+  --indigo-100_80: #C5CAE9CC;
+  --indigo-100_60: #C5CAE999;
+  --indigo-100_40: #C5CAE966;
+  --indigo-100_20: #C5CAE933;
+  --indigo-100_10: #C5CAE91A;
+
+
+  --indigo-200: #9FA8DA;
+  --indigo-200_80: #9FA8DACC;
+  --indigo-200_60: #9FA8DA99;
+  --indigo-200_40: #9FA8DA66;
+  --indigo-200_20: #9FA8DA33;
+  --indigo-200_10: #9FA8DA1A;
+
+
+  --indigo-300: #7986CB;
+  --indigo-300_80: #7986CBCC;
+  --indigo-300_60: #7986CB99;
+  --indigo-300_40: #7986CB66;
+  --indigo-300_20: #7986CB33;
+  --indigo-300_10: #7986CB1A;
+
+
+  --indigo-400: #5C6BC0;
+  --indigo-400_80: #5C6BC0CC;
+  --indigo-400_60: #5C6BC099;
+  --indigo-400_40: #5C6BC066;
+  --indigo-400_20: #5C6BC033;
+  --indigo-400_10: #5C6BC01A;
+
+
+  --indigo-500: #3F51B5;
+  --indigo-500_80: #3F51B5CC;
+  --indigo-500_60: #3F51B599;
+  --indigo-500_40: #3F51B566;
+  --indigo-500_20: #3F51B533;
+  --indigo-500_10: #3F51B51A;
+
+
+  --indigo-600: #3949AB;
+  --indigo-600_80: #3949ABCC;
+  --indigo-600_60: #3949AB99;
+  --indigo-600_40: #3949AB66;
+  --indigo-600_20: #3949AB33;
+  --indigo-600_10: #3949AB1A;
+
+
+  --indigo-700: #303F9F;
+  --indigo-700_80: #303F9FCC;
+  --indigo-700_60: #303F9F99;
+  --indigo-700_40: #303F9F66;
+  --indigo-700_20: #303F9F33;
+  --indigo-700_10: #303F9F1A;
+
+
+  --indigo-800: #283593;
+  --indigo-800_80: #283593CC;
+  --indigo-800_60: #28359399;
+  --indigo-800_40: #28359366;
+  --indigo-800_20: #28359333;
+  --indigo-800_10: #2835931A;
+
+
+  --indigo-900: #1A237E;
+  --indigo-900_80: #1A237ECC;
+  --indigo-900_60: #1A237E99;
+  --indigo-900_40: #1A237E66;
+  --indigo-900_20: #1A237E33;
+  --indigo-900_10: #1A237E1A;
+
+
+  --indigo-A100: #8C9EFF;
+  --indigo-A100_80: #8C9EFFCC;
+  --indigo-A100_60: #8C9EFF99;
+  --indigo-A100_40: #8C9EFF66;
+  --indigo-A100_20: #8C9EFF33;
+  --indigo-A100_10: #8C9EFF1A;
+
+
+  --indigo-A200: #536DFE;
+  --indigo-A200_80: #536DFECC;
+  --indigo-A200_60: #536DFE99;
+  --indigo-A200_40: #536DFE66;
+  --indigo-A200_20: #536DFE33;
+  --indigo-A200_10: #536DFE1A;
+
+
+  --indigo-A400: #3D5AFE;
+  --indigo-A400_80: #3D5AFECC;
+  --indigo-A400_60: #3D5AFE99;
+  --indigo-A400_40: #3D5AFE66;
+  --indigo-A400_20: #3D5AFE33;
+  --indigo-A400_10: #3D5AFE1A;
+
+
+  --indigo-A700: #304FFE;
+  --indigo-A700_80: #304FFECC;
+  --indigo-A700_60: #304FFE99;
+  --indigo-A700_40: #304FFE66;
+  --indigo-A700_20: #304FFE33;
+  --indigo-A700_10: #304FFE1A;
+
+
+  --lightBlue-50: #E1F5FE;
+  --lightBlue-50_80: #E1F5FECC;
+  --lightBlue-50_60: #E1F5FE99;
+  --lightBlue-50_40: #E1F5FE66;
+  --lightBlue-50_20: #E1F5FE33;
+  --lightBlue-50_10: #E1F5FE1A;
+
+
+  --lightBlue-100: #B3E5FC;
+  --lightBlue-100_80: #B3E5FCCC;
+  --lightBlue-100_60: #B3E5FC99;
+  --lightBlue-100_40: #B3E5FC66;
+  --lightBlue-100_20: #B3E5FC33;
+  --lightBlue-100_10: #B3E5FC1A;
+
+
+  --lightBlue-200: #81D4FA;
+  --lightBlue-200_80: #81D4FACC;
+  --lightBlue-200_60: #81D4FA99;
+  --lightBlue-200_40: #81D4FA66;
+  --lightBlue-200_20: #81D4FA33;
+  --lightBlue-200_10: #81D4FA1A;
+
+
+  --lightBlue-300: #4FC3F7;
+  --lightBlue-300_80: #4FC3F7CC;
+  --lightBlue-300_60: #4FC3F799;
+  --lightBlue-300_40: #4FC3F766;
+  --lightBlue-300_20: #4FC3F733;
+  --lightBlue-300_10: #4FC3F71A;
+
+
+  --lightBlue-400: #29B6F6;
+  --lightBlue-400_80: #29B6F6CC;
+  --lightBlue-400_60: #29B6F699;
+  --lightBlue-400_40: #29B6F666;
+  --lightBlue-400_20: #29B6F633;
+  --lightBlue-400_10: #29B6F61A;
+
+
+  --lightBlue-500: #03A9F4;
+  --lightBlue-500_80: #03A9F4CC;
+  --lightBlue-500_60: #03A9F499;
+  --lightBlue-500_40: #03A9F466;
+  --lightBlue-500_20: #03A9F433;
+  --lightBlue-500_10: #03A9F41A;
+
+
+  --lightBlue-600: #039BE5;
+  --lightBlue-600_80: #039BE5CC;
+  --lightBlue-600_60: #039BE599;
+  --lightBlue-600_40: #039BE566;
+  --lightBlue-600_20: #039BE533;
+  --lightBlue-600_10: #039BE51A;
+
+
+  --lightBlue-700: #0288D1;
+  --lightBlue-700_80: #0288D1CC;
+  --lightBlue-700_60: #0288D199;
+  --lightBlue-700_40: #0288D166;
+  --lightBlue-700_20: #0288D133;
+  --lightBlue-700_10: #0288D11A;
+
+
+  --lightBlue-800: #0277BD;
+  --lightBlue-800_80: #0277BDCC;
+  --lightBlue-800_60: #0277BD99;
+  --lightBlue-800_40: #0277BD66;
+  --lightBlue-800_20: #0277BD33;
+  --lightBlue-800_10: #0277BD1A;
+
+
+  --lightBlue-900: #01579B;
+  --lightBlue-900_80: #01579BCC;
+  --lightBlue-900_60: #01579B99;
+  --lightBlue-900_40: #01579B66;
+  --lightBlue-900_20: #01579B33;
+  --lightBlue-900_10: #01579B1A;
+
+
+  --lightBlue-A100: #80D8FF;
+  --lightBlue-A100_80: #80D8FFCC;
+  --lightBlue-A100_60: #80D8FF99;
+  --lightBlue-A100_40: #80D8FF66;
+  --lightBlue-A100_20: #80D8FF33;
+  --lightBlue-A100_10: #80D8FF1A;
+
+
+  --lightBlue-A200: #40C4FF;
+  --lightBlue-A200_80: #40C4FFCC;
+  --lightBlue-A200_60: #40C4FF99;
+  --lightBlue-A200_40: #40C4FF66;
+  --lightBlue-A200_20: #40C4FF33;
+  --lightBlue-A200_10: #40C4FF1A;
+
+
+  --lightBlue-A400: #00B0FF;
+  --lightBlue-A400_80: #00B0FFCC;
+  --lightBlue-A400_60: #00B0FF99;
+  --lightBlue-A400_40: #00B0FF66;
+  --lightBlue-A400_20: #00B0FF33;
+  --lightBlue-A400_10: #00B0FF1A;
+
+
+  --lightBlue-A700: #0091EA;
+  --lightBlue-A700_80: #0091EACC;
+  --lightBlue-A700_60: #0091EA99;
+  --lightBlue-A700_40: #0091EA66;
+  --lightBlue-A700_20: #0091EA33;
+  --lightBlue-A700_10: #0091EA1A;
+
+
+  --lightGreen-50: #F1F8E9;
+  --lightGreen-50_80: #F1F8E9CC;
+  --lightGreen-50_60: #F1F8E999;
+  --lightGreen-50_40: #F1F8E966;
+  --lightGreen-50_20: #F1F8E933;
+  --lightGreen-50_10: #F1F8E91A;
+
+
+  --lightGreen-100: #DCEDC8;
+  --lightGreen-100_80: #DCEDC8CC;
+  --lightGreen-100_60: #DCEDC899;
+  --lightGreen-100_40: #DCEDC866;
+  --lightGreen-100_20: #DCEDC833;
+  --lightGreen-100_10: #DCEDC81A;
+
+
+  --lightGreen-200: #C5E1A5;
+  --lightGreen-200_80: #C5E1A5CC;
+  --lightGreen-200_60: #C5E1A599;
+  --lightGreen-200_40: #C5E1A566;
+  --lightGreen-200_20: #C5E1A533;
+  --lightGreen-200_10: #C5E1A51A;
+
+
+  --lightGreen-300: #AED581;
+  --lightGreen-300_80: #AED581CC;
+  --lightGreen-300_60: #AED58199;
+  --lightGreen-300_40: #AED58166;
+  --lightGreen-300_20: #AED58133;
+  --lightGreen-300_10: #AED5811A;
+
+
+  --lightGreen-400: #9CCC65;
+  --lightGreen-400_80: #9CCC65CC;
+  --lightGreen-400_60: #9CCC6599;
+  --lightGreen-400_40: #9CCC6566;
+  --lightGreen-400_20: #9CCC6533;
+  --lightGreen-400_10: #9CCC651A;
+
+
+  --lightGreen-500: #8BC34A;
+  --lightGreen-500_80: #8BC34ACC;
+  --lightGreen-500_60: #8BC34A99;
+  --lightGreen-500_40: #8BC34A66;
+  --lightGreen-500_20: #8BC34A33;
+  --lightGreen-500_10: #8BC34A1A;
+
+
+  --lightGreen-600: #7CB342;
+  --lightGreen-600_80: #7CB342CC;
+  --lightGreen-600_60: #7CB34299;
+  --lightGreen-600_40: #7CB34266;
+  --lightGreen-600_20: #7CB34233;
+  --lightGreen-600_10: #7CB3421A;
+
+
+  --lightGreen-700: #689F38;
+  --lightGreen-700_80: #689F38CC;
+  --lightGreen-700_60: #689F3899;
+  --lightGreen-700_40: #689F3866;
+  --lightGreen-700_20: #689F3833;
+  --lightGreen-700_10: #689F381A;
+
+
+  --lightGreen-800: #558B2F;
+  --lightGreen-800_80: #558B2FCC;
+  --lightGreen-800_60: #558B2F99;
+  --lightGreen-800_40: #558B2F66;
+  --lightGreen-800_20: #558B2F33;
+  --lightGreen-800_10: #558B2F1A;
+
+
+  --lightGreen-900: #33691E;
+  --lightGreen-900_80: #33691ECC;
+  --lightGreen-900_60: #33691E99;
+  --lightGreen-900_40: #33691E66;
+  --lightGreen-900_20: #33691E33;
+  --lightGreen-900_10: #33691E1A;
+
+
+  --lightGreen-A100: #CCFF90;
+  --lightGreen-A100_80: #CCFF90CC;
+  --lightGreen-A100_60: #CCFF9099;
+  --lightGreen-A100_40: #CCFF9066;
+  --lightGreen-A100_20: #CCFF9033;
+  --lightGreen-A100_10: #CCFF901A;
+
+
+  --lightGreen-A200: #B2FF59;
+  --lightGreen-A200_80: #B2FF59CC;
+  --lightGreen-A200_60: #B2FF5999;
+  --lightGreen-A200_40: #B2FF5966;
+  --lightGreen-A200_20: #B2FF5933;
+  --lightGreen-A200_10: #B2FF591A;
+
+
+  --lightGreen-A400: #76FF03;
+  --lightGreen-A400_80: #76FF03CC;
+  --lightGreen-A400_60: #76FF0399;
+  --lightGreen-A400_40: #76FF0366;
+  --lightGreen-A400_20: #76FF0333;
+  --lightGreen-A400_10: #76FF031A;
+
+
+  --lightGreen-A700: #64DD17;
+  --lightGreen-A700_80: #64DD17CC;
+  --lightGreen-A700_60: #64DD1799;
+  --lightGreen-A700_40: #64DD1766;
+  --lightGreen-A700_20: #64DD1733;
+  --lightGreen-A700_10: #64DD171A;
+
+
+  --lime-50: #F9FBE7;
+  --lime-50_80: #F9FBE7CC;
+  --lime-50_60: #F9FBE799;
+  --lime-50_40: #F9FBE766;
+  --lime-50_20: #F9FBE733;
+  --lime-50_10: #F9FBE71A;
+
+
+  --lime-100: #F0F4C3;
+  --lime-100_80: #F0F4C3CC;
+  --lime-100_60: #F0F4C399;
+  --lime-100_40: #F0F4C366;
+  --lime-100_20: #F0F4C333;
+  --lime-100_10: #F0F4C31A;
+
+
+  --lime-200: #E6EE9C;
+  --lime-200_80: #E6EE9CCC;
+  --lime-200_60: #E6EE9C99;
+  --lime-200_40: #E6EE9C66;
+  --lime-200_20: #E6EE9C33;
+  --lime-200_10: #E6EE9C1A;
+
+
+  --lime-300: #DCE775;
+  --lime-300_80: #DCE775CC;
+  --lime-300_60: #DCE77599;
+  --lime-300_40: #DCE77566;
+  --lime-300_20: #DCE77533;
+  --lime-300_10: #DCE7751A;
+
+
+  --lime-400: #D4E157;
+  --lime-400_80: #D4E157CC;
+  --lime-400_60: #D4E15799;
+  --lime-400_40: #D4E15766;
+  --lime-400_20: #D4E15733;
+  --lime-400_10: #D4E1571A;
+
+
+  --lime-500: #CDDC39;
+  --lime-500_80: #CDDC39CC;
+  --lime-500_60: #CDDC3999;
+  --lime-500_40: #CDDC3966;
+  --lime-500_20: #CDDC3933;
+  --lime-500_10: #CDDC391A;
+
+
+  --lime-600: #C0CA33;
+  --lime-600_80: #C0CA33CC;
+  --lime-600_60: #C0CA3399;
+  --lime-600_40: #C0CA3366;
+  --lime-600_20: #C0CA3333;
+  --lime-600_10: #C0CA331A;
+
+
+  --lime-700: #AFB42B;
+  --lime-700_80: #AFB42BCC;
+  --lime-700_60: #AFB42B99;
+  --lime-700_40: #AFB42B66;
+  --lime-700_20: #AFB42B33;
+  --lime-700_10: #AFB42B1A;
+
+
+  --lime-800: #9E9D24;
+  --lime-800_80: #9E9D24CC;
+  --lime-800_60: #9E9D2499;
+  --lime-800_40: #9E9D2466;
+  --lime-800_20: #9E9D2433;
+  --lime-800_10: #9E9D241A;
+
+
+  --lime-900: #827717;
+  --lime-900_80: #827717CC;
+  --lime-900_60: #82771799;
+  --lime-900_40: #82771766;
+  --lime-900_20: #82771733;
+  --lime-900_10: #8277171A;
+
+
+  --lime-A100: #F4FF81;
+  --lime-A100_80: #F4FF81CC;
+  --lime-A100_60: #F4FF8199;
+  --lime-A100_40: #F4FF8166;
+  --lime-A100_20: #F4FF8133;
+  --lime-A100_10: #F4FF811A;
+
+
+  --lime-A200: #EEFF41;
+  --lime-A200_80: #EEFF41CC;
+  --lime-A200_60: #EEFF4199;
+  --lime-A200_40: #EEFF4166;
+  --lime-A200_20: #EEFF4133;
+  --lime-A200_10: #EEFF411A;
+
+
+  --lime-A400: #C6FF00;
+  --lime-A400_80: #C6FF00CC;
+  --lime-A400_60: #C6FF0099;
+  --lime-A400_40: #C6FF0066;
+  --lime-A400_20: #C6FF0033;
+  --lime-A400_10: #C6FF001A;
+
+
+  --lime-A700: #AEEA00;
+  --lime-A700_80: #AEEA00CC;
+  --lime-A700_60: #AEEA0099;
+  --lime-A700_40: #AEEA0066;
+  --lime-A700_20: #AEEA0033;
+  --lime-A700_10: #AEEA001A;
+
+
+  --orange-50: #FFF3E0;
+  --orange-50_80: #FFF3E0CC;
+  --orange-50_60: #FFF3E099;
+  --orange-50_40: #FFF3E066;
+  --orange-50_20: #FFF3E033;
+  --orange-50_10: #FFF3E01A;
+
+
+  --orange-100: #FFE0B2;
+  --orange-100_80: #FFE0B2CC;
+  --orange-100_60: #FFE0B299;
+  --orange-100_40: #FFE0B266;
+  --orange-100_20: #FFE0B233;
+  --orange-100_10: #FFE0B21A;
+
+
+  --orange-200: #FFCC80;
+  --orange-200_80: #FFCC80CC;
+  --orange-200_60: #FFCC8099;
+  --orange-200_40: #FFCC8066;
+  --orange-200_20: #FFCC8033;
+  --orange-200_10: #FFCC801A;
+
+
+  --orange-300: #FFB74D;
+  --orange-300_80: #FFB74DCC;
+  --orange-300_60: #FFB74D99;
+  --orange-300_40: #FFB74D66;
+  --orange-300_20: #FFB74D33;
+  --orange-300_10: #FFB74D1A;
+
+
+  --orange-400: #FFA726;
+  --orange-400_80: #FFA726CC;
+  --orange-400_60: #FFA72699;
+  --orange-400_40: #FFA72666;
+  --orange-400_20: #FFA72633;
+  --orange-400_10: #FFA7261A;
+
+
+  --orange-500: #FF9800;
+  --orange-500_80: #FF9800CC;
+  --orange-500_60: #FF980099;
+  --orange-500_40: #FF980066;
+  --orange-500_20: #FF980033;
+  --orange-500_10: #FF98001A;
+
+
+  --orange-600: #FB8C00;
+  --orange-600_80: #FB8C00CC;
+  --orange-600_60: #FB8C0099;
+  --orange-600_40: #FB8C0066;
+  --orange-600_20: #FB8C0033;
+  --orange-600_10: #FB8C001A;
+
+
+  --orange-700: #F57C00;
+  --orange-700_80: #F57C00CC;
+  --orange-700_60: #F57C0099;
+  --orange-700_40: #F57C0066;
+  --orange-700_20: #F57C0033;
+  --orange-700_10: #F57C001A;
+
+
+  --orange-800: #EF6C00;
+  --orange-800_80: #EF6C00CC;
+  --orange-800_60: #EF6C0099;
+  --orange-800_40: #EF6C0066;
+  --orange-800_20: #EF6C0033;
+  --orange-800_10: #EF6C001A;
+
+
+  --orange-900: #E65100;
+  --orange-900_80: #E65100CC;
+  --orange-900_60: #E6510099;
+  --orange-900_40: #E6510066;
+  --orange-900_20: #E6510033;
+  --orange-900_10: #E651001A;
+
+
+  --orange-A100: #FFD180;
+  --orange-A100_80: #FFD180CC;
+  --orange-A100_60: #FFD18099;
+  --orange-A100_40: #FFD18066;
+  --orange-A100_20: #FFD18033;
+  --orange-A100_10: #FFD1801A;
+
+
+  --orange-A200: #FFAB40;
+  --orange-A200_80: #FFAB40CC;
+  --orange-A200_60: #FFAB4099;
+  --orange-A200_40: #FFAB4066;
+  --orange-A200_20: #FFAB4033;
+  --orange-A200_10: #FFAB401A;
+
+
+  --orange-A400: #FF9100;
+  --orange-A400_80: #FF9100CC;
+  --orange-A400_60: #FF910099;
+  --orange-A400_40: #FF910066;
+  --orange-A400_20: #FF910033;
+  --orange-A400_10: #FF91001A;
+
+
+  --orange-A700: #FF6D00;
+  --orange-A700_80: #FF6D00CC;
+  --orange-A700_60: #FF6D0099;
+  --orange-A700_40: #FF6D0066;
+  --orange-A700_20: #FF6D0033;
+  --orange-A700_10: #FF6D001A;
+
+
+  --pink-50: #FCE4EC;
+  --pink-50_80: #FCE4ECCC;
+  --pink-50_60: #FCE4EC99;
+  --pink-50_40: #FCE4EC66;
+  --pink-50_20: #FCE4EC33;
+  --pink-50_10: #FCE4EC1A;
+
+
+  --pink-100: #F8BBD0;
+  --pink-100_80: #F8BBD0CC;
+  --pink-100_60: #F8BBD099;
+  --pink-100_40: #F8BBD066;
+  --pink-100_20: #F8BBD033;
+  --pink-100_10: #F8BBD01A;
+
+
+  --pink-200: #F48FB1;
+  --pink-200_80: #F48FB1CC;
+  --pink-200_60: #F48FB199;
+  --pink-200_40: #F48FB166;
+  --pink-200_20: #F48FB133;
+  --pink-200_10: #F48FB11A;
+
+
+  --pink-300: #F06292;
+  --pink-300_80: #F06292CC;
+  --pink-300_60: #F0629299;
+  --pink-300_40: #F0629266;
+  --pink-300_20: #F0629233;
+  --pink-300_10: #F062921A;
+
+
+  --pink-400: #EC407A;
+  --pink-400_80: #EC407ACC;
+  --pink-400_60: #EC407A99;
+  --pink-400_40: #EC407A66;
+  --pink-400_20: #EC407A33;
+  --pink-400_10: #EC407A1A;
+
+
+  --pink-500: #E91E63;
+  --pink-500_80: #E91E63CC;
+  --pink-500_60: #E91E6399;
+  --pink-500_40: #E91E6366;
+  --pink-500_20: #E91E6333;
+  --pink-500_10: #E91E631A;
+
+
+  --pink-600: #D81B60;
+  --pink-600_80: #D81B60CC;
+  --pink-600_60: #D81B6099;
+  --pink-600_40: #D81B6066;
+  --pink-600_20: #D81B6033;
+  --pink-600_10: #D81B601A;
+
+
+  --pink-700: #C2185B;
+  --pink-700_80: #C2185BCC;
+  --pink-700_60: #C2185B99;
+  --pink-700_40: #C2185B66;
+  --pink-700_20: #C2185B33;
+  --pink-700_10: #C2185B1A;
+
+
+  --pink-800: #AD1457;
+  --pink-800_80: #AD1457CC;
+  --pink-800_60: #AD145799;
+  --pink-800_40: #AD145766;
+  --pink-800_20: #AD145733;
+  --pink-800_10: #AD14571A;
+
+
+  --pink-900: #880E4F;
+  --pink-900_80: #880E4FCC;
+  --pink-900_60: #880E4F99;
+  --pink-900_40: #880E4F66;
+  --pink-900_20: #880E4F33;
+  --pink-900_10: #880E4F1A;
+
+
+  --pink-A100: #FF80AB;
+  --pink-A100_80: #FF80ABCC;
+  --pink-A100_60: #FF80AB99;
+  --pink-A100_40: #FF80AB66;
+  --pink-A100_20: #FF80AB33;
+  --pink-A100_10: #FF80AB1A;
+
+
+  --pink-A200: #FF4081;
+  --pink-A200_80: #FF4081CC;
+  --pink-A200_60: #FF408199;
+  --pink-A200_40: #FF408166;
+  --pink-A200_20: #FF408133;
+  --pink-A200_10: #FF40811A;
+
+
+  --pink-A400: #F50057;
+  --pink-A400_80: #F50057CC;
+  --pink-A400_60: #F5005799;
+  --pink-A400_40: #F5005766;
+  --pink-A400_20: #F5005733;
+  --pink-A400_10: #F500571A;
+
+
+  --pink-A700: #C51162;
+  --pink-A700_80: #C51162CC;
+  --pink-A700_60: #C5116299;
+  --pink-A700_40: #C5116266;
+  --pink-A700_20: #C5116233;
+  --pink-A700_10: #C511621A;
+
+
+  --purple-50: #F3E5F5;
+  --purple-50_80: #F3E5F5CC;
+  --purple-50_60: #F3E5F599;
+  --purple-50_40: #F3E5F566;
+  --purple-50_20: #F3E5F533;
+  --purple-50_10: #F3E5F51A;
+
+
+  --purple-100: #E1BEE7;
+  --purple-100_80: #E1BEE7CC;
+  --purple-100_60: #E1BEE799;
+  --purple-100_40: #E1BEE766;
+  --purple-100_20: #E1BEE733;
+  --purple-100_10: #E1BEE71A;
+
+
+  --purple-200: #CE93D8;
+  --purple-200_80: #CE93D8CC;
+  --purple-200_60: #CE93D899;
+  --purple-200_40: #CE93D866;
+  --purple-200_20: #CE93D833;
+  --purple-200_10: #CE93D81A;
+
+
+  --purple-300: #BA68C8;
+  --purple-300_80: #BA68C8CC;
+  --purple-300_60: #BA68C899;
+  --purple-300_40: #BA68C866;
+  --purple-300_20: #BA68C833;
+  --purple-300_10: #BA68C81A;
+
+
+  --purple-400: #AB47BC;
+  --purple-400_80: #AB47BCCC;
+  --purple-400_60: #AB47BC99;
+  --purple-400_40: #AB47BC66;
+  --purple-400_20: #AB47BC33;
+  --purple-400_10: #AB47BC1A;
+
+
+  --purple-500: #9C27B0;
+  --purple-500_80: #9C27B0CC;
+  --purple-500_60: #9C27B099;
+  --purple-500_40: #9C27B066;
+  --purple-500_20: #9C27B033;
+  --purple-500_10: #9C27B01A;
+
+
+  --purple-600: #8E24AA;
+  --purple-600_80: #8E24AACC;
+  --purple-600_60: #8E24AA99;
+  --purple-600_40: #8E24AA66;
+  --purple-600_20: #8E24AA33;
+  --purple-600_10: #8E24AA1A;
+
+
+  --purple-700: #7B1FA2;
+  --purple-700_80: #7B1FA2CC;
+  --purple-700_60: #7B1FA299;
+  --purple-700_40: #7B1FA266;
+  --purple-700_20: #7B1FA233;
+  --purple-700_10: #7B1FA21A;
+
+
+  --purple-800: #6A1B9A;
+  --purple-800_80: #6A1B9ACC;
+  --purple-800_60: #6A1B9A99;
+  --purple-800_40: #6A1B9A66;
+  --purple-800_20: #6A1B9A33;
+  --purple-800_10: #6A1B9A1A;
+
+
+  --purple-900: #4A148C;
+  --purple-900_80: #4A148CCC;
+  --purple-900_60: #4A148C99;
+  --purple-900_40: #4A148C66;
+  --purple-900_20: #4A148C33;
+  --purple-900_10: #4A148C1A;
+
+
+  --purple-A100: #EA80FC;
+  --purple-A100_80: #EA80FCCC;
+  --purple-A100_60: #EA80FC99;
+  --purple-A100_40: #EA80FC66;
+  --purple-A100_20: #EA80FC33;
+  --purple-A100_10: #EA80FC1A;
+
+
+  --purple-A200: #E040FB;
+  --purple-A200_80: #E040FBCC;
+  --purple-A200_60: #E040FB99;
+  --purple-A200_40: #E040FB66;
+  --purple-A200_20: #E040FB33;
+  --purple-A200_10: #E040FB1A;
+
+
+  --purple-A400: #D500F9;
+  --purple-A400_80: #D500F9CC;
+  --purple-A400_60: #D500F999;
+  --purple-A400_40: #D500F966;
+  --purple-A400_20: #D500F933;
+  --purple-A400_10: #D500F91A;
+
+
+  --purple-A700: #AA00FF;
+  --purple-A700_80: #AA00FFCC;
+  --purple-A700_60: #AA00FF99;
+  --purple-A700_40: #AA00FF66;
+  --purple-A700_20: #AA00FF33;
+  --purple-A700_10: #AA00FF1A;
+
+
+  --red-50: #FFEBEE;
+  --red-50_80: #FFEBEECC;
+  --red-50_60: #FFEBEE99;
+  --red-50_40: #FFEBEE66;
+  --red-50_20: #FFEBEE33;
+  --red-50_10: #FFEBEE1A;
+
+
+  --red-100: #FFCDD2;
+  --red-100_80: #FFCDD2CC;
+  --red-100_60: #FFCDD299;
+  --red-100_40: #FFCDD266;
+  --red-100_20: #FFCDD233;
+  --red-100_10: #FFCDD21A;
+
+
+  --red-200: #EF9A9A;
+  --red-200_80: #EF9A9ACC;
+  --red-200_60: #EF9A9A99;
+  --red-200_40: #EF9A9A66;
+  --red-200_20: #EF9A9A33;
+  --red-200_10: #EF9A9A1A;
+
+
+  --red-300: #E57373;
+  --red-300_80: #E57373CC;
+  --red-300_60: #E5737399;
+  --red-300_40: #E5737366;
+  --red-300_20: #E5737333;
+  --red-300_10: #E573731A;
+
+
+  --red-400: #EF5350;
+  --red-400_80: #EF5350CC;
+  --red-400_60: #EF535099;
+  --red-400_40: #EF535066;
+  --red-400_20: #EF535033;
+  --red-400_10: #EF53501A;
+
+
+  --red-500: #F44336;
+  --red-500_80: #F44336CC;
+  --red-500_60: #F4433699;
+  --red-500_40: #F4433666;
+  --red-500_20: #F4433633;
+  --red-500_10: #F443361A;
+
+
+  --red-600: #E53935;
+  --red-600_80: #E53935CC;
+  --red-600_60: #E5393599;
+  --red-600_40: #E5393566;
+  --red-600_20: #E5393533;
+  --red-600_10: #E539351A;
+
+
+  --red-700: #D32F2F;
+  --red-700_80: #D32F2FCC;
+  --red-700_60: #D32F2F99;
+  --red-700_40: #D32F2F66;
+  --red-700_20: #D32F2F33;
+  --red-700_10: #D32F2F1A;
+
+
+  --red-800: #C62828;
+  --red-800_80: #C62828CC;
+  --red-800_60: #C6282899;
+  --red-800_40: #C6282866;
+  --red-800_20: #C6282833;
+  --red-800_10: #C628281A;
+
+
+  --red-900: #B71C1C;
+  --red-900_80: #B71C1CCC;
+  --red-900_60: #B71C1C99;
+  --red-900_40: #B71C1C66;
+  --red-900_20: #B71C1C33;
+  --red-900_10: #B71C1C1A;
+
+
+  --red-A100: #FF8A80;
+  --red-A100_80: #FF8A80CC;
+  --red-A100_60: #FF8A8099;
+  --red-A100_40: #FF8A8066;
+  --red-A100_20: #FF8A8033;
+  --red-A100_10: #FF8A801A;
+
+
+  --red-A200: #FF5252;
+  --red-A200_80: #FF5252CC;
+  --red-A200_60: #FF525299;
+  --red-A200_40: #FF525266;
+  --red-A200_20: #FF525233;
+  --red-A200_10: #FF52521A;
+
+
+  --red-A400: #FF1744;
+  --red-A400_80: #FF1744CC;
+  --red-A400_60: #FF174499;
+  --red-A400_40: #FF174466;
+  --red-A400_20: #FF174433;
+  --red-A400_10: #FF17441A;
+
+
+  --red-A700: #D50000;
+  --red-A700_80: #D50000CC;
+  --red-A700_60: #D5000099;
+  --red-A700_40: #D5000066;
+  --red-A700_20: #D5000033;
+  --red-A700_10: #D500001A;
+
+
+  --teal-50: #E0F2F1;
+  --teal-50_80: #E0F2F1CC;
+  --teal-50_60: #E0F2F199;
+  --teal-50_40: #E0F2F166;
+  --teal-50_20: #E0F2F133;
+  --teal-50_10: #E0F2F11A;
+
+
+  --teal-100: #B2DFDB;
+  --teal-100_80: #B2DFDBCC;
+  --teal-100_60: #B2DFDB99;
+  --teal-100_40: #B2DFDB66;
+  --teal-100_20: #B2DFDB33;
+  --teal-100_10: #B2DFDB1A;
+
+
+  --teal-200: #80CBC4;
+  --teal-200_80: #80CBC4CC;
+  --teal-200_60: #80CBC499;
+  --teal-200_40: #80CBC466;
+  --teal-200_20: #80CBC433;
+  --teal-200_10: #80CBC41A;
+
+
+  --teal-300: #4DB6AC;
+  --teal-300_80: #4DB6ACCC;
+  --teal-300_60: #4DB6AC99;
+  --teal-300_40: #4DB6AC66;
+  --teal-300_20: #4DB6AC33;
+  --teal-300_10: #4DB6AC1A;
+
+
+  --teal-400: #26A69A;
+  --teal-400_80: #26A69ACC;
+  --teal-400_60: #26A69A99;
+  --teal-400_40: #26A69A66;
+  --teal-400_20: #26A69A33;
+  --teal-400_10: #26A69A1A;
+
+
+  --teal-500: #009688;
+  --teal-500_80: #009688CC;
+  --teal-500_60: #00968899;
+  --teal-500_40: #00968866;
+  --teal-500_20: #00968833;
+  --teal-500_10: #0096881A;
+
+
+  --teal-600: #00897B;
+  --teal-600_80: #00897BCC;
+  --teal-600_60: #00897B99;
+  --teal-600_40: #00897B66;
+  --teal-600_20: #00897B33;
+  --teal-600_10: #00897B1A;
+
+
+  --teal-700: #00796B;
+  --teal-700_80: #00796BCC;
+  --teal-700_60: #00796B99;
+  --teal-700_40: #00796B66;
+  --teal-700_20: #00796B33;
+  --teal-700_10: #00796B1A;
+
+
+  --teal-800: #00695C;
+  --teal-800_80: #00695CCC;
+  --teal-800_60: #00695C99;
+  --teal-800_40: #00695C66;
+  --teal-800_20: #00695C33;
+  --teal-800_10: #00695C1A;
+
+
+  --teal-900: #004D40;
+  --teal-900_80: #004D40CC;
+  --teal-900_60: #004D4099;
+  --teal-900_40: #004D4066;
+  --teal-900_20: #004D4033;
+  --teal-900_10: #004D401A;
+
+
+  --teal-A100: #A7FFEB;
+  --teal-A100_80: #A7FFEBCC;
+  --teal-A100_60: #A7FFEB99;
+  --teal-A100_40: #A7FFEB66;
+  --teal-A100_20: #A7FFEB33;
+  --teal-A100_10: #A7FFEB1A;
+
+
+  --teal-A200: #64FFDA;
+  --teal-A200_80: #64FFDACC;
+  --teal-A200_60: #64FFDA99;
+  --teal-A200_40: #64FFDA66;
+  --teal-A200_20: #64FFDA33;
+  --teal-A200_10: #64FFDA1A;
+
+
+  --teal-A400: #1DE9B6;
+  --teal-A400_80: #1DE9B6CC;
+  --teal-A400_60: #1DE9B699;
+  --teal-A400_40: #1DE9B666;
+  --teal-A400_20: #1DE9B633;
+  --teal-A400_10: #1DE9B61A;
+
+
+  --teal-A700: #00BFA5;
+  --teal-A700_80: #00BFA5CC;
+  --teal-A700_60: #00BFA599;
+  --teal-A700_40: #00BFA566;
+  --teal-A700_20: #00BFA533;
+  --teal-A700_10: #00BFA51A;
+
+
+  --white: #FFFFFF;
+  --white_80: #FFFFFFCC;
+  --white_60: #FFFFFF99;
+  --white_40: #FFFFFF66;
+  --white_20: #FFFFFF33;
+  --white_10: #FFFFFF1A;
+
+
+  --yellow-50: #FFFDE7;
+  --yellow-50_80: #FFFDE7CC;
+  --yellow-50_60: #FFFDE799;
+  --yellow-50_40: #FFFDE766;
+  --yellow-50_20: #FFFDE733;
+  --yellow-50_10: #FFFDE71A;
+
+
+  --yellow-100: #FFF9C4;
+  --yellow-100_80: #FFF9C4CC;
+  --yellow-100_60: #FFF9C499;
+  --yellow-100_40: #FFF9C466;
+  --yellow-100_20: #FFF9C433;
+  --yellow-100_10: #FFF9C41A;
+
+
+  --yellow-200: #FFF59D;
+  --yellow-200_80: #FFF59DCC;
+  --yellow-200_60: #FFF59D99;
+  --yellow-200_40: #FFF59D66;
+  --yellow-200_20: #FFF59D33;
+  --yellow-200_10: #FFF59D1A;
+
+
+  --yellow-300: #FFF176;
+  --yellow-300_80: #FFF176CC;
+  --yellow-300_60: #FFF17699;
+  --yellow-300_40: #FFF17666;
+  --yellow-300_20: #FFF17633;
+  --yellow-300_10: #FFF1761A;
+
+
+  --yellow-400: #FFEE58;
+  --yellow-400_80: #FFEE58CC;
+  --yellow-400_60: #FFEE5899;
+  --yellow-400_40: #FFEE5866;
+  --yellow-400_20: #FFEE5833;
+  --yellow-400_10: #FFEE581A;
+
+
+  --yellow-500: #FFEB3B;
+  --yellow-500_80: #FFEB3BCC;
+  --yellow-500_60: #FFEB3B99;
+  --yellow-500_40: #FFEB3B66;
+  --yellow-500_20: #FFEB3B33;
+  --yellow-500_10: #FFEB3B1A;
+
+
+  --yellow-600: #FDD835;
+  --yellow-600_80: #FDD835CC;
+  --yellow-600_60: #FDD83599;
+  --yellow-600_40: #FDD83566;
+  --yellow-600_20: #FDD83533;
+  --yellow-600_10: #FDD8351A;
+
+
+  --yellow-700: #FBC02D;
+  --yellow-700_80: #FBC02DCC;
+  --yellow-700_60: #FBC02D99;
+  --yellow-700_40: #FBC02D66;
+  --yellow-700_20: #FBC02D33;
+  --yellow-700_10: #FBC02D1A;
+
+
+  --yellow-800: #F9A825;
+  --yellow-800_80: #F9A825CC;
+  --yellow-800_60: #F9A82599;
+  --yellow-800_40: #F9A82566;
+  --yellow-800_20: #F9A82533;
+  --yellow-800_10: #F9A8251A;
+
+
+  --yellow-900: #F57F17;
+  --yellow-900_80: #F57F17CC;
+  --yellow-900_60: #F57F1799;
+  --yellow-900_40: #F57F1766;
+  --yellow-900_20: #F57F1733;
+  --yellow-900_10: #F57F171A;
+
+
+  --yellow-A100: #FFFF8D;
+  --yellow-A100_80: #FFFF8DCC;
+  --yellow-A100_60: #FFFF8D99;
+  --yellow-A100_40: #FFFF8D66;
+  --yellow-A100_20: #FFFF8D33;
+  --yellow-A100_10: #FFFF8D1A;
+
+
+  --yellow-A200: #FFFF00;
+  --yellow-A200_80: #FFFF00CC;
+  --yellow-A200_60: #FFFF0099;
+  --yellow-A200_40: #FFFF0066;
+  --yellow-A200_20: #FFFF0033;
+  --yellow-A200_10: #FFFF001A;
+
+
+  --yellow-A400: #FFEA00;
+  --yellow-A400_80: #FFEA00CC;
+  --yellow-A400_60: #FFEA0099;
+  --yellow-A400_40: #FFEA0066;
+  --yellow-A400_20: #FFEA0033;
+  --yellow-A400_10: #FFEA001A;
+
+
+  --yellow-A700: #FFD600;
+  --yellow-A700_80: #FFD600CC;
+  --yellow-A700_60: #FFD60099;
+  --yellow-A700_40: #FFD60066;
+  --yellow-A700_20: #FFD60033;
+  --yellow-A700_10: #FFD6001A;
+
+}

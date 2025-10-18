@@ -17,11 +17,20 @@
     "module": "esnext",
     "moduleResolution": "bundler",
     "paths": {
-      "store/*": [
+      "@store/*": [
         "src/store/*"
       ],
-      "components/*": [
+      "@components/*": [
         "src/renderer/components/*"
+      ],
+      "@constant": [
+        "src/renderer/constant.ts"
+      ],
+      "@style/*": [
+        "src/renderer/style/*"
+      ],
+      "@webviews/*": [
+        "src/renderer/webviews/*"
       ]
     }
   }

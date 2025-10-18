@@ -1,105 +1,89 @@
-// import { mkdir, mkdirSync, writeFile, writeFileSync } from 'fs'
-// import * as colors from '../material-color/colors.js'
-// import { join, resolve } from 'path'
+import { mkdir, mkdirSync, writeFile, writeFileSync } from 'fs'
+import * as colors from '../material-color/colors.js'
+import { join, resolve } from 'path'
 
-// export type ColorType = 'light' | 'dark'
+export type ColorType = 'light' | 'dark'
 
-// export type Color = {
-//   name: string
-//   hue: string
-//   shade?: { name: string, hue: string, type: ColorType }[]
-//   type: ColorType
-// }
-
-// export const build_material_colors = async () => {
-
-//   const dir = resolve(process.cwd(), 'vitron/src/material-color')
-
-//   const palette = []
-//   const hue_entries = []
-
-//   let index = ''
-//   let index_export = ''
-//   let _palette = ''
-
-//   for (const [color_key, color] of Object.entries(colors)) {
-
-//     let output = `export const ${color_key} = {
-//   `
-
-//     let Color: Color = {
-//       name: color_key,
-//       hue: '',
-//       type: 'dark'
-//     }
+export type Color = {
+  name: string
+  hue: string
+  shade?: { name: string, hue: string, type: ColorType }[]
+  type: ColorType
+}
 
 
-//     if (typeof color === 'string') {
+function calc_opacity(opacity: number) {
 
-//       Color.hue = color
-//       Color.type = is_light_or_dark(color)
-//       hue_entries.push([color, Color])
+  if (opacity < 0) opacity = 0
+  if (opacity > 1) opacity = 1
 
-//       output += `hue:'${color}',
-//   type: '${is_light_or_dark(color)}'
-// `
+  const intValue = Math.round(opacity * 255)
+  const hex = intValue.toString(16).toUpperCase().padStart(2, '0')
 
-//     } else {
+  return hex
 
-//       output += `hue:'${color[500]}',
-//   type: '${is_light_or_dark(color[500])}',
-//   shade: {
-// `
+}
 
-//       Color.hue = color[500]
-//       Color.type = is_light_or_dark(color[500])
+export const build_material_colors = async () => {
 
-//       Color.shade = Object.entries(color)
-//         .map(([key, value]) => {
+  const dir = resolve(process.cwd(), 'vitron/src/material-color')
 
-//           const _color = value as string
+  const palette = []
+  const hue_entries = []
 
-//           hue_entries.push([_color, Color])
+  let index = ''
+  let index_export = ''
+  let _palette = ''
 
-//           output += `    ${key}: {\n      hue: '${value}',\n      type: '${is_light_or_dark(_color)}'\n    },\n`
+  let output = `body {
+  `
 
-//           return ({
-//             name: color_key + key,
-//             hue: _color,
-//             type: is_light_or_dark(_color)
-//           })
-//         })
+  for (const [color_key, color] of Object.entries(colors)) {
 
-//       hue_entries.push([color[500], Color])
-//       output += '\n}'
+    function gradient(key: string, hex: string) {
 
-//     }
+      output += '\n\n';
 
-//     output += '} as const;'
-//     writeFileSync(join(dir, `${color_key}.ts`), output)
+      ['', '80', '60', '40', '20', '10'].forEach((opacity) => {
 
-//     palette.push(Color)
-//     index += `import { ${color_key} } from './${color_key}.js';\n`
-//     index_export += `  ${color_key},\n`
-//     _palette += `  ${color_key},\n`
-//   }
+        if (opacity === '') {
+
+          output += `  --${key}: ${hex};\n`
+        } else {
+
+          output += `  --${key}_${opacity}: ${hex}${calc_opacity(Number(opacity) / 100)};\n`
+        }
+
+      })
+
+    }
+
+    if (typeof color === 'string') {
+
+      // output += `  --${color_key}: ${color};\n`
+      gradient(color_key, color)
+
+    } else {
+
+      Object
+        .entries(color)
+        .forEach(([key, color]) => {
+
+          // output += `--${color_key}`
+          gradient(`${color_key}-${key}`, color)
+
+        })
+
+    }
+  }
+
+  output += '\n}';
 
 
-//   index = index
-//     + 'export {\n'
-//     + index_export
-//     + '\n};\n'
-//     + 'export const palette = [\n'
-//     + _palette
-//     + ']';
+  mkdirSync(dir, { recursive: true })
 
-
-//   mkdirSync(dir, { recursive: true })
-
-//   // const output = 'export const palette = ' + JSON.stringify(palette, null, 2) + 'as const'
-
-//   writeFileSync(join(dir, 'index.ts'), index)
-// }
+  writeFileSync(join(dir, 'material-colors.css'), output)
+}
 
 
 // function is_light_or_dark(hexColor: string) {

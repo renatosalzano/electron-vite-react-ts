@@ -1,20 +1,38 @@
 import './main.css'
 import { WebView } from 'vitron/client';
-import type { FC } from 'react';
+import { useEffect, type FC, type ReactNode } from 'react';
+import { useAppState } from '../../store/appState';
+import { OPTIONS } from 'src/renderer/constant';
+import { useGlobal } from '../../store/useGlobal';
 
-type Props = {}
+type Props = {
+}
 
 export const Main: FC<Props> = () => {
 
+  const renderOptions = useGlobal(store => store.renderOptions)
+
+  const { settings } = useAppState()
+
+  const webviewProps = settings
+    ? {
+      id: 'settings',
+      src: 'settings',
+      render: true
+    }
+    : {}
+
   return (
     <main>
-      {/* <WebView
-        id='reply'
-        src='https://outlook.office.com/mail/'
-        className='webview'
-        partition='persist:reply'
-        render
-      /> */}
+      {settings && (
+        <WebView
+          id='settings'
+          src='settings'
+          className='webview'
+          render
+          dev
+        />
+      )}
     </main>
   )
 }

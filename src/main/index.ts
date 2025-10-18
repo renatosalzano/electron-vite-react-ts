@@ -15,7 +15,6 @@ function createWindow() {
     width: 1080,
     height: 670,
     frame: false,
-    // transparent: true,
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
@@ -31,13 +30,16 @@ function createWindow() {
 
   if (process.platform === 'win32') {
     // main.setBackgroundMaterial(transparency ? 'acrylic' : 'none')
-    main.setBackgroundMaterial('mica')
+    main.setBackgroundMaterial('acrylic')
+    main.setBackgroundColor('rgba(0, 0, 0, 0.4)')
   } else if (process.platform === 'darwin') {
     // main.setVibrancy(transparency ? 'fullscreen-ui' : null)
     main.setVibrancy('fullscreen-ui')
   }
 
   main.webContents.openDevTools()
+
+  // test.setPosition(10, 10)
 
   // const options = new ViteWebContents({
   //   webPreferences: {

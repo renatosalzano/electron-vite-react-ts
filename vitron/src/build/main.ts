@@ -4,8 +4,6 @@ import esbuild from 'esbuild'
 
 export async function build_main() {
 
-  // build_material_colors()
-
   const store_files = globSync('src/store/**.*')
     .map((path) => resolve(process.cwd(), path))
 

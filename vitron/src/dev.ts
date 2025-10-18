@@ -1,23 +1,41 @@
 import { build_main } from "./build/main.js"
 import * as vite from 'vite'
 import { build_preload } from "./build/preload.js"
-import { globSync } from "fs"
-import { resolve } from "path"
+import { existsSync, globSync, readFileSync } from "fs"
+import { join, relative, resolve } from "path"
 import { start_electron } from "./start_electron.js"
 import * as http from 'http'
 import './env.js'
 import './utils/color.js'
+import { build_vitron_client } from "./build/vitron_client.js"
+// import { parse_tsconfig } from "./build/tsconfig.js"
+
+// import tsconfigPaths from 'vite-tsconfig-paths'
 
 const MAIN_PATH = 'src/main/**/*'
 const STORE_PATH = 'src/store/**/*'
 const PRELOAD_PATH = 'src/preload/**/*'
+const TSCONFIG_RENDERER_PATH = 'tsconfig.renderer.json'
 const D_TS = ['**/*.d.ts']
 
 const paths = [
   MAIN_PATH,
   STORE_PATH,
-  PRELOAD_PATH
+  PRELOAD_PATH,
 ]
+
+// let tsconfig = parse_tsconfig(resolve(process.cwd(), './tsconfig.renderer.json'))
+// let tsconfig_prefixes_map = new Map<string, string>()
+
+// const is_tsconfig_file = (source: string) => {
+//   return tsconfig.prefixes.some((prefix) => {
+//     const ret = source.includes(prefix)
+//     if (ret) {
+//       tsconfig_prefixes_map.set(source, prefix)
+//     }
+//     return ret
+//   })
+// }
 
 
 const is_watched_file = vite.createFilter(paths, D_TS)
@@ -25,6 +43,8 @@ const is_watched_file = vite.createFilter(paths, D_TS)
 const is_main_file = vite.createFilter(MAIN_PATH)
 const is_preload_file = vite.createFilter(PRELOAD_PATH)
 const is_store_file = vite.createFilter(STORE_PATH)
+
+const is_tsconfig_renderer_file = vite.createFilter(TSCONFIG_RENDERER_PATH)
 
 async function rebuild(server: vite.ViteDevServer, file_path: string) {
 
@@ -55,6 +75,7 @@ export async function dev() {
   try {
 
     await build_main()
+    await build_vitron_client()
 
     const builder = await vite.createServer({
       build: {
@@ -92,17 +113,20 @@ export async function dev() {
     const input = globSync('src/renderer/*/index.html')
       .map((path) => resolve(process.cwd(), path))
 
+
+    // const renderer_src = resolve(process.cwd(), 'src/renderer')
+
+
     const client_server = await vite.createServer({
       root: resolve(process.cwd()),
       configFile: resolve(process.cwd(), './vite.config.renderer.ts'),
+      appType: 'mpa',
+      ssr: {
+        external: ['vitron/client']
+      },
       build: {
         rollupOptions: {
           input: input
-        }
-      },
-      resolve: {
-        alias: {
-          'store': resolve(process.cwd(), 'src/store')
         }
       },
       server: {
@@ -112,24 +136,27 @@ export async function dev() {
           port: 4080
         }
       },
-      plugins: [{
-        name: 'vitron:dev',
-        transformIndexHtml() {
-          return [{
-            tag: 'meta',
-            attrs: {
-              'http-equiv': 'Content-Security-Policy',
-              'contents': `
-                default-src 'self';
-                connect-src 'self' ws://localhost:4080;
-                script-src 'self';
-                style-src 'self' 'unsafe-inline';
-                img-src 'self' data:"
+
+      plugins: [
+        {
+          name: 'vitron:dev',
+          enforce: 'pre',
+          transformIndexHtml() {
+            return [{
+              tag: 'meta',
+              attrs: {
+                'http-equiv': 'Content-Security-Policy',
+                'contents': `
+                  default-src 'self';
+                  connect-src 'self' ws://localhost:4080;
+                  script-src 'self';
+                  style-src 'self' 'unsafe-inline';
+                  img-src 'self' data:"
               `
-            }
-          }]
-        }
-      }]
+              }
+            }]
+          }
+        }]
     })
 
     const app = http.createServer(async (req, res) => {

@@ -1,10 +1,11 @@
 import { ReactNode } from 'react'
 import { Store } from 'vitron/store'
 
-type UiItem = {
+export type UiItem = {
   icon?: string | ReactNode
   label: string
   value: string
+  active?: boolean
 }
 
 export interface Global {

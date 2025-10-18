@@ -1,29 +1,61 @@
 import './header.css'
-import { Button } from 'src/renderer/components/button/Button';
-import { useEffect, useRef, useState, type FC } from 'react';
-import { WebView } from 'vitron/client';
+import { Button } from '@components/button/Button';
+import { FormEvent, useEffect, useRef, useState, type FC } from 'react';
+import { useWebviewEffect, WebView } from 'vitron/client';
 import { GoKebabHorizontal } from "react-icons/go";
 import { Tabs, TabsHandler } from '../tabs/Tabs';
 import { useGlobal } from '../../store/useGlobal';
+import { useAppState } from '../../store/appState';
+import { OptionsWebView } from '@webviews/options';
 
 type Props = {}
 
 export const Header: FC<Props> = () => {
 
   const tabsHandler = useRef<TabsHandler>({} as TabsHandler)
-  const { tabs } = useGlobal()
+  const {
+    tabs,
+    setTabs,
+    renderOptions,
+    openOptions
+  } = useGlobal()
+  const { openSettings } = useAppState()
+  const [disabled, setDisabled] = useState(false)
 
-  const [renderConfig, setRenderConfig] = useState(false)
+  const openOpt = (evt: FormEvent<HTMLButtonElement>) => {
+    openOptions(true)
+    setDisabled(true)
+  }
 
-  const openConfig = () => {
-    setRenderConfig(render => !render)
+  const onChangeTab = (value: string) => {
+
+    console.log('onChangeTab')
+
+    switch (value) {
+      case 'settings':
+        openSettings(true)
+        break;
+    }
+
+  }
+
+  const onCloseTab = (value: string) => {
+
+    setTabs((tabs) => {
+
+      delete tabs[value]
+      return { ...tabs }
+    })
+
+    if (value === 'settings') {
+      openSettings(false)
+    }
+
   }
 
   const combinedTabs = []
 
   useEffect(() => {
-
-    console.log(tabs)
 
     Object
       .values(tabs)
@@ -33,6 +65,7 @@ export const Header: FC<Props> = () => {
 
   }, [tabs])
 
+
   return (
     <header>
       {/* <div className="floating"></div> */}
@@ -40,28 +73,33 @@ export const Header: FC<Props> = () => {
         <div className="control-with-options">
           <Button
             variant='control'
-            onClick={openConfig}
+            onClick={openOpt}
           >
             <GoKebabHorizontal style={{
               transform: 'rotate(90deg)'
             }} />
           </Button>
-          <div className="options-anchor">
-            <WebView
-              id='Options'
-              src='options'
-              height={100}
-              width={100}
-              render
-              dev
-            />
-          </div>
+          {disabled && (
+            <div className="control-mask"></div>
+          )}
+          <OptionsWebView.Provider
+            modal
+            className='options-position'
+            render={renderOptions}
+            borderRadius={8}
+            onBlur={() => {
+              openOptions(false)
+              setTimeout(() => setDisabled(false))
+            }}
+          />
         </div>
       </div>
       <div className="controls center">
         <Tabs
           ref={tabsHandler}
           tabs={combinedTabs}
+          onChange={onChangeTab}
+          onCloseTab={onCloseTab}
         />
       </div>
     </header>

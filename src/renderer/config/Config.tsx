@@ -1,6 +1,6 @@
 
 
-import { InputFile } from 'components/inputFile/InputFile';
+import { InputFile } from '@components/inputFile/InputFile';
 import './config.css'
 import { useState, type FC } from 'react';
 

@@ -1,37 +1,54 @@
-import { FC, ReactNode, useEffect, useRef, createElement, CSSProperties } from "react";
+import { FC, ReactNode, useEffect, useRef, createElement, CSSProperties, RefObject, EffectCallback, DependencyList } from "react";
+
+
+type Close = () => void
+
+type BoundValue = 'inherit' | number
 
 export type WebViewProps = {
   id: string
   src: string
   element?: string
   className?: string
-  x?: number
-  y?: number
-  width?: number
-  height?: number
-  partition?: string,
-  render: boolean,
+  modal?: boolean
+
+  bounds?: {
+    x?: number
+    y?: number
+    width?: number
+    height?: number
+  }
+
+  partition?: string
+  render: boolean
   zIndex?: number
   dev?: boolean
+  borderRadius?: number
+  closeOnBlur?: boolean
+  mountOnRender?: boolean
+
+  onBlur?: (close: Close) => void
 }
 
 
-const webview_map = new Map<string, any>()
+type WebViewRef = RefObject<HTMLElement> & WebViewProps
+
+const webview_map = new Map<string, WebViewRef>()
+const current_webview = new Map<'current', WebViewRef>()
+
+
+
 
 
 export const WebView: FC<WebViewProps> = ({
   id,
-  src,
-  x,
-  y,
-  width,
-  height,
   element = 'div',
   className,
-  partition,
-  render = false,
-  zIndex = 0,
-  dev
+  bounds,
+  dev,
+
+  onBlur,
+  ...props
 }) => {
 
   const ref = useRef<HTMLElement>(null)
@@ -39,83 +56,143 @@ export const WebView: FC<WebViewProps> = ({
   // console.log(window.slot)
 
   if (ref.current === null) {
-    window.webview.set(id, 'create', { src, partition, render, zIndex })
+
+    window.webview.set(id, 'create', {
+      ...props,
+      bounds,
+      onBlur: !!onBlur
+    })
 
     if (dev) {
       window.webview.set(id, 'dev')
     }
-    webview_map.set(id, { x, y, width, height })
+
+    window.webview.on((ID, props) => {
+
+      if (ID === id) {
+
+        console.log(id, props)
+
+        switch (props.event) {
+          case 'blur': {
+
+            const close = () => {
+              window.webview.set(id, 'close')
+            }
+
+            if (onBlur) {
+              onBlur(close)
+            }
+
+            break
+          }
+        }
+
+      }
+    })
   }
 
-  const onResize = () => {
 
-    const slot = ref.current
+  const updateBounds = () => {
+    const element = ref.current
+    if (!element) return
 
-    if (!slot) return;
+    const rect = getRect(element)
 
-    const bounds = slot.getBoundingClientRect()
+    const {
+      x,
+      y,
+      width,
+      height
+    } = bounds ?? {}
 
-    const electron_bounds = {
-      x: x ?? Math.round(bounds.x),
-      y: y ?? Math.round(bounds.y),
-      width: width ?? Math.round(bounds.width),
-      height: height ?? Math.round(bounds.height)
+    const currentBounds = {
+      x: x ?? rect.x,
+      y: y ?? rect.y,
+      width: width ?? rect.width,
+      height: height ?? rect.height
     }
 
-    window.webview.set(id, 'setBounds', electron_bounds)
+    console.log(bounds)
+
+    window.webview.set(id, 'setBounds', { currentBounds })
   }
 
+
   useEffect(() => {
-    if (render) {
-      onResize()
+
+    updateBounds()
+
+  }, [bounds])
+
+
+  useEffect(() => {
+
+    window.webview.set(id, 'render', { render: props.render })
+
+  }, [props.render])
+
+
+  useEffect(() => {
+    // onResize()
+
+    const element = ref.current;
+    let resizeObserver: ResizeObserver | void
+
+    if (!element) return;
+
+    if (!props.modal) {
+
+      const observerCallback: ResizeObserverCallback = () => {
+        // console.log('dimension changed')
+        updateBounds()
+      };
+
+      resizeObserver = new ResizeObserver(observerCallback);
+      resizeObserver.observe(element);
+
     }
-    window.webview.set(id, 'render', { render })
-  }, [render])
 
-  useEffect(() => {
-
-    onResize()
-
-  }, [x, y, width, height])
-
-
-  useEffect(() => {
-    onResize()
-    addEventListener('resize', onResize)
 
     return () => {
-      removeEventListener('resize', onResize)
-    }
+      if (resizeObserver) {
+        resizeObserver.unobserve(element);
+      }
+    };
   }, [])
 
   return createElement(element, { ref, id, className })
 }
 
-export type WebViewConsumerProps = {
-  id: string
-  style?: CSSProperties
-  element?: string
-  className?: string
-  children: ReactNode
+
+type WebViewEffectThis = {
+  current?: WebViewRef
 }
+type Destructor = () => void
+type WebViewEffect = (this: WebViewEffectThis) => void | Destructor
 
-export const WebViewConsumer: FC<WebViewConsumerProps> = ({
-  id,
-  element = 'div',
-  className,
-  style = {},
-  children
-}) => {
+export const useWebviewEffect = (effect: WebViewEffect, deps?: DependencyList) => {
 
-  const ref = useRef<HTMLElement>(null)
+  const _effect = useRef<WebViewEffect>(null)
 
-  useEffect(() => {
-
-  }, [])
-
-  if (webview_map.has(id)) {
-    return children
+  if (!_effect.current) {
+    console.log(webview_map)
+    const current = current_webview.get('current')
+    _effect.current = () => effect.call({ current })
+    console.log('init webview effect')
   }
 
-  return createElement(element, { ref, id, className })
+  useEffect(_effect.current, deps)
+}
+
+
+function getRect(element: HTMLElement) {
+  const bounds = element.getBoundingClientRect()
+
+  return {
+    x: Math.round(bounds.x),
+    y: Math.round(bounds.y),
+    width: Math.round(bounds.width),
+    height: Math.round(bounds.height)
+  }
 }

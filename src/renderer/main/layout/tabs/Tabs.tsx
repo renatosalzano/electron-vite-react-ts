@@ -1,12 +1,14 @@
-import { Button } from 'components/button/Button';
+import { Button } from '@components/button/Button';
 import './tabs.css'
 import { createRef, forwardRef, ReactNode, RefObject, useEffect, useImperativeHandle, useRef, useState, type FC } from 'react';
 import { IoClose } from "react-icons/io5";
+import { Shape } from './shapes';
 
 type Props = {
   tabs: TabItem[]
   active?: string
   onChange?(value: string): void
+  onCloseTab?(value: string): void
 }
 
 export type TabsHandler = {
@@ -18,6 +20,7 @@ type TabItem = {
   label: ReactNode
   value: string
   icon?: string | ReactNode
+  active?: boolean
 }
 
 type TabItemList = TabItem & {
@@ -28,7 +31,7 @@ type OnChangePosition = (targetIndex: number, targetOffset: number) => void
 
 type OnEnd = () => void
 
-type OnTabClick = (value: string) => void
+type OnTab = (value: string) => void
 
 type TabProps = TabItem & {
   index: number
@@ -36,9 +39,10 @@ type TabProps = TabItem & {
   listRef: RefObject<HTMLUListElement>
   listLen: number
   listPaddingX: number
-  onClick: OnTabClick
+  onClick: OnTab
   onMoveEnd: OnEnd
   onChangePosition: OnChangePosition
+  onClose: OnTab
 }
 
 type TabRef = RefObject<HTMLLIElement> & Partial<TabItem> & {
@@ -68,17 +72,24 @@ const TAB_SWIPE_DELAY = 100
 export const Tabs = forwardRef<TabsHandler, Props>(({
   tabs,
   active,
-  onChange
+  onChange,
+  onCloseTab
 }, _ref) => {
 
   const ref = useRef<HTMLUListElement>(null)
 
   const handlerRefs = useRef(null) as Record<string, RefObject<TabHandler>> & RefObject<{}>
+  const handlerRefsMap = useRef({}) as Record<string, number> & RefObject<{}>
+
+  const createTabRef = (tab: TabItem, index: number) => {
+    handlerRefs[index] = createRef()
+    handlerRefsMap[tab.value] = index
+  }
 
   if (handlerRefs.current === null) {
 
     tabs.forEach((tab, i) => {
-      handlerRefs[i] = createRef() as any
+      createTabRef(tab, i)
     })
 
     handlerRefs.current = {}
@@ -94,8 +105,25 @@ export const Tabs = forwardRef<TabsHandler, Props>(({
   const [list, setList] = useState<TabItemList[]>(mappedTabs)
 
 
-  const onTabClick: OnTabClick = (value) => {
+  const OnTab: OnTab = (value) => {
     setActive(value)
+    onChange(value)
+  }
+
+
+  const handleCloseTab: OnTab = (value) => {
+    const index = handlerRefsMap[value]
+    delete handlerRefs[index]
+
+    setList((prev) => {
+      prev.splice(index, 1)
+      return [...prev]
+    })
+
+    if (onCloseTab) {
+      onCloseTab(value)
+    }
+
   }
 
 
@@ -163,13 +191,21 @@ export const Tabs = forwardRef<TabsHandler, Props>(({
 
         const tabExist = prev.some((t) => t.value === tab.value)
 
+        const { active, ...props } = tab
+
         if (!tabExist) {
+
           const index = prev.push({
-            ...tab,
+            ...props,
             key: prev.length - 1 + new Date().getTime()
           }) - 1
 
-          handlerRefs[index] = createRef() as any
+          createTabRef(props, index)
+        }
+
+        if (active) {
+          setActive(props.value)
+          onChange(props.value)
         }
 
         return [...prev]
@@ -200,9 +236,10 @@ export const Tabs = forwardRef<TabsHandler, Props>(({
           listLen={list.length}
           listPaddingX={CSS_PADDING_X}
 
-          onClick={onTabClick}
+          onClick={OnTab}
           onMoveEnd={onEnd}
           onChangePosition={onChangePosition}
+          onClose={handleCloseTab}
         />
       ))}
     </ul>
@@ -219,7 +256,8 @@ const Tab = forwardRef<TabHandler, TabProps>(({
   listPaddingX,
   onChangePosition,
   onMoveEnd,
-  onClick
+  onClick,
+  onClose
 }, _ref) => {
 
   const ref = useRef(null) as TabRef
@@ -388,6 +426,9 @@ const Tab = forwardRef<TabHandler, TabProps>(({
         'is-dragging': isDragging
       })}
     >
+      <Shape
+        className='shape-L'
+      />
       <div className="content">
         <span
           className='label'
@@ -397,10 +438,20 @@ const Tab = forwardRef<TabHandler, TabProps>(({
         <Button
           variant='icon'
           size='small'
+          color='delete'
+          shape='round'
+          onClick={(evt) => {
+            evt.preventDefault()
+            evt.stopPropagation()
+            onClose(value)
+          }}
         >
           <IoClose />
         </Button>
       </div>
+      <Shape
+        className='shape-R'
+      />
     </li>
   )
 })
