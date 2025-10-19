@@ -60,6 +60,8 @@
     width: 48px;
     padding: 10px;
 
+    color: var(--text-color);
+
     &:hover {
       background-color: var(--text-color_10);
     }

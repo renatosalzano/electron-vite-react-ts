@@ -41,7 +41,7 @@ export const TabsConfig: FC<Props> = () => {
               {props.label}
             </Accordion.Summary>
             <Accordion.Content >
-              todo
+              <Config />
             </Accordion.Content>
           </Accordion.Item>
         ))}

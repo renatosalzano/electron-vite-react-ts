@@ -35,7 +35,8 @@ function createWindow() {
   if (process.platform === 'win32') {
     // main.setBackgroundMaterial(transparency ? 'acrylic' : 'none')
     main.setBackgroundMaterial('mica')
-    // main.setBackgroundColor('rgba(255, 255, 255, 0)')
+    // main.setBackgroundColor('rgba(0, 0, 0, 0.7)');
+    // main.setBackgroundColor('rgba(255, 255, 255, 0)');
   } else if (process.platform === 'darwin') {
     // main.setVibrancy(transparency ? 'fullscreen-ui' : null)
     main.setVibrancy('fullscreen-ui')
