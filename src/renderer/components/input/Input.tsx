@@ -8,7 +8,6 @@ export type TextfieldProps = CommonProps & {
   children?: ReactNode
 }
 
-
 export const Input: FC<TextfieldProps> = ({
   id,
   value,
@@ -20,13 +19,17 @@ export const Input: FC<TextfieldProps> = ({
   onChange
 }) => {
 
-  const [_value, setValue] = useState(value)
+  const [_value, setValue] = useState('')
   const [_active, setActive] = useState(false)
 
   const handleChange: ChangeEventHandler<HTMLInputElement> = (evt) => {
     const value = evt.target.value
-    setValue(value)
-    onChange(id, value)
+
+    if (onChange) {
+      onChange(id, value)
+    } else {
+      setValue(value)
+    }
   }
 
   return (
@@ -48,7 +51,7 @@ export const Input: FC<TextfieldProps> = ({
       </label>}
       <input
         id={id}
-        value={_value}
+        value={value ?? _value}
         onChange={handleChange}
         onFocus={() => setActive(true)}
         onBlur={() => setActive(false)}

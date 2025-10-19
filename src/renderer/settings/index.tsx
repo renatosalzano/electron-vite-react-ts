@@ -8,8 +8,6 @@ import { userdata } from '@store/userdata'
 
 document.body.classList.add(isDark() ? 'dark-theme' : 'light-theme')
 
-export const useUserdata = userdata.useClientStore()
-
 const root = createRoot(document.getElementById('root')!)
 
 root.render(

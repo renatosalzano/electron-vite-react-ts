@@ -11,5 +11,5 @@ export type CommonProps = {
   color?: Color
   disabled?: boolean
   readonly?: boolean
-  onChange(id: string, value: string): void
+  onChange?(id: string, value: string): void
 }

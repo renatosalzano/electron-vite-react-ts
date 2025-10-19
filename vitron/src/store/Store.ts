@@ -76,6 +76,11 @@ class Store<T> {
 
       const setter = (partial: PartialPayload<T>) => {
         set(partial)
+
+        if (typeof partial === 'function') {
+          partial = partial(JSON.parse(api.get() || '{}'))
+        }
+
         api.set(partial)
       }
 

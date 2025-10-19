@@ -1,5 +1,6 @@
 import { ReactNode } from 'react'
 import { Store } from 'vitron/store'
+import { WebviewConfig } from './userdata'
 
 export type UiItem = {
   icon?: string | ReactNode
@@ -13,6 +14,8 @@ export interface Global {
   tabs: Record<string, UiItem>
   options: UiItem[]
   renderOptions: boolean
+  testWebviews: Record<string, WebviewConfig>
+  setTestWebview(id: string, config: WebviewConfig): void
   openOptions(render?: boolean): void
   setTabs(setTabs: (tabs: Record<string, UiItem>) => Record<string, UiItem>): void
   setCurrentTab(id: string): void
@@ -42,4 +45,19 @@ export const global = Store.create<Global>('global', (set, get) => ({
     set({ currentTab })
   },
 
+  testWebviews: {},
+  setTestWebview(id, config) {
+    const { testWebviews } = get()
+    testWebviews[id] = {
+      ...testWebviews[id],
+      ...config
+    }
+    set((prev) => ({
+      ...prev,
+      testWebviews: {
+        ...prev.testWebviews,
+        ...testWebviews
+      }
+    }))
+  },
 }))

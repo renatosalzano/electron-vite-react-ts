@@ -2,7 +2,7 @@ import './inputfile.css'
 import { DragEventHandler, FC, useState } from "react";
 import { CommonProps } from "../types";
 import { VscFileMedia, VscTrash } from "react-icons/vsc";
-import { Button } from 'src/renderer/components/button/Button'
+import { Button } from '@components/button/Button'
 
 
 type InputFileProps = CommonProps & {
@@ -11,13 +11,15 @@ type InputFileProps = CommonProps & {
 
 export const InputFile: FC<InputFileProps> = ({
   id,
-  value = '',
+  value,
   label,
   onChange
 }) => {
 
   const [isDragging, setDragging] = useState(false);
-  const [base64, setBase64] = useState(value)
+  const [base64, setBase64] = useState('')
+
+  const _value = value ?? base64
 
 
   const onFilesDropped = (files: File[]) => {
@@ -38,9 +40,12 @@ export const InputFile: FC<InputFileProps> = ({
 
         const file_string: string = event.target?.result as string
         // console.log(file_string)
-        setBase64(file_string)
-        onChange(id, file_string)
-
+        if (onChange) {
+          console.log(id, file_string)
+          onChange(id, file_string)
+        } else {
+          setBase64(file_string)
+        }
       }
     }
 
@@ -48,10 +53,13 @@ export const InputFile: FC<InputFileProps> = ({
 
   }
 
-
   const remove = () => {
-    setBase64('')
-    onChange(id, '')
+
+    if (onChange) {
+      onChange(id, '')
+    } else {
+      setBase64('')
+    }
   }
 
 
@@ -81,6 +89,9 @@ export const InputFile: FC<InputFileProps> = ({
     }
   };
 
+  console.log(id, _value)
+
+
   return (
     <div
       className={cls("input-file", {
@@ -93,7 +104,7 @@ export const InputFile: FC<InputFileProps> = ({
           {label ?? id}
         </label>
 
-        {base64 && !isDragging && (
+        {_value && !isDragging && (
           <Button
             variant='icon'
             size='small'
@@ -101,7 +112,8 @@ export const InputFile: FC<InputFileProps> = ({
             onClick={remove}
           >
             <VscTrash />
-          </Button>)
+          </Button>
+        )
         }
       </div>
 
@@ -121,8 +133,8 @@ export const InputFile: FC<InputFileProps> = ({
           onChange={(evt) => evt.target.files && onFilesDropped(Array.from(evt.target.files))}
         />
         <div className="suggestion">
-          {base64
-            ? <img src={base64} />
+          {_value
+            ? <img src={_value} />
             : <VscFileMedia />
           }
           <p>

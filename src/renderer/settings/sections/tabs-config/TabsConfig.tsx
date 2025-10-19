@@ -4,7 +4,7 @@ import { Tabs } from '@components/tabs/Tabs';
 import { useState, type FC } from 'react';
 import { FaPlus } from 'react-icons/fa';
 import { Config } from './Config';
-import { useUserdata } from '../../index';
+import { useUserdata, useGlobal } from '../../store';
 
 type Props = {}
 
@@ -12,8 +12,11 @@ export const TabsConfig: FC<Props> = () => {
 
 
   const { webviews } = useUserdata()
+  const { testWebviews } = useGlobal()
 
-  console.log(webviews)
+  const testWebviewsList = Object.values(testWebviews)
+
+  console.log('update', testWebviewsList)
 
 
   return (
@@ -30,6 +33,20 @@ export const TabsConfig: FC<Props> = () => {
         </Accordion.Item>
 
         {Object.values(webviews).map((props) => (
+          <Accordion.Item
+            key={props.id}
+          >
+            <Accordion.Summary>
+              <img className='icon' src={props.icon} />
+              {props.label}
+            </Accordion.Summary>
+            <Accordion.Content >
+              todo
+            </Accordion.Content>
+          </Accordion.Item>
+        ))}
+
+        {testWebviewsList.map((props) => (
           <Accordion.Item
             key={props.id}
           >

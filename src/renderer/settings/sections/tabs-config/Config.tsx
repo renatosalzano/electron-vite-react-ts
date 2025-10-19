@@ -3,13 +3,14 @@ import { Button, Input, InputFile } from '@components/index';
 import { WebviewConfig } from '@store/userdata';
 import { useState, type FC } from 'react';
 import { VscSave } from 'react-icons/vsc';
-import { useUserdata } from 'src/renderer/main/store/useUserdata';
+import { useUserdata, useGlobal } from '../../store';
 
 type Props = {}
 
 export const Config: FC<Props> = () => {
 
   const { setWebview } = useUserdata()
+  const { setTestWebview } = useGlobal()
 
   const [config, setConfig] = useState<WebviewConfig>({
     id: '',
@@ -36,9 +37,11 @@ export const Config: FC<Props> = () => {
   }
 
   const save = () => {
-    setWebview(config.id, config)
+    // setWebview(config.id, config)
+    setTestWebview(config.id, config)
 
-    setTimeout(() => setConfig({
+    setConfig((prev) => ({
+      ...prev,
       id: '',
       label: '',
       url: '',
@@ -75,6 +78,7 @@ export const Config: FC<Props> = () => {
       <InputFile
         label='icon'
         id='icon'
+        value={config.icon}
         onChange={onChange}
       />
 
