@@ -155,9 +155,12 @@ export const WebView: FC<WebViewProps> = ({
 
 
     return () => {
+
       if (resizeObserver) {
         resizeObserver.unobserve(element);
       }
+
+      window.webview.set(id, 'close')
     };
   }, [])
 

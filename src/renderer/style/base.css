@@ -19,14 +19,17 @@ body {
   /* border-radius: 4px; */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
+  --test: var(--grey-800);
+
+
   &.dark-theme {
     --primary: var(--grey-800);
     --primary-dark: #121212;
-    --primary-80: rgba(33, 33, 33, 0.8);
-    --primary-60: rgba(33, 33, 33, 0.6);
-    --primary-40: rgba(33, 33, 33, 0.4);
-    --primary-20: rgba(33, 33, 33, 0.2);
-    --primary-10: rgba(33, 33, 33, 0.1);
+    --primary-80: var(--grey-800_80);
+    --primary-60: var(--grey-800_60);
+    --primary-40: var(--grey-800_40);
+    --primary-20: var(--grey-800_20);
+    --primary-10: var(--grey-800_80);
     --text-color: #F5F5F5;
   }
 

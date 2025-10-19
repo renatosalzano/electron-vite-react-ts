@@ -15,6 +15,7 @@ function createWindow() {
     width: 1080,
     height: 670,
     frame: false,
+    // transparent: true,
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
@@ -30,8 +31,8 @@ function createWindow() {
 
   if (process.platform === 'win32') {
     // main.setBackgroundMaterial(transparency ? 'acrylic' : 'none')
-    main.setBackgroundMaterial('acrylic')
-    main.setBackgroundColor('rgba(0, 0, 0, 0.4)')
+    main.setBackgroundMaterial('mica')
+    // main.setBackgroundColor('rgba(14, 14, 14, 0.20)')
   } else if (process.platform === 'darwin') {
     // main.setVibrancy(transparency ? 'fullscreen-ui' : null)
     main.setVibrancy('fullscreen-ui')

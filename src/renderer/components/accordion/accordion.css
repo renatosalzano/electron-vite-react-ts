@@ -1,13 +1,80 @@
 .accordion {
   display: flex;
   flex-direction: column;
-  padding: 16px;
+}
 
-  border-radius: var(--ui-border-radius);
-  border: 1px solid var(--text-color);
+
+.accordion-item {
+
+  padding: 8px;
+  background-color: var(--primary-dark);
+
+  transition: all 200ms;
+  transform: translateZ(0);
+
+  will-change: border-radius, margin;
+
+  &.frist {
+    border-top-left-radius: var(--ui-border-radius);
+    border-top-right-radius: var(--ui-border-radius);
+    border-bottom: 1px solid var(--text-color);
+  }
+
+  &.middle {
+    border-bottom: 1px solid var(--text-color);
+  }
+
+  &.last {
+    border-bottom-left-radius: var(--ui-border-radius);
+    border-bottom-right-radius: var(--ui-border-radius);
+    border-bottom: unset;
+  }
+
+  &.expanded {
+    border-radius: var(--ui-border-radius);
+    margin: 16px 0px;
+    border-bottom: unset;
+  }
+
+  &.top-is-extended {
+    margin-top: 0px;
+    border-top-left-radius: var(--ui-border-radius);
+    border-top-right-radius: var(--ui-border-radius);
+  }
+
+  &.bottom-is-extended {
+    border-bottom-left-radius: var(--ui-border-radius);
+    border-bottom-right-radius: var(--ui-border-radius);
+    border-bottom: unset;
+  }
 
   .accordion-summary {
     display: flex;
     gap: 16px;
   }
+
+  .accordion-content {
+
+    interpolate-size: allow-keywords;
+
+    display: flex;
+    height: max-content;
+
+    overflow: hidden;
+    transition: height 200ms ease;
+
+    transform: translateZ(0);
+
+    will-change: height;
+
+    &.collapsed {
+
+      height: 0px;
+    }
+
+
+
+
+  }
+
 }

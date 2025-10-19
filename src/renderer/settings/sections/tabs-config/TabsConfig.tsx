@@ -21,6 +21,25 @@ export const TabsConfig: FC<Props> = () => {
             todo
           </Accordion.Content>
         </Accordion.Item>
+
+        <Accordion.Item>
+          <Accordion.Summary>
+            1
+          </Accordion.Summary>
+          <Accordion.Content >
+            todo
+          </Accordion.Content>
+        </Accordion.Item>
+
+        <Accordion.Item>
+          <Accordion.Summary>
+            2
+          </Accordion.Summary>
+          <Accordion.Content >
+            todo
+          </Accordion.Content>
+        </Accordion.Item>
+
       </Accordion>
       {/* <Accordion>
         <Accordion.Summary />
