@@ -1,4 +1,4 @@
-import '../style/base.css';
+import '../style/base.scss';
 import './index.css';
 import { createRoot } from 'react-dom/client'
 import { Header } from './layout/header/header';

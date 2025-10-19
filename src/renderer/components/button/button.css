@@ -65,10 +65,8 @@
       height: 14px;
     }
 
-
-
     &:hover {
-      background-color: var(--primary-60);
+      background-color: var(--primary_60);
     }
 
     &.active {

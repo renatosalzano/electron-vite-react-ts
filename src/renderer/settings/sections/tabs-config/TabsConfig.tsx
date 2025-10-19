@@ -3,6 +3,7 @@ import { Input } from '@components/input/Input';
 import { Tabs } from '@components/tabs/Tabs';
 import { useState, type FC } from 'react';
 import { FaPlus } from 'react-icons/fa';
+import { Config } from './Config';
 
 type Props = {}
 
@@ -18,7 +19,7 @@ export const TabsConfig: FC<Props> = () => {
             New Tab
           </Accordion.Summary>
           <Accordion.Content >
-            todo
+            <Config />
           </Accordion.Content>
         </Accordion.Item>
 

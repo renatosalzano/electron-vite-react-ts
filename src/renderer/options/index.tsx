@@ -1,4 +1,4 @@
-import '../style/base.css'
+import '../style/base.scss'
 import { createRoot } from 'react-dom/client'
 import { Options } from './options/Options'
 import { isDark } from 'vitron/client'

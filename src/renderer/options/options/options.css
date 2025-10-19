@@ -7,11 +7,11 @@
 
   margin: 0;
   padding: 8px 0;
-  background-color: var(--primary-40);
+  background-color: var(--primary_60);
   list-style: none;
 
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 
   .option {
     padding: 4px 16px;
@@ -19,7 +19,7 @@
     color: var(--text-color);
 
     &:hover {
-      background-color: var(--primary-60);
+      background-color: var(--primary_60);
     }
   }
 }

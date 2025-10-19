@@ -1,4 +1,4 @@
-import '../style/base.css'
+import '../style/base.scss'
 import '../global'
 import { createRoot } from 'react-dom/client'
 import { Settings } from './settings/Settings'

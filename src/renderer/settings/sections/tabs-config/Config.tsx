@@ -3,7 +3,7 @@ import { useState, type FC } from 'react';
 
 type Props = {}
 
-export const Window: FC<Props> = () => {
+export const Config: FC<Props> = () => {
 
   const [config, setConfig] = useState({
     label: '',

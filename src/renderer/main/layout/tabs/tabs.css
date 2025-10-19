@@ -61,7 +61,7 @@
     }
 
     &:hover {
-      background-color: var(--primary-20);
+      background-color: var(--primary_20);
 
       .content {
         border-right-color: transparent;

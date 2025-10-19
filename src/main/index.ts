@@ -29,10 +29,13 @@ function createWindow() {
   })
 
 
+  nativeTheme.themeSource = 'light'
+
+
   if (process.platform === 'win32') {
     // main.setBackgroundMaterial(transparency ? 'acrylic' : 'none')
     main.setBackgroundMaterial('mica')
-    // main.setBackgroundColor('rgba(14, 14, 14, 0.20)')
+    // main.setBackgroundColor('rgba(255, 255, 255, 0)')
   } else if (process.platform === 'darwin') {
     // main.setVibrancy(transparency ? 'fullscreen-ui' : null)
     main.setVibrancy('fullscreen-ui')
