@@ -20,6 +20,9 @@
       "@store/*": [
         "src/store/*"
       ],
+      "@components": [
+        "src/renderer/components/index.ts"
+      ],
       "@components/*": [
         "src/renderer/components/*"
       ],

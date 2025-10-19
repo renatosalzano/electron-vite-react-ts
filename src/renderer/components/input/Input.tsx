@@ -1,7 +1,7 @@
 import './input.css'
 
 import { ChangeEventHandler, FC, ReactNode, useState } from "react"
-import { CommonProps } from "components/types"
+import { CommonProps } from "../types"
 
 
 export type TextfieldProps = CommonProps & {
@@ -40,12 +40,12 @@ export const Input: FC<TextfieldProps> = ({
       })}
 
     >
-      <label
+      {label && <label
         className='text-field-label'
         htmlFor={id}
       >
-        {label ?? id}
-      </label>
+        {label}
+      </label>}
       <input
         id={id}
         value={_value}

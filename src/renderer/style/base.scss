@@ -1,15 +1,23 @@
 @import url('./material-colors.css');
 
-$primary: #3C3C3C;
-$primary-dark: #272727;
-$primary-light: #9E9E9E;
+$dark__primary: #3c3c3c;
+$dark__primary-dark: #272727;
+$dark__primary-light: #9E9E9E;
+$dark__primary-contrast: #dadada;
+$dark__text-color: #F5F5F5;
+
+$light__primary: #FFFFFF;
+$light__primary-dark: var(--grey-200);
+$light__primary-light: var(--grey-50);
+$light__primary-contrast: var(--grey-500);
+$light__text-color: #161616;
 
 $opacity-steps: (
-  80: 0.8,
-  60: 0.6,
-  40: 0.4,
-  20: 0.2,
-  10: 0.1,
+  80: CC,
+  60: 99,
+  40: 66,
+  20: 33,
+  10: 1A,
 );
 
 body {
@@ -31,31 +39,67 @@ body {
   /* border-radius: 4px; */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
-  --test: var(--grey-800);
-
-
-  &.dark-theme {
-    --primary: #{$primary};
-    --primary-dark: #{$primary-dark};
-    --primary-light: #{$primary-light};
-    --text-color: #F5F5F5;
-  }
-
-  &.light-theme {
-    $primary: var(--white);
-    $primary-dark: var(--grey-300);
-    $primary-light: var(--grey-50);
-
-    --primary: #{$primary};
-    --primary-dark: #{$primary-dark};
-    --primary-light: #{$primary-light};
-    --text-color: #212121;
+  @each $suffix, $alpha in $opacity-steps {
+    --dark__primary_#{$suffix}: #{$dark__primary}#{$alpha};
   }
 
   @each $suffix, $alpha in $opacity-steps {
-    --primary_#{$suffix}: rgba(#{$primary}, #{$alpha});
-    --primary-dark_#{$suffix}: rgba(#{$primary-dark}, #{$alpha});
-    --primary-light_#{$suffix}: rgba(#{$primary-dark}, #{$alpha});
+    --dark__primary-dark_#{$suffix}: #{$dark__primary-dark}#{$alpha};
+  }
+
+  @each $suffix, $alpha in $opacity-steps {
+    --dark__primary-light_#{$suffix}: #{$dark__primary-dark}#{$alpha};
+  }
+
+  @each $suffix, $alpha in $opacity-steps {
+    --dark__text-color_#{$suffix}: #{$dark__text-color}#{$alpha};
+  }
+
+
+  @each $suffix, $alpha in $opacity-steps {
+    --light__primary_#{$suffix}: #{$light__primary}#{$alpha};
+  }
+
+  @each $suffix, $alpha in $opacity-steps {
+    --light__primary-dark_#{$suffix}: #{$light__primary-dark}#{$alpha};
+  }
+
+  @each $suffix, $alpha in $opacity-steps {
+    --light__primary-light_#{$suffix}: #{$light__primary-dark}#{$alpha};
+  }
+
+  @each $suffix, $alpha in $opacity-steps {
+    --light__text-color_#{$suffix}: #{$light__text-color}#{$alpha};
+  }
+
+
+
+  &.dark-theme {
+    --primary: #{$dark__primary};
+    --primary-dark: #{$dark__primary-dark};
+    --primary-light: #{$dark__primary-light};
+    --text-color: #{$dark__text-color};
+
+    @each $suffix, $alpha in $opacity-steps {
+      --primary_#{$suffix}: var(--dark__primary_#{$suffix});
+      --primary-dark_#{$suffix}: var(--dark__primary-dark_#{$suffix});
+      --primary-light_#{$suffix}: var(--dark__primary-light_#{$suffix});
+      --text-color_#{$suffix}: var(--dark__text-color_#{$suffix});
+    }
+  }
+
+  &.light-theme {
+    --primary: #{$light__primary};
+    --primary-dark: #{$light__primary-dark};
+    --primary-light: #{$light__primary-light};
+    --text-color: #{$light__text-color};
+
+    @each $suffix, $alpha in $opacity-steps {
+      --primary_#{$suffix}: var(--light__primary_#{$suffix});
+      --primary-dark_#{$suffix}: var(--light__primary-dark_#{$suffix});
+      --primary-light_#{$suffix}: var(--light__primary-light_#{$suffix});
+      --text-color_#{$suffix}: var(--light__text-color_#{$suffix});
+    }
   }
 
   /* background-color: var(--theme-primary); */
