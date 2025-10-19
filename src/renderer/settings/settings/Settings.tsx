@@ -56,6 +56,7 @@ export const Settings: FC<Props> = () => {
       <section>
         {components[active]}
       </section>
+      <div className="settings-background"></div>
     </div>
   )
 }

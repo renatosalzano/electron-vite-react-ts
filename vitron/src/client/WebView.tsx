@@ -20,6 +20,8 @@ export type WebViewProps = {
   }
 
   partition?: string
+  persist?: boolean
+
   render: boolean
   zIndex?: number
   dev?: boolean
@@ -46,7 +48,7 @@ export const WebView: FC<WebViewProps> = ({
   className,
   bounds,
   dev,
-
+  persist,
   onBlur,
   ...props
 }) => {
@@ -160,7 +162,11 @@ export const WebView: FC<WebViewProps> = ({
         resizeObserver.unobserve(element);
       }
 
-      window.webview.set(id, 'close')
+      if (persist) {
+        window.webview.set(id, 'render', { render: false })
+      } else {
+        window.webview.set(id, 'close')
+      }
     };
   }, [])
 

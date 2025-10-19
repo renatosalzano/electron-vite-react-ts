@@ -5,7 +5,7 @@ import { CommonProps } from "@components/types"
 type ReactButtonProps = DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
 type ButtonProps = Omit<ReactButtonProps, 'onClick'> & Omit<CommonProps, 'id' | 'onChange'> & {
   id?: string
-  variant: 'head' | 'control' | 'icon' | 'side' | 'contained'
+  variant: 'head' | 'control' | 'icon' | 'side' | 'contained' | 'chrome'
   shape?: 'round' | 'square'
   active?: boolean
   onClick?(evt: FormEvent<HTMLButtonElement>, id?: string): void

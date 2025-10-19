@@ -1,0 +1,8 @@
+<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+  <mask id='round' mask-type="luminance">
+    <rect x="0" y="0" width="100%" height="100%" fill="white" />
+    <rect x="0" y="0" width="100%" height="100%" fill="black" rx="16" ry="16"/>
+  </mask>
+  
+  <rect x="0" y="0" width="100%" height="100%" fill="white" mask="url(#round)" />
+</svg>

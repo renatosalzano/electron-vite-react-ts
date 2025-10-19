@@ -23,7 +23,6 @@ header {
     }
 
     &.center {
-
       /* padding-top: 8px; */
     }
 
@@ -55,4 +54,17 @@ header {
       }
     }
   }
+
+  .drag-area {
+    -webkit-app-region: drag;
+    flex: 1;
+  }
+
+  .chrome-controls {
+    -webkit-app-region: no-drag;
+    display: flex;
+
+  }
+
+
 }

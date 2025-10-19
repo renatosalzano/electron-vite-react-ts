@@ -4,14 +4,20 @@ import { Tabs } from '@components/tabs/Tabs';
 import { useState, type FC } from 'react';
 import { FaPlus } from 'react-icons/fa';
 import { Config } from './Config';
+import { useUserdata } from '../../index';
 
 type Props = {}
 
 export const TabsConfig: FC<Props> = () => {
 
 
+  const { webviews } = useUserdata()
+
+  console.log(webviews)
+
+
   return (
-    <div>
+    <div className='section-tabs-config'>
       <Accordion>
         <Accordion.Item>
           <Accordion.Summary>
@@ -23,23 +29,19 @@ export const TabsConfig: FC<Props> = () => {
           </Accordion.Content>
         </Accordion.Item>
 
-        <Accordion.Item>
-          <Accordion.Summary>
-            1
-          </Accordion.Summary>
-          <Accordion.Content >
-            todo
-          </Accordion.Content>
-        </Accordion.Item>
-
-        <Accordion.Item>
-          <Accordion.Summary>
-            2
-          </Accordion.Summary>
-          <Accordion.Content >
-            todo
-          </Accordion.Content>
-        </Accordion.Item>
+        {Object.values(webviews).map((props) => (
+          <Accordion.Item
+            key={props.id}
+          >
+            <Accordion.Summary>
+              <img className='icon' src={props.icon} />
+              {props.label}
+            </Accordion.Summary>
+            <Accordion.Content >
+              todo
+            </Accordion.Content>
+          </Accordion.Item>
+        ))}
 
       </Accordion>
       {/* <Accordion>

@@ -1,31 +1,37 @@
 import './options.css'
-import { forwardRef, useEffect, type FC } from 'react';
+import { forwardRef, RefObject, useEffect, type FC } from 'react';
 import { userdata } from '@store/userdata';
-import { global } from '@store/global'
+import { global, UiItem } from '@store/global'
 import { useWebviewEffect } from 'vitron/client';
 
 type Props = {}
 
-const useStore = userdata.useClientStore()
+const useUserdata = userdata.useClientStore()
 const useGlobal = global.useClientStore()
 
-export const Options = forwardRef<HTMLUListElement, Props>((props, ref) => {
+type Ref = HTMLUListElement & {
+  updateBounds(): void
+}
+
+export const Options = forwardRef<HTMLUListElement, Props>((_props, ref) => {
 
   const { setTabs, openOptions } = useGlobal()
+  const { webviews } = useUserdata()
 
-  const onClick = (id: string) => {
+  const onClick = ({ label, icon = '', value }: UiItem) => {
 
     setTabs((tabs) => {
 
-      if (!(id in tabs)) {
-        tabs[id] = {
-          label: id,
-          value: id
+      if (!(value in tabs)) {
+        tabs[value] = {
+          label,
+          value,
+          icon
         }
       }
 
       for (const _id in tabs) {
-        tabs[_id].active = id === _id
+        tabs[_id].active = value === _id
       }
 
       return tabs
@@ -33,6 +39,13 @@ export const Options = forwardRef<HTMLUListElement, Props>((props, ref) => {
 
     openOptions(false)
   }
+
+  useEffect(() => {
+    // @ts-ignore
+    if (ref.current) {
+      (ref as any).updateBounds()
+    }
+  }, [webviews])
 
 
   return (
@@ -42,16 +55,31 @@ export const Options = forwardRef<HTMLUListElement, Props>((props, ref) => {
     >
       <li
         className='option'
-        onClick={() => onClick('settings')}
+        onClick={() => onClick({ label: 'Settings', value: 'settings' })}
       >
-        Settings
+        <span className="label">
+          Settings
+        </span>
       </li>
-      <li
-        className='option'
-        onClick={() => onClick('customize')}
-      >
-        Customize
-      </li>
+      {Object.values(webviews).map((item) => (
+        <li
+          key={item.id}
+          className='option'
+          onClick={() => onClick({
+            icon: item.icon,
+            label: item.label,
+            value: item.id
+          })}
+        >
+          <img
+            src={item.icon}
+            className='icon'
+          />
+          <span className="label">
+            {item.label}
+          </span>
+        </li>
+      ))}
     </ul>
   )
 })

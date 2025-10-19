@@ -9,11 +9,13 @@ export type UiItem = {
 }
 
 export interface Global {
+  currentTab: string
   tabs: Record<string, UiItem>
   options: UiItem[]
   renderOptions: boolean
   openOptions(render?: boolean): void
   setTabs(setTabs: (tabs: Record<string, UiItem>) => Record<string, UiItem>): void
+  setCurrentTab(id: string): void
   setOptions(setOptions: (options: UiItem[]) => UiItem[]): void
 }
 
@@ -22,6 +24,7 @@ export const global = Store.create<Global>('global', (set, get) => ({
   tabs: {},
   options: [],
   renderOptions: false,
+  currentTab: '',
   openOptions(renderOptions = false) {
     set({ renderOptions })
   },
@@ -34,6 +37,9 @@ export const global = Store.create<Global>('global', (set, get) => ({
     const { tabs } = get()
     const newTabs = setTabs(tabs)
     set({ tabs: newTabs })
+  },
+  setCurrentTab(currentTab) {
+    set({ currentTab })
   },
 
 }))

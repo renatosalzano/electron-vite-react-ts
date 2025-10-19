@@ -8,6 +8,8 @@ import { useGlobal } from '../../store/useGlobal';
 import { useAppState } from '../../store/appState';
 import { OptionsWebView } from '@webviews/options';
 
+import { VscChromeMinimize, VscChromeMaximize, VscChromeClose } from "react-icons/vsc"
+
 type Props = {}
 
 export const Header: FC<Props> = () => {
@@ -16,9 +18,11 @@ export const Header: FC<Props> = () => {
   const {
     tabs,
     setTabs,
+    setCurrentTab,
     renderOptions,
     openOptions
   } = useGlobal()
+
   const { openSettings } = useAppState()
   const [disabled, setDisabled] = useState(false)
 
@@ -28,29 +32,27 @@ export const Header: FC<Props> = () => {
   }
 
   const onChangeTab = (value: string) => {
-
-    console.log('onChangeTab')
-
-    switch (value) {
-      case 'settings':
-        openSettings(true)
-        break;
-    }
-
+    setCurrentTab(value)
   }
 
   const onCloseTab = (value: string) => {
 
+    let currentTab = ''
+
     setTabs((tabs) => {
 
       delete tabs[value]
+
+      const firstTab = Object.values(tabs)[0]
+
+      if (firstTab) {
+        currentTab = firstTab.value
+      }
+
       return { ...tabs }
     })
 
-    if (value === 'settings') {
-      openSettings(false)
-    }
-
+    setCurrentTab(currentTab)
   }
 
   const combinedTabs = []
@@ -87,6 +89,7 @@ export const Header: FC<Props> = () => {
             className='options-position'
             render={renderOptions}
             borderRadius={8}
+            dev
             onBlur={() => {
               openOptions(false)
               setTimeout(() => setDisabled(false))
@@ -101,6 +104,25 @@ export const Header: FC<Props> = () => {
           onChange={onChangeTab}
           onCloseTab={onCloseTab}
         />
+      </div>
+      <div className="drag-area"></div>
+      <div className="chrome-controls">
+        <Button
+          variant='chrome'
+        >
+          <VscChromeMinimize />
+        </Button>
+        <Button
+          variant='chrome'
+        >
+          <VscChromeMaximize />
+        </Button>
+        <Button
+          variant='chrome'
+          color='danger'
+        >
+          <VscChromeClose />
+        </Button>
       </div>
     </header>
   )

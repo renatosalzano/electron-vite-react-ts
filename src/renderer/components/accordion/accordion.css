@@ -7,8 +7,8 @@
 .accordion-item {
 
   padding: 8px;
-  border: 1px solid var(--primary-light);
-  background-color: var(--primary-dark);
+  border: 1px solid var(--text-color_20);
+  background-color: var(--primary_60);
 
   transition: all 200ms;
   transform: translateZ(0);
@@ -41,6 +41,10 @@
       0px 10px 12px var(--grey-900_40); */
   }
 
+  &.frist {
+    margin-top: 0px;
+  }
+
   &.top-is-extended {
     margin-top: 0px;
     border-top-left-radius: var(--ui-border-radius);
@@ -56,6 +60,12 @@
     display: flex;
     align-items: center;
     gap: 16px;
+
+    svg,
+    img {
+      height: auto;
+      width: 20px;
+    }
   }
 
   .accordion-content {

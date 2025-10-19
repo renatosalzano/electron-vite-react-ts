@@ -25,34 +25,25 @@ const Consumer: FC<Props> = ({
 }) => {
 
   const initialState = useRef<ipcWebViewProps>(null)
-  const ref = useRef<any>(null)
+  const ref = useRef<any>(null) as RefObject<any> & {
+    updateBounds(): void
+
+  }
 
   const [_render, setRender] = useState(false)
 
-  if (!initialState.current) {
+  const updateBounds = () => {
 
-    console.log('init', id)
-
-    initialState.current = window.webview.get(id)
-
-    window.webview.on((id: string, props: any) => {
-      // console.log(id, props)
-
-      if ('render' in props) {
-        setRender(props.render)
-      }
-    })
-
-    console.log(initialState.current)
-  }
-
-
-  useEffect(() => {
     const element = ref.current as HTMLElement | null
 
     if (element) {
 
       const { currentBounds } = window.webview.get(id)!
+
+      if (!currentBounds) {
+        console.error(window.webview.get(id))
+        return
+      }
 
       const rect = getRect(element)
 
@@ -75,7 +66,36 @@ const Consumer: FC<Props> = ({
         currentBounds: _currentBounds
       })
     }
-  }, [])
+
+  }
+
+  if (!initialState.current) {
+
+
+    initialState.current = window.webview.get(id)
+    console.log('init', id, initialState.current)
+
+    window.webview.on((id: string, props: any) => {
+      // console.log(id, props)
+
+      if ('render' in props) {
+        setRender(props.render)
+      }
+    })
+
+    // console.log(initialState.current)
+    ref.updateBounds = updateBounds
+  }
+
+
+  useEffect(() => {
+    if (_render) {
+      // console.log('from cw', ref)
+      // console.log(window.webview.get(id)!)
+      updateBounds()
+    }
+  }, [_render])
+
 
   // return createElement(children,)
   return (render(ref))

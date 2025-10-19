@@ -1,4 +1,5 @@
 .options {
+  box-sizing: border-box;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -6,7 +7,9 @@
   width: 160px;
 
   margin: 0;
-  padding: 8px 0;
+  padding: 4px;
+  border: 1px solid var(--text-color_20);
+  border-radius: var(--ui-border-radius);
   background-color: var(--primary_60);
   list-style: none;
 
@@ -14,12 +17,22 @@
   -webkit-backdrop-filter: blur(10px);
 
   .option {
-    padding: 4px 16px;
+    display: flex;
+    align-items: center;
     border-radius: 4px;
+    padding: 4px;
     color: var(--text-color);
 
+    .icon {
+      height: 18px;
+    }
+
+    .label {
+      padding-left: 8px;
+    }
+
     &:hover {
-      background-color: var(--primary_60);
+      background-color: var(--primary-dark);
     }
   }
 }

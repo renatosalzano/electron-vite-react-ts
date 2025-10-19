@@ -2,8 +2,8 @@ import './main.css'
 import { WebView } from 'vitron/client';
 import { useEffect, type FC, type ReactNode } from 'react';
 import { useAppState } from '../../store/appState';
-import { OPTIONS } from 'src/renderer/constant';
 import { useGlobal } from '../../store/useGlobal';
+import { useUserdata } from '../../store/useUserdata';
 
 type Props = {
 }
@@ -13,6 +13,8 @@ export const Main: FC<Props> = () => {
   const renderOptions = useGlobal(store => store.renderOptions)
 
   const { settings } = useAppState()
+  const { webviews } = useUserdata()
+  const { currentTab } = useGlobal()
 
   const webviewProps = settings
     ? {
@@ -24,7 +26,8 @@ export const Main: FC<Props> = () => {
 
   return (
     <main>
-      {settings && (
+
+      {currentTab === 'settings' && (
         <WebView
           id='settings'
           src='settings'
@@ -33,6 +36,21 @@ export const Main: FC<Props> = () => {
           dev
         />
       )}
+
+      {Object.values(webviews).map(({
+        id,
+        url
+      }) => (
+        currentTab === id && <WebView
+          key={id}
+          id={id}
+          src={url}
+          className='webview'
+          partition={`persist:${id}`}
+          render={currentTab === id}
+          persist
+        />
+      ))}
     </main>
   )
 }

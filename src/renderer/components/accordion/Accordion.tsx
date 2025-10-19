@@ -1,5 +1,5 @@
 import './accordion.css'
-import { Children, cloneElement, createContext, createRef, Dispatch, forwardRef, isValidElement, RefObject, SetStateAction, useContext, useEffect, useImperativeHandle, useRef, useState, type FC, type ReactElement, type ReactNode } from 'react';
+import { Children, cloneElement, createContext, createRef, Dispatch, forwardRef, isValidElement, RefObject, SetStateAction, useContext, useEffect, useImperativeHandle, useMemo, useRef, useState, type FC, type ReactElement, type ReactNode } from 'react';
 
 type Props = {
   children: ReactNode
@@ -19,10 +19,9 @@ type RefHandler = {
 
 const AccordionContainer: FC<Props> = ({ children }) => {
 
-
-  const childList = Array.isArray(children)
-    ? children
-    : [children]
+  function len() {
+    return Children.count(children)
+  }
 
   const ref = useRef({}) as RefObject<{}> & {
     [key: number]: RefObject<RefHandler>
@@ -43,7 +42,9 @@ const AccordionContainer: FC<Props> = ({ children }) => {
 
   return (
     <div className="accordion">
-      {Children.map(childList, (child, index) => {
+      {Children.map(children, (child, index) => {
+
+        console.log(child)
 
         if (isValidElement(child)) {
 
@@ -57,7 +58,7 @@ const AccordionContainer: FC<Props> = ({ children }) => {
             accordionClass = 'frist '
           }
 
-          if (index === (childList.length - 1)) {
+          if (index === (len() - 1)) {
             accordionClass += 'last '
           }
 

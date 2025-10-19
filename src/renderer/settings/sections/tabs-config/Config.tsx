@@ -3,10 +3,13 @@ import { Button, Input, InputFile } from '@components/index';
 import { WebviewConfig } from '@store/userdata';
 import { useState, type FC } from 'react';
 import { VscSave } from 'react-icons/vsc';
+import { useUserdata } from 'src/renderer/main/store/useUserdata';
 
 type Props = {}
 
 export const Config: FC<Props> = () => {
+
+  const { setWebview } = useUserdata()
 
   const [config, setConfig] = useState<WebviewConfig>({
     id: '',
@@ -31,6 +34,19 @@ export const Config: FC<Props> = () => {
     config[id] = value
     setConfig(() => ({ ...config }))
   }
+
+  const save = () => {
+    setWebview(config.id, config)
+
+    setTimeout(() => setConfig({
+      id: '',
+      label: '',
+      url: '',
+      icon: '',
+    }))
+  }
+
+  const disabled = Object.values(config).some((value) => value === '')
 
   return (
     <div className='config'>
@@ -66,6 +82,8 @@ export const Config: FC<Props> = () => {
         <Button
           variant='contained'
           size='normal'
+          disabled={disabled}
+          onClick={save}
         >
           <VscSave /> Save
         </Button>
