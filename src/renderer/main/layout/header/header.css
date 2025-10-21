@@ -7,9 +7,9 @@ header {
 
   display: flex;
 
-  height: 38px;
+  height: var(--ui-header-height);
 
-  border-bottom: 2px solid var(--primary);
+  border-bottom: 1.5px solid var(--primary);
 
   .controls {
     -webkit-app-region: no-drag;
@@ -26,32 +26,13 @@ header {
       /* padding-top: 8px; */
     }
 
-    .control-with-options {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-
-      .control-mask {
-        position: absolute;
-        top: -6px;
-        left: -8px;
-        height: 1px;
-        width: 36px;
-        height: 38px;
-        background-color: rgb(0, 255, 13, 0.5);
-      }
-
-      .options-position {
-        position: absolute;
-        bottom: -18px;
-        height: 2px;
-        width: 32px;
-        background-color: rgba(120, 0, 0, 0.5);
-
-        &.open {
-          height: 36px;
-        }
-      }
+    .options-position {
+      position: absolute;
+      top: calc(var(--ui-header-height) + 8px);
+      left: 8px;
+      width: 5px;
+      height: 5px;
+      background-color: red;
     }
   }
 

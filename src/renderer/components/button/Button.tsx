@@ -1,11 +1,13 @@
 import './button.css'
-import { DetailedHTMLProps, FC, FormEvent } from "react"
+import { DetailedHTMLProps, FC, FormEvent, RefObject } from "react"
 import { CommonProps } from "@components/types"
 
 type ReactButtonProps = DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
 type ButtonProps = Omit<ReactButtonProps, 'onClick'> & Omit<CommonProps, 'id' | 'onChange'> & {
+
   id?: string
-  variant: 'head' | 'control' | 'icon' | 'side' | 'contained' | 'chrome'
+  ref?: RefObject<HTMLButtonElement>
+  variant: 'head' | 'control' | 'icon' | 'side' | 'contained' | 'chrome' | 'panel'
   shape?: 'round' | 'square'
   active?: boolean
   onClick?(evt: FormEvent<HTMLButtonElement>, id?: string): void

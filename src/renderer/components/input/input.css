@@ -10,7 +10,8 @@
   opacity: 0.6;
 
   color: var(--text-color);
-  border-bottom: 1px solid var(--text-color);
+  background-color: var(--primary-dark_60);
+  border-radius: var(--ui-border-radius);
 
 
   &.active {
@@ -20,7 +21,6 @@
   .text-field-label {
     padding-left: 8px;
     padding-right: 8px;
-    text-transform: uppercase;
   }
 
   input {

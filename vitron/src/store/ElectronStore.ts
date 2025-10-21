@@ -127,7 +127,7 @@ export class ElectronStore {
 
 
   private write_data() {
-    const json = JSON.stringify(this.store.getState())
+    const json = JSON.stringify(this.store.getState(), null, 2)
     writeFileSync(this.path, json, 'utf-8')
     console.log(y(`${this.name}:write_data`), this.path)
   }

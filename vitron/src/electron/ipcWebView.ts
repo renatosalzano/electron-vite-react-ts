@@ -14,29 +14,29 @@ function is_url(value: any) {
 }
 
 
-const webview_map = new Map<string, ViteWebContents>()
+const view_map = new Map<string, ViteWebContents>()
 
-const webview_props_map = new Map<string, Record<string, any>>()
+const view_state_map = new Map<string, ipcWebViewProps>()
 
-const update_props = (id: string, update: Record<string, any>, event = 'update') => {
+const update_state = (id: string, update: Record<string, any>, event = 'update') => {
 
-  const prev_props = webview_props_map.has(id)
-    ? webview_props_map.get(id)
-    : {}
+  const prev_props = view_state_map.has(id)
+    ? view_state_map.get(id)!
+    : {} as ipcWebViewProps
 
-  webview_props_map.set(id, {
+  view_state_map.set(id, {
     ...prev_props,
     ...update,
     event
   })
 
-  return webview_props_map.get(id)!
+  return view_state_map.get(id)!
 }
 
 
-export const ipcWebView = (BrowserWindow: BrowserWindow) => {
+export const ipcWebView = (main: BrowserWindow) => {
 
-  const contentView = BrowserWindow.contentView
+  const contentView = main.contentView
 
   ipcMain.on(process.env.WEBVIEW_CHANNEL, (
     event,
@@ -45,14 +45,15 @@ export const ipcWebView = (BrowserWindow: BrowserWindow) => {
     props: ipcWebViewProps
   ) => {
 
-    console.log(y(`webview:${id}`), command, props)
+    console.log(y(`webview:${id}`), command, props ?? '--')
     // console.log(import.meta.dirname)
 
 
     switch (command) {
+
       case "create": {
 
-        if (webview_map.has(id)) return
+        if (view_map.has(id)) return
 
         const config: Record<string, any> = {}
 
@@ -66,9 +67,8 @@ export const ipcWebView = (BrowserWindow: BrowserWindow) => {
           }
         }
 
-        const webContent = new ViteWebContents({
+        const view = new ViteWebContents({
           ...config,
-
           webPreferences: {
             nodeIntegration: false,
             contextIsolation: true,
@@ -78,54 +78,77 @@ export const ipcWebView = (BrowserWindow: BrowserWindow) => {
         })
 
         // webContent.setVisible(props.render || false)
-        contentView.addChildView(webContent)
+        // contentView.addChildView(webContent)
 
         if (props.borderRadius) {
-          webContent.setBorderRadius(props.borderRadius)
+          view.setBorderRadius(props.borderRadius)
         }
 
-        webContent.webContents.on('focus', () => {
-          console.log(g(`focus:${id}`))
+        if (props.focus) {
 
-        })
+          view.webContents.on('focus', () => {
 
-        webContent.webContents.on('blur', () => {
-          console.log(g(`blur:${id}`))
+            console.log(g(`focus:${id}`))
 
-          const current_props = webview_props_map.get(id)!
+            const state = view_state_map.get(id)!
 
-          current_props.event = 'blur'
+            state.event = 'focus'
 
-          webContents
-            .getAllWebContents()
-            .forEach(webContents => {
-              webContents.send(process.env.WEBVIEW_CHANNEL_SYNC, id, current_props)
-            })
+            webContents
+              .getAllWebContents()
+              .forEach(webContents => {
+                webContents.send(process.env.WEBVIEW_CHANNEL_SYNC, id, state)
+              })
+          })
+        }
 
-        })
 
-        webContent.setBackgroundColor('rgba(255, 255, 255, 0)')
+        if (props.blur) {
 
-        // webContent.webContents.openDevTools()
+          view.webContents.on('blur', () => {
 
-        webview_map.set(id, webContent)
+            const state = view_state_map.get(id)!
+            state.event = 'blur'
+
+            webContents
+              .getAllWebContents()
+              .forEach(webContents => {
+                webContents.send(process.env.WEBVIEW_CHANNEL_SYNC, id, state)
+              })
+
+          })
+
+        }
+
+
+        view.setBackgroundColor('rgba(0, 0, 0, 0)')
+
+        view_map.set(id, view)
 
         break
       }
-      case "close": {
-        if (webview_map.has(id)) {
 
-          const view = webview_map.get(id)!
+      case "close": {
+
+        if (view_state_map.has(id)) {
+          view_state_map.delete(id)
+        }
+
+        if (view_map.has(id)) {
+
+          const view = view_map.get(id)!
 
           view.webContents.close()
-          webview_map.delete(id)
+          view_map.delete(id)
+
         }
         break
       }
+
       case "setBounds": {
 
-        if (webview_map.has(id)) {
-          const webContent = webview_map.get(id)!
+        if (view_map.has(id)) {
+          const webContent = view_map.get(id)!
 
           const bounds: Rectangle = props.currentBounds
 
@@ -133,39 +156,55 @@ export const ipcWebView = (BrowserWindow: BrowserWindow) => {
         }
         break
       }
+
       case "render": {
 
         if (id === 'all' && !props.render) {
           // hide-all
-          webview_map.forEach((webContent) => {
+          view_map.forEach((webContent) => {
             contentView.removeChildView(webContent)
           })
         }
 
-        if (webview_map.has(id)) {
-          const webContent = webview_map.get(id)!
+        if (view_map.has(id)) {
+          const view = view_map.get(id)!
 
+          const state = view_state_map.get(id)
+
+          // main.focusable = false
           // webContent.setVisible(props.render || false)
           if (props.render) {
-            contentView.addChildView(webContent)
-            webContent.webContents.focus()
-            // console.log('isFocused', webContent.webContents.isFocused())
+            contentView.addChildView(view)
+
+            view.webContents.focus()
+
           } else {
-            contentView.removeChildView(webContent)
+            contentView.removeChildView(view)
           }
         }
         break;
       }
-      case 'dev': {
-        if (webview_map.has(id)) {
-          const webContent = webview_map.get(id)!
+
+      case "ready": {
+
+        if (view_state_map.has(id)) {
+          // const state = view_state_map.get(id)!
+          update_state(id, { ready: true })
+        }
+
+        break
+      }
+
+      case "dev": {
+        if (view_map.has(id)) {
+          const webContent = view_map.get(id)!
           webContent.webContents.openDevTools()
         }
         break
       }
     }
 
-    const current_props = update_props(id, props)
+    const current_props = update_state(id, props)
 
     webContents
       .getAllWebContents()
@@ -185,8 +224,8 @@ export const ipcWebView = (BrowserWindow: BrowserWindow) => {
 
   ipcMain.on(process.env.WEBVIEW_CHANNEL_GET, (event, id: string) => {
 
-    if (webview_props_map.has(id)) {
-      event.returnValue = webview_props_map.get(id)
+    if (view_state_map.has(id)) {
+      event.returnValue = view_state_map.get(id)
     }
 
   })

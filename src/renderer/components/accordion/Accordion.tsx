@@ -44,7 +44,7 @@ const AccordionContainer: FC<Props> = ({ children }) => {
     <div className="accordion">
       {Children.map(children, (child, index) => {
 
-        console.log(child)
+        // console.log(child)
 
         if (isValidElement(child)) {
 

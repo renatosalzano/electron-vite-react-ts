@@ -41,7 +41,7 @@ export const TabsConfig: FC<Props> = () => {
               {props.label}
             </Accordion.Summary>
             <Accordion.Content >
-              <Config />
+              <Config webviewID={props.id} />
             </Accordion.Content>
           </Accordion.Item>
         ))}

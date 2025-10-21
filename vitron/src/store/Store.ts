@@ -96,8 +96,11 @@ class Store<T> {
       }
     })
 
-    api.onSync((partial: PartialPayload<T>) => {
-      store.setState(partial)
+    api.onSync((partial: Partial<T>) => {
+      store.setState((prev) => ({
+        ...prev,
+        ...partial
+      }))
     })
 
     return store

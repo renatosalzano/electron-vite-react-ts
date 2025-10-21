@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "@electron-toolkit/utils": "^4.0.0",
+    "mica-electron": "^1.5.16",
     "vitron": "file:vitron"
   }
 }

@@ -1,6 +1,7 @@
 import { WebView, WebViewProps, useWebviewEffect } from './WebView.js'
 import { createWebView } from './createWebView.js';
 import { isDark } from "./isDark.js";
+import { windowApi } from './windowApi.js';
 
 export type ipcCommand =
   | 'create'
@@ -8,15 +9,20 @@ export type ipcCommand =
   | 'render'
   | 'dev'
   | 'close'
+  | 'ready'
 
 export type WebViewEvents =
   | 'update'
   | 'focus'
   | 'blur'
 
-export type ipcWebViewProps = Omit<WebViewProps, 'onBlur'> & {
+export type ipcWebViewProps = WebViewProps & {
+  event: string
   destroy?: boolean
-  onBlur?: boolean
+  render?: boolean
+  ready?: boolean
+  blur?: boolean
+  focus?: boolean
   currentBounds: {
     x: number
     y: number
@@ -25,7 +31,7 @@ export type ipcWebViewProps = Omit<WebViewProps, 'onBlur'> & {
   }
 }
 
-type ReceiverProps = WebViewProps & {
+type ReceiverProps = ipcWebViewProps & {
   event: WebViewEvents
 }
 
@@ -39,9 +45,16 @@ export type ThemeApi = {
   isDark(): boolean
 }
 
+export type WindowApi = {
+  min(): void
+  max(): void
+  close(): void
+}
+
 export {
   WebView,
   useWebviewEffect,
   createWebView,
-  isDark
+  isDark,
+  windowApi
 }

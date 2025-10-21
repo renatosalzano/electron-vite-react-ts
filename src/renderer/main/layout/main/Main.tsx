@@ -32,8 +32,7 @@ export const Main: FC<Props> = () => {
           id='settings'
           src='settings'
           className='webview'
-          render
-          dev
+          persist
         />
       )}
 
@@ -41,15 +40,17 @@ export const Main: FC<Props> = () => {
         id,
         url
       }) => (
-        currentTab === id && <WebView
-          key={id}
-          id={id}
-          src={url}
-          className='webview'
-          partition={`persist:${id}`}
-          render={currentTab === id}
-          persist
-        />
+        (
+          <WebView
+            key={id}
+            id={id}
+            src={url}
+            className='webview'
+            partition={`persist:${id}`}
+            render={currentTab === id}
+          // persist
+          />
+        )
       ))}
     </main>
   )

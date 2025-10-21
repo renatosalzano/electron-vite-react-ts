@@ -383,11 +383,6 @@ const Tab = forwardRef<TabHandler, TabProps>(({
 
     }
 
-    // if (row.isOpen) {
-    //   row.offset -= 50
-    // }
-    // console.log('move', row.offset)
-
     ref.current.style.setProperty(CSS_VAR_OFFSET_X, `${ref.offset}px`)
 
     // setOffset(() => row.offset)
@@ -397,12 +392,6 @@ const Tab = forwardRef<TabHandler, TabProps>(({
   function onEnd() {
 
     setIsDragging(false)
-
-    // if (!ref.emitOnEnd) {
-    //   ref.current.style.pointerEvents = 'unset'
-    //   return
-    // }
-    // console.log('end', row.offset)
 
     const transition = 200
 

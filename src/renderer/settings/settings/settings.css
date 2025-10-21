@@ -3,15 +3,19 @@
 
   position: relative;
   display: flex;
+  flex-direction: column;
   overflow: hidden;
   color: var(--text-color);
   /* max-height: 500px; */
 
   .navigation {
     display: flex;
-    flex-direction: column;
-    gap: 4px;
+    gap: 12px;
     min-width: 160px;
+    padding: 8px;
+
+    background-color: var(--primary);
+    border-bottom: 1px solid var(--text-color_20);
   }
 
   section {
@@ -22,10 +26,11 @@
     padding: 16px;
     overflow: hidden;
     overflow-y: auto;
+    /* background-color: var(--primary-dark); */
   }
 
   .settings-background {
-    position: absolute;
+    /* position: absolute;
     inset: 0 0 0 0;
     background-color: var(--primary);
     mask-image: linear-gradient(180deg,
@@ -34,7 +39,7 @@
         rgba(0, 0, 0, 0) 100%);
     mask-repeat: no-repeat;
     mask-size: 100% 100%;
-    z-index: -1;
+    z-index: -1; */
   }
 
   /* background-color: var(--primary-dark); */

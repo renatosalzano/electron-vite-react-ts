@@ -1,16 +1,19 @@
 import './header.css'
 import { Button } from '@components/button/Button';
-import { FormEvent, useEffect, useRef, useState, type FC } from 'react';
+import { FormEvent, RefObject, useEffect, useRef, useState, type FC } from 'react';
 import { useWebviewEffect, WebView } from 'vitron/client';
 import { GoKebabHorizontal } from "react-icons/go";
 import { Tabs, TabsHandler } from '../tabs/Tabs';
 import { useGlobal } from '../../store/useGlobal';
 import { useAppState } from '../../store/appState';
 import { OptionsWebView } from '@webviews/options';
+import { windowApi } from 'vitron/client'
 
 import { VscChromeMinimize, VscChromeMaximize, VscChromeClose } from "react-icons/vsc"
 
 type Props = {}
+
+const api = windowApi()
 
 export const Header: FC<Props> = () => {
 
@@ -26,9 +29,14 @@ export const Header: FC<Props> = () => {
   const { openSettings } = useAppState()
   const [disabled, setDisabled] = useState(false)
 
+  const optionsButtonRef = useRef<HTMLButtonElement>(null)
+
   const openOpt = (evt: FormEvent<HTMLButtonElement>) => {
-    openOptions(true)
-    setDisabled(true)
+    // evt.stopPropagation()
+    // evt.preventDefault()
+
+    openOptions(!renderOptions)
+
   }
 
   const onChangeTab = (value: string) => {
@@ -72,30 +80,32 @@ export const Header: FC<Props> = () => {
     <header>
       {/* <div className="floating"></div> */}
       <div className="controls left">
-        <div className="control-with-options">
-          <Button
-            variant='control'
-            onClick={openOpt}
-          >
-            <GoKebabHorizontal style={{
-              transform: 'rotate(90deg)'
-            }} />
-          </Button>
-          {disabled && (
-            <div className="control-mask"></div>
-          )}
-          <OptionsWebView.Provider
-            modal
-            className='options-position'
-            render={renderOptions}
-            borderRadius={8}
-            dev
-            onBlur={() => {
-              openOptions(false)
-              setTimeout(() => setDisabled(false))
-            }}
-          />
-        </div>
+
+        <Button
+          ref={optionsButtonRef}
+          variant='control'
+          onClick={openOpt}
+          readonly={disabled}
+        >
+          <GoKebabHorizontal style={{
+            transform: 'rotate(90deg)'
+          }} />
+        </Button>
+
+        <OptionsWebView.Provider
+          dev
+          modal
+          className='options-position'
+          borderRadius={8}
+          render={renderOptions}
+          onFocus={() => {
+            setDisabled(true)
+          }}
+          onBlur={() => {
+            openOptions(false)
+            setTimeout(() => setDisabled(false), 100)
+          }}
+        />
       </div>
       <div className="controls center">
         <Tabs
@@ -107,19 +117,25 @@ export const Header: FC<Props> = () => {
       </div>
       <div className="drag-area"></div>
       <div className="chrome-controls">
+
         <Button
           variant='chrome'
+          onClick={api.min}
         >
           <VscChromeMinimize />
         </Button>
+
         <Button
           variant='chrome'
+          onClick={api.max}
         >
           <VscChromeMaximize />
         </Button>
+
         <Button
           variant='chrome'
           color='danger'
+          onClick={api.close}
         >
           <VscChromeClose />
         </Button>

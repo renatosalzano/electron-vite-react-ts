@@ -29,7 +29,6 @@
       padding-left: 8px;
       padding-right: 8px;
       color: var(--text-color);
-      text-transform: uppercase;
     }
 
     button {
@@ -44,6 +43,8 @@
     border: 1px solid var(--text-color);
     border-radius: var(--ui-border-radius);
     border-style: dashed;
+
+    background-color: var(--primary-dark_40);
 
     &.is-dragging {
       border-style: solid;

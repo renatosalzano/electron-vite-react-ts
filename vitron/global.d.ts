@@ -1,5 +1,5 @@
 import type { OrchestratorApi } from "./src/preload/orchestratorApi"
-import type { WebviewApi, ThemeApi } from "./src/client/index.ts"
+import type { WebviewApi, ThemeApi, WindowApi } from "./src/client/index.ts"
 
 declare global {
   function bb(str: string): string
@@ -20,6 +20,7 @@ declare global {
 
   interface Window {
     webview: WebviewApi
+    window_api: WindowApi
     [process.env.THEME_API]: ThemeApi
   }
 
@@ -42,6 +43,12 @@ declare global {
 
       APP_RESIZE_CHANNEL: string
       APP_RESIZE_API: string
+
+      WINDOW_CHANNEL: string
+      WINDOW_API: string
+      WINDOW_MIN: string
+      WINDOW_MAX: string
+      WINDOW_CLOSE: string
     }
   }
 }

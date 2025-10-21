@@ -1,4 +1,4 @@
-import { FC, ReactNode, useEffect, useRef, createElement, CSSProperties, RefObject, EffectCallback, DependencyList } from "react";
+import { FC, ReactNode, useEffect, useRef, createElement, CSSProperties, RefObject, EffectCallback, DependencyList, useState } from "react";
 
 
 type Close = () => void
@@ -22,14 +22,12 @@ export type WebViewProps = {
   partition?: string
   persist?: boolean
 
-  render: boolean
-  zIndex?: number
+  render?: boolean
   dev?: boolean
   borderRadius?: number
-  closeOnBlur?: boolean
-  mountOnRender?: boolean
 
-  onBlur?: (close: Close) => void
+  onFocus?: () => void
+  onBlur?: () => void
 }
 
 
@@ -39,17 +37,16 @@ const webview_map = new Map<string, WebViewRef>()
 const current_webview = new Map<'current', WebViewRef>()
 
 
-
-
-
 export const WebView: FC<WebViewProps> = ({
   id,
   element = 'div',
   className,
   bounds,
   dev,
+  render,
   persist,
   onBlur,
+  onFocus,
   ...props
 }) => {
 
@@ -62,36 +59,14 @@ export const WebView: FC<WebViewProps> = ({
     window.webview.set(id, 'create', {
       ...props,
       bounds,
-      onBlur: !!onBlur
+      blur: !!onBlur,
+      focus: !!onFocus
     })
 
     if (dev) {
       window.webview.set(id, 'dev')
     }
 
-    window.webview.on((ID, props) => {
-
-      if (ID === id) {
-
-        console.log(id, props)
-
-        switch (props.event) {
-          case 'blur': {
-
-            const close = () => {
-              window.webview.set(id, 'close')
-            }
-
-            if (onBlur) {
-              onBlur(close)
-            }
-
-            break
-          }
-        }
-
-      }
-    })
   }
 
 
@@ -115,8 +90,6 @@ export const WebView: FC<WebViewProps> = ({
       height: height ?? rect.height
     }
 
-    console.log(bounds)
-
     window.webview.set(id, 'setBounds', { currentBounds })
   }
 
@@ -126,13 +99,6 @@ export const WebView: FC<WebViewProps> = ({
     updateBounds()
 
   }, [bounds])
-
-
-  useEffect(() => {
-
-    window.webview.set(id, 'render', { render: props.render })
-
-  }, [props.render])
 
 
   useEffect(() => {
@@ -155,6 +121,40 @@ export const WebView: FC<WebViewProps> = ({
 
     }
 
+    window.webview.set(id, 'render', { render: render ?? true })
+
+    window.webview.on((currentID, props) => {
+
+      // console.log(currentID, props)
+
+      if (currentID === id) {
+
+        // console.log(id, props)
+
+        switch (props.event) {
+
+          case 'focus': {
+            if (onFocus) { onFocus() }
+            break
+          }
+
+          case 'blur': {
+
+            const close = () => {
+              window.webview.set(id, 'close')
+            }
+
+            if (onBlur) {
+              onBlur()
+            }
+
+            break
+          }
+        }
+
+      }
+    })
+
 
     return () => {
 
@@ -167,8 +167,17 @@ export const WebView: FC<WebViewProps> = ({
       } else {
         window.webview.set(id, 'close')
       }
+
     };
   }, [])
+
+
+  useEffect(() => {
+    if (render !== undefined) {
+      updateBounds()
+      window.webview.set(id, 'render', { render })
+    }
+  }, [render])
 
   return createElement(element, { ref, id, className })
 }

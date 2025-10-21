@@ -46,7 +46,7 @@ export const Settings: FC<Props> = () => {
           <Button
             {...props}
             key={props.id}
-            variant='side'
+            variant='panel'
             size='normal'
             active={active === props.id}
             onClick={onClick}

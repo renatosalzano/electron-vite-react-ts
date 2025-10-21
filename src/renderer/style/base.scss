@@ -21,8 +21,9 @@ $opacity-steps: (
 );
 
 body {
-
+  --ui-header-height: 38px;
   --ui-border-radius: 8px;
+  --ui-border-radius-sm: 4px;
   --ui-blur: 16px;
 
   display: flex;
@@ -38,7 +39,7 @@ body {
   overflow: hidden;
   user-select: none;
 
-  /* border-radius: 4px; */
+  border-radius: 4px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
   @each $suffix, $alpha in $opacity-steps {

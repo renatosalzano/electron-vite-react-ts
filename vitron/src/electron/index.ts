@@ -1,4 +1,4 @@
-import { ViteBrowserWindow } from "./ViteBrowserWindow.js";
+import { ViteBrowserWindow, ViteMicaBrowserWindow } from "./ViteBrowserWindow.js";
 import { ViteWebContents } from "./ViteWebContents.js";
 import { ElectronStore } from "../store/ElectronStore.js";
 
@@ -9,6 +9,7 @@ export type ViteConfig = {
 
 export {
   ViteBrowserWindow,
+  ViteMicaBrowserWindow,
   ViteWebContents,
   ElectronStore
 }

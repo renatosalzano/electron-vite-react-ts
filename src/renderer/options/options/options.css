@@ -1,20 +1,28 @@
+.options-container {
+  interpolate-size: allow-keywords;
+  padding-top: 28px;
+  display: flex;
+  height: max-content;
+}
+
 .options {
+  interpolate-size: allow-keywords;
   box-sizing: border-box;
   flex: 1;
   display: flex;
   flex-direction: column;
-
   width: 160px;
-
-  margin: 0;
+  height: max-content;
   padding: 4px;
   border: 1px solid var(--text-color_20);
   border-radius: var(--ui-border-radius);
-  background-color: var(--primary_60);
+
+  margin: 0;
+
+  background-color: var(--primary_80);
   list-style: none;
 
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
 
   .option {
     display: flex;

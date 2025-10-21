@@ -18,6 +18,13 @@ type Props = {
 
 type ConsumerProps = Omit<Props, 'id'>
 
+
+const Provider: FC<WebViewProps> = (props) => {
+
+  return createElement(WebView, { ...props })
+}
+
+
 const Consumer: FC<Props> = ({
   id,
   bounds = {},
@@ -30,7 +37,7 @@ const Consumer: FC<Props> = ({
 
   }
 
-  const [_render, setRender] = useState(false)
+  const [rendered, setRender] = useState(false)
 
   const updateBounds = () => {
 
@@ -73,14 +80,19 @@ const Consumer: FC<Props> = ({
 
 
     initialState.current = window.webview.get(id)
-    console.log('init', id, initialState.current)
+    // console.log('init', id, initialState.current)
 
-    window.webview.on((id: string, props: any) => {
+    window.webview.on((currentID: string, props: any) => {
       // console.log(id, props)
 
-      if ('render' in props) {
-        setRender(props.render)
+      if (currentID === id) {
+
+        if ('render' in props) {
+          setRender(props.render)
+        }
+
       }
+
     })
 
     // console.log(initialState.current)
@@ -89,22 +101,19 @@ const Consumer: FC<Props> = ({
 
 
   useEffect(() => {
-    if (_render) {
-      // console.log('from cw', ref)
-      // console.log(window.webview.get(id)!)
+    if (rendered) {
       updateBounds()
     }
-  }, [_render])
-
+  }, [rendered])
 
   // return createElement(children,)
-  return (render(ref))
+  return (rendered ? render(ref) : null)
 }
 
 export const createWebView = (id: string, src: string) => {
 
   return {
-    Provider: (props: ProviderProps) => createElement(WebView, { ...props, id, src }),
+    Provider: (props: ProviderProps) => createElement(Provider, { ...props, id, src }),
     Consumer: (props: ConsumerProps) => createElement(Consumer, { ...props, id })
   }
 }

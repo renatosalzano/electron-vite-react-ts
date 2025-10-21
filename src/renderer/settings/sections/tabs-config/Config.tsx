@@ -2,21 +2,44 @@ import './config.css'
 import { Button, Input, InputFile } from '@components/index';
 import { WebviewConfig } from '@store/userdata';
 import { useState, type FC } from 'react';
-import { VscSave } from 'react-icons/vsc';
+import { VscSave, VscTrash } from 'react-icons/vsc';
 import { useUserdata, useGlobal } from '../../store';
 
-type Props = {}
+type Props = {
+  webviewID?: string
+}
 
-export const Config: FC<Props> = () => {
+
+const DEFAULT_CONFIG = {
+  id: '',
+  label: '',
+  url: '',
+  icon: '',
+}
+
+
+export const Config: FC<Props> = ({
+  webviewID
+}) => {
 
   const { setWebview } = useUserdata()
-  const { setTestWebview } = useGlobal()
+  // const { setTestWebview } = useGlobal()
 
-  const [config, setConfig] = useState<WebviewConfig>({
-    id: '',
-    label: '',
-    url: '',
-    icon: '',
+  const [config, setConfig] = useState<WebviewConfig>(() => {
+
+    if (webviewID) {
+      const { webviews } = useUserdata.getState()
+
+      if (webviews[webviewID]) {
+        return {
+          ...webviews[webviewID]
+        }
+      }
+    }
+
+    return {
+      ...DEFAULT_CONFIG
+    }
   })
 
   const onChange = (id: keyof WebviewConfig, value: string) => {
@@ -37,16 +60,24 @@ export const Config: FC<Props> = () => {
   }
 
   const save = () => {
-    // setWebview(config.id, config)
-    setTestWebview(config.id, config)
+    setWebview(config.id, config)
+    // setTestWebview(config.id, config)
 
-    setConfig((prev) => ({
-      ...prev,
-      id: '',
-      label: '',
-      url: '',
-      icon: '',
-    }))
+    if (!webviewID) {
+      setConfig((prev) => ({
+        ...prev,
+        id: '',
+        label: '',
+        url: '',
+        icon: '',
+      }))
+    }
+  }
+
+  const remove = () => {
+
+    setWebview(config.id, null)
+
   }
 
   const disabled = Object.values(config).some((value) => value === '')
@@ -91,6 +122,16 @@ export const Config: FC<Props> = () => {
         >
           <VscSave /> Save
         </Button>
+
+        {webviewID && <Button
+          variant='contained'
+          size='normal'
+          disabled={disabled}
+          onClick={remove}
+        >
+          <VscTrash /> Delete
+        </Button>
+        }
       </div>
     </div>
   )

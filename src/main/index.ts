@@ -2,7 +2,7 @@ import { app, BaseWindow, nativeTheme } from 'electron'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import { resolve } from 'path'
 import { Store } from 'vitron/store'
-import { ViteBrowserWindow } from 'vitron/electron'
+import { ViteBrowserWindow, ViteMicaBrowserWindow } from 'vitron/electron'
 // import '../store/userdata'
 
 function createWindow() {
@@ -28,21 +28,54 @@ function createWindow() {
     }
   })
 
+  // const opt = new ViteMicaBrowserWindow({
+  //   width: 240,
+  //   height: 300,
+  //   frame: false,
+  //   parent: main,
+  //   // transparent: true,
+  //   webPreferences: {
+  //     nodeIntegration: false,
+  //     contextIsolation: true,
+  //     preload: resolve(__dirname, '../preload/preload.js')
+  //   },
+  //   viteConfig: {
+  //     // tell to vite how to search index.html
+  //     // renderer/main/index.html
+  //     root: 'settings'
+  //   }
+  // })
 
-  nativeTheme.themeSource = 'light'
+  // opt.setMicaAcrylicEffect()
+  // opt.setSmallRoundedCorner()
+
+  // opt.webContents.openDevTools()
+
+  // main.contentView.addChildView(opt)
+
+
+
+
+  // nativeTheme.themeSource = 'light'
 
 
   if (process.platform === 'win32') {
-    // main.setBackgroundMaterial(transparency ? 'acrylic' : 'none')
+
     main.setBackgroundMaterial('mica')
-    // main.setBackgroundColor('rgba(0, 0, 0, 0.7)');
-    // main.setBackgroundColor('rgba(255, 255, 255, 0)');
+
+    // main.setRoundedCorner()
+    // main.setMicaTabbedEffect()
+    // main.setDarkTheme()
+
+    // main.on('blur', () => {
+    //   main.setBackgroundMaterial('mica')
+    // })
   } else if (process.platform === 'darwin') {
     // main.setVibrancy(transparency ? 'fullscreen-ui' : null)
     main.setVibrancy('fullscreen-ui')
   }
 
-  main.webContents.openDevTools()
+  // main.webContents.openDevTools()
 
   // test.setPosition(10, 10)
 

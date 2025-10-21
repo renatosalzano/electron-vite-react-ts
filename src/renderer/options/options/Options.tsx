@@ -2,7 +2,7 @@ import './options.css'
 import { forwardRef, RefObject, useEffect, type FC } from 'react';
 import { userdata } from '@store/userdata';
 import { global, UiItem } from '@store/global'
-import { useWebviewEffect } from 'vitron/client';
+import { IoSettingsOutline } from 'react-icons/io5';
 
 type Props = {}
 
@@ -41,11 +41,8 @@ export const Options = forwardRef<HTMLUListElement, Props>((_props, ref) => {
   }
 
   useEffect(() => {
-    // @ts-ignore
-    if (ref.current) {
-      (ref as any).updateBounds()
-    }
-  }, [webviews])
+    console.log('mounted')
+  }, [])
 
 
   return (
@@ -57,6 +54,9 @@ export const Options = forwardRef<HTMLUListElement, Props>((_props, ref) => {
         className='option'
         onClick={() => onClick({ label: 'Settings', value: 'settings' })}
       >
+        <IoSettingsOutline
+          className='icon'
+        />
         <span className="label">
           Settings
         </span>

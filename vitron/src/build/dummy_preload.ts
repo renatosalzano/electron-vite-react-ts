@@ -63,3 +63,16 @@ _.contextBridge.exposeInMainWorld(process.env.THEME_API, {
     return _.ipcRenderer.sendSync(process.env.THEME_CHANNEL)
   }
 } as ThemeApi)
+
+
+_.contextBridge.exposeInMainWorld(process.env.WINDOW_API, {
+  min() {
+    _.ipcRenderer.send(process.env.WINDOW_MIN)
+  },
+  max() {
+    _.ipcRenderer.send(process.env.WINDOW_MAX)
+  },
+  close() {
+    _.ipcRenderer.send(process.env.WINDOW_CLOSE)
+  }
+})
