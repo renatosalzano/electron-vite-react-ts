@@ -28,32 +28,7 @@ function createWindow() {
     }
   })
 
-  // const opt = new ViteMicaBrowserWindow({
-  //   width: 240,
-  //   height: 300,
-  //   frame: false,
-  //   parent: main,
-  //   // transparent: true,
-  //   webPreferences: {
-  //     nodeIntegration: false,
-  //     contextIsolation: true,
-  //     preload: resolve(__dirname, '../preload/preload.js')
-  //   },
-  //   viteConfig: {
-  //     // tell to vite how to search index.html
-  //     // renderer/main/index.html
-  //     root: 'settings'
-  //   }
-  // })
-
-  // opt.setMicaAcrylicEffect()
-  // opt.setSmallRoundedCorner()
-
-  // opt.webContents.openDevTools()
-
-  // main.contentView.addChildView(opt)
-
-
+  main.webContents.openDevTools()
 
 
   // nativeTheme.themeSource = 'light'
@@ -115,7 +90,7 @@ function createWindow() {
 
 app.whenReady().then(() => {
 
-  electronApp.setAppUserModelId('com.electron')
+  electronApp.setAppUserModelId('com.Uranus.WorkFrameApp')
 
   app.on('browser-window-created', (_, window) => {
     optimizer.watchWindowShortcuts(window)

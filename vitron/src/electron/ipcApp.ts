@@ -26,4 +26,14 @@ export const ipcApp = (main: BrowserWindow | MicaBrowserWindow) => {
     event.returnValue = nativeTheme.shouldUseDarkColors
   })
 
+
+
+
+  // main.on('resize', () => {
+  //   main.getBounds()
+
+  // })
+
 }
+
+

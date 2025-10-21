@@ -1,8 +1,7 @@
-import { BrowserWindow, ipcMain, Rectangle, webContents } from "electron"
+import { type Rectangle, BrowserWindow, ipcMain, webContents, Notification } from "electron"
 import { ipcCommand, ipcWebViewProps } from "src/client/index.js"
 import { ViteWebContents } from "./index.js"
 import { resolve } from "path"
-import { WebViewProps } from "../client/WebView.js"
 
 function is_url(value: any) {
   try {
@@ -11,6 +10,24 @@ function is_url(value: any) {
   } catch {
     return false
   }
+}
+
+function dummy_notification(id: string) {
+  return `
+window.Notification = class {
+
+  constructor(title, options) {
+    console.log(title, options)
+    window.${process.env.WEBVIEW}.notify('${id}', title, JSON.stringify(options))
+  }
+
+  async requestPermission() {
+    return 'granted';
+  }
+}
+
+console.log('override Notification')
+`
 }
 
 
@@ -37,6 +54,26 @@ const update_state = (id: string, update: Record<string, any>, event = 'update')
 export const ipcWebView = (main: BrowserWindow) => {
 
   const contentView = main.contentView
+
+  main.webContents.on('did-finish-load', () => {
+    main.webContents.executeJavaScript(dummy_notification('APP'))
+  })
+
+  ipcMain.on(process.env.WEBVIEW_CHANNEL_NOTIFICATION, (event, id, title, options) => {
+    console.log(y(`notify:${id}`))
+    console.log(title, options)
+
+    const state = view_state_map.get(id)! ?? {}
+
+    const _options = JSON.parse(options ?? '{}')
+
+    console.log(_options)
+
+    new Notification({
+      title,
+      body: 'body della notifica'
+    }).show()
+  })
 
   ipcMain.on(process.env.WEBVIEW_CHANNEL, (
     event,
@@ -84,41 +121,43 @@ export const ipcWebView = (main: BrowserWindow) => {
           view.setBorderRadius(props.borderRadius)
         }
 
-        if (props.focus) {
+        // TODO props.notification
 
-          view.webContents.on('focus', () => {
+        // view.webContents.on('did-finish-load', () => {
 
-            console.log(g(`focus:${id}`))
+        //   view.webContents.executeJavaScript(dummy_notification(id))
+        // })
 
-            const state = view_state_map.get(id)!
+        view.webContents.on('focus', () => {
 
-            state.event = 'focus'
+          console.log(g(`focus:${id}`))
 
-            webContents
-              .getAllWebContents()
-              .forEach(webContents => {
-                webContents.send(process.env.WEBVIEW_CHANNEL_SYNC, id, state)
-              })
-          })
-        }
+          const state = view_state_map.get(id)!
+
+          state.event = 'focus'
+
+          webContents
+            .getAllWebContents()
+            .forEach(webContents => {
+              webContents.send(process.env.WEBVIEW_CHANNEL_SYNC, id, state)
+            })
+        })
 
 
-        if (props.blur) {
+        view.webContents.on('blur', () => {
 
-          view.webContents.on('blur', () => {
+          console.log(g(`blur:${id}`))
 
-            const state = view_state_map.get(id)!
-            state.event = 'blur'
+          const state = view_state_map.get(id)!
+          state.event = 'blur'
 
-            webContents
-              .getAllWebContents()
-              .forEach(webContents => {
-                webContents.send(process.env.WEBVIEW_CHANNEL_SYNC, id, state)
-              })
+          webContents
+            .getAllWebContents()
+            .forEach(webContents => {
+              webContents.send(process.env.WEBVIEW_CHANNEL_SYNC, id, state)
+            })
 
-          })
-
-        }
+        })
 
 
         view.setBackgroundColor('rgba(0, 0, 0, 0)')
@@ -205,13 +244,13 @@ export const ipcWebView = (main: BrowserWindow) => {
     }
 
     const current_props = update_state(id, props)
+    console.log(g(`sync:${id} [${current_props.event}]`))
 
     webContents
       .getAllWebContents()
       .forEach(webContents => {
 
         if (webContents !== event.sender) {
-          console.log(g(`sync:${id} [${current_props.event}]`))
           webContents.send(process.env.WEBVIEW_CHANNEL_SYNC, id, current_props)
         }
 

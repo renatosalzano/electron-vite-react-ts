@@ -38,6 +38,7 @@ declare global {
       WEBVIEW_CHANNEL: string
       WEBVIEW_CHANNEL_GET: string
       WEBVIEW_CHANNEL_SYNC: string
+      WEBVIEW_CHANNEL_NOTIFICATION: string
       THEME_CHANNEL: string
       THEME_API: string
 

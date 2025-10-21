@@ -1,9 +1,7 @@
-import { FC, ReactNode, useEffect, useRef, createElement, CSSProperties, RefObject, EffectCallback, DependencyList, useState } from "react";
+import { FC, useEffect, useRef, createElement, RefObject, DependencyList } from "react";
 
 
 type Close = () => void
-
-type BoundValue = 'inherit' | number
 
 export type WebViewProps = {
   id: string
@@ -19,6 +17,8 @@ export type WebViewProps = {
     height?: number
   }
 
+  icon?: string
+  label?: string
   partition?: string
   persist?: boolean
 
@@ -67,6 +67,35 @@ export const WebView: FC<WebViewProps> = ({
       window.webview.set(id, 'dev')
     }
 
+    window.webview.on((ID, state) => {
+      if (ID === id) {
+
+        // if (!state.render) { return }
+
+        switch (state.event) {
+
+          case 'focus': {
+            if (onFocus) { onFocus() }
+            break
+          }
+
+          case 'blur': {
+
+            const close = () => {
+              window.webview.set(id, 'close')
+            }
+
+            if (onBlur) {
+              onBlur()
+            }
+
+            break
+          }
+
+        }
+      }
+    })
+
   }
 
 
@@ -100,66 +129,53 @@ export const WebView: FC<WebViewProps> = ({
 
   }, [bounds])
 
-
-  useEffect(() => {
-    // onResize()
+  function createResizeObserver() {
 
     const element = ref.current;
-    let resizeObserver: ResizeObserver | void
 
-    if (!element) return;
-
-    if (!props.modal) {
+    if (element && !props.modal) {
 
       const observerCallback: ResizeObserverCallback = () => {
         // console.log('dimension changed')
         updateBounds()
       };
 
-      resizeObserver = new ResizeObserver(observerCallback);
+      const resizeObserver = new ResizeObserver(observerCallback);
       resizeObserver.observe(element);
 
-    }
-
-    window.webview.set(id, 'render', { render: render ?? true })
-
-    window.webview.on((currentID, props) => {
-
-      // console.log(currentID, props)
-
-      if (currentID === id) {
-
-        // console.log(id, props)
-
-        switch (props.event) {
-
-          case 'focus': {
-            if (onFocus) { onFocus() }
-            break
+      return {
+        observe() {
+          if (resizeObserver) {
+            resizeObserver.observe(element);
           }
-
-          case 'blur': {
-
-            const close = () => {
-              window.webview.set(id, 'close')
-            }
-
-            if (onBlur) {
-              onBlur()
-            }
-
-            break
+        },
+        unobserve() {
+          if (resizeObserver) {
+            resizeObserver.unobserve(element);
           }
         }
-
       }
-    })
+    }
 
+  }
+
+  useEffect(() => {
+
+
+    // onResize()
+    let resizeObserver: ReturnType<typeof createResizeObserver>
+
+    if (render === undefined) {
+      if (!props.modal) {
+        resizeObserver = createResizeObserver()
+      }
+      window.webview.set(id, 'render', { render: render ?? true })
+    }
 
     return () => {
 
       if (resizeObserver) {
-        resizeObserver.unobserve(element);
+        resizeObserver.unobserve();
       }
 
       if (persist) {
@@ -173,11 +189,35 @@ export const WebView: FC<WebViewProps> = ({
 
 
   useEffect(() => {
+
+    let resizeObserver: ReturnType<typeof createResizeObserver>
+
     if (render !== undefined) {
-      updateBounds()
       window.webview.set(id, 'render', { render })
+
+      if (render) {
+        updateBounds()
+        resizeObserver = createResizeObserver()
+        resizeObserver?.observe()
+      } else {
+
+        if (resizeObserver) {
+          resizeObserver.unobserve()
+        }
+      }
+    }
+
+    return () => {
+      if (resizeObserver) {
+        resizeObserver.unobserve()
+      }
     }
   }, [render])
+
+  if (render !== undefined) {
+    if (render) return createElement(element, { ref, id, className })
+    else return null
+  }
 
   return createElement(element, { ref, id, className })
 }

@@ -53,7 +53,9 @@ _.contextBridge.exposeInMainWorld(process.env.WEBVIEW, {
     _.ipcRenderer.on(process.env.WEBVIEW_CHANNEL_SYNC, (_evt: any, ...args: any[]) => {
       func(...args)
     })
-
+  },
+  notify(id: string, title: string, options: string) {
+    _.ipcRenderer.send(process.env.WEBVIEW_CHANNEL_NOTIFICATION, id, title, options)
   }
 } as WebviewApi)
 

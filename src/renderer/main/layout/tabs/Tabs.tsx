@@ -7,8 +7,8 @@ import { Shape } from './shapes';
 type Props = {
   tabs: TabItem[]
   active?: string
-  onChange?(value: string): void
-  onCloseTab?(value: string): void
+  onChange?(value: string, tabs: TabItem[]): void
+  onCloseTab?(value: string, index: number, tabs: TabItem[]): void
 }
 
 export type TabsHandler = {
@@ -31,7 +31,7 @@ type OnChangePosition = (targetIndex: number, targetOffset: number) => void
 
 type OnEnd = () => void
 
-type OnTab = (value: string) => void
+type OnTab = (value: string, index: number) => void
 
 type TabProps = TabItem & {
   index: number
@@ -69,15 +69,14 @@ const CSS_VAR_PADDING_X = '--padding-x'
 const CSS_PADDING_X = 8
 const TAB_SWIPE_DELAY = 100
 
-export const Tabs = forwardRef<TabsHandler, Props>(({
+export const Tabs: FC<Props> = ({
   tabs,
   active,
   onChange,
   onCloseTab
-}, _ref) => {
+}) => {
 
   const ref = useRef<HTMLUListElement>(null)
-
   const handlerRefs = useRef(null) as Record<string, RefObject<TabHandler>> & RefObject<{}>
   const handlerRefsMap = useRef({}) as Record<string, number> & RefObject<{}>
 
@@ -102,26 +101,31 @@ export const Tabs = forwardRef<TabsHandler, Props>(({
     key: i + new Date().getTime(),
   }))
 
-  const [list, setList] = useState<TabItemList[]>(mappedTabs)
+  const [list, setList] = useState<TabItemList[]>([])
 
 
-  const OnTab: OnTab = (value) => {
+  const handleSelectTab: OnTab = (value, index) => {
     setActive(value)
-    onChange(value)
+    onChange(value, list)
   }
 
 
   const handleCloseTab: OnTab = (value) => {
+
     const index = handlerRefsMap[value]
+
     delete handlerRefs[index]
 
     setList((prev) => {
+
       prev.splice(index, 1)
+
       return [...prev]
     })
 
     if (onCloseTab) {
-      onCloseTab(value)
+      const _list = list.filter((tab, i) => i !== index)
+      onCloseTab(value, index, _list)
     }
 
   }
@@ -182,36 +186,40 @@ export const Tabs = forwardRef<TabsHandler, Props>(({
 
   }
 
-  useImperativeHandle(_ref, () => ({
-    setActiveTab(value) {
-      setActive(value)
-    },
-    addTab(tab) {
-      setList(prev => {
+  const updateTab = (tab: TabItem) => {
+    setList(prev => {
 
-        const tabExist = prev.some((t) => t.value === tab.value)
+      const tabIndex = prev.findIndex((t) => t.value === tab.value)
 
-        const { active, ...props } = tab
+      const { active, ...props } = tab
 
-        if (!tabExist) {
+      if (tabIndex !== -1) {
+        // update tab
+        // console.log(prev[tabIndex])
 
-          const index = prev.push({
-            ...props,
-            key: prev.length - 1 + new Date().getTime()
-          }) - 1
+      } else {
+        // create tab
+        const index = prev.push({
+          ...props,
+          key: tab.value
+        }) - 1
 
-          createTabRef(props, index)
-        }
+        createTabRef(props, index)
+      }
 
-        if (active) {
-          setActive(props.value)
-          onChange(props.value)
-        }
+      if (active) {
+        setActive(props.value)
+      }
 
-        return [...prev]
-      })
-    },
-  }))
+      return [...prev]
+    })
+  }
+
+  useEffect(() => {
+
+    tabs.forEach(updateTab)
+
+  }, [tabs])
 
 
   return (
@@ -236,7 +244,7 @@ export const Tabs = forwardRef<TabsHandler, Props>(({
           listLen={list.length}
           listPaddingX={CSS_PADDING_X}
 
-          onClick={OnTab}
+          onClick={handleSelectTab}
           onMoveEnd={onEnd}
           onChangePosition={onChangePosition}
           onClose={handleCloseTab}
@@ -244,11 +252,12 @@ export const Tabs = forwardRef<TabsHandler, Props>(({
       ))}
     </ul>
   )
-})
+}
 
 const Tab = forwardRef<TabHandler, TabProps>(({
   label,
   value,
+  icon,
   active,
   index,
   listRef,
@@ -286,7 +295,7 @@ const Tab = forwardRef<TabHandler, TabProps>(({
 
 
   const handleClick = () => {
-    onClick(value)
+    onClick(value, index)
   }
 
 
@@ -299,7 +308,7 @@ const Tab = forwardRef<TabHandler, TabProps>(({
 
   function onStart(evt: any) {
 
-    onClick(value)
+    onClick(value, index)
 
     ref.timer = setTimeout(() => {
 
@@ -419,6 +428,12 @@ const Tab = forwardRef<TabHandler, TabProps>(({
         className='shape-L'
       />
       <div className="content">
+
+        {icon && typeof icon === 'string'
+          ? (<img className='icon' src={icon} />)
+          : icon
+        }
+
         <span
           className='label'
         >
@@ -432,7 +447,7 @@ const Tab = forwardRef<TabHandler, TabProps>(({
           onClick={(evt) => {
             evt.preventDefault()
             evt.stopPropagation()
-            onClose(value)
+            onClose(value, index)
           }}
         >
           <IoClose />

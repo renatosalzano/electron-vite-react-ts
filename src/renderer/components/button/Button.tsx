@@ -26,7 +26,6 @@ export const Button: FC<ButtonProps> = ({
 }) => {
 
   const handleClick = (evt: FormEvent<HTMLButtonElement>) => {
-    console.log(readonly)
     if (onClick && !readonly) onClick(evt, props.id)
   }
 

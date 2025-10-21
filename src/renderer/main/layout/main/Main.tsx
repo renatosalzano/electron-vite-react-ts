@@ -14,44 +14,65 @@ export const Main: FC<Props> = () => {
 
   const { settings } = useAppState()
   const { webviews } = useUserdata()
-  const { currentTab } = useGlobal()
+  // const { tabs, currentTab } = useGlobal()
+  const tabs = useGlobal(state => state.tabs)
 
-  const webviewProps = settings
-    ? {
-      id: 'settings',
-      src: 'settings',
-      render: true
-    }
-    : {}
+  console.log(tabs)
+
+  // const webviewProps = settings
+  //   ? {
+  //     id: 'settings',
+  //     src: 'settings',
+  //     render: true
+  //   }
+  //   : {}
 
   return (
     <main>
 
-      {currentTab === 'settings' && (
+      {/* {currentTab === 'settings' && (
         <WebView
           id='settings'
           src='settings'
           className='webview'
           persist
         />
-      )}
+      )} */}
 
-      {Object.values(webviews).map(({
-        id,
-        url
-      }) => (
-        (
-          <WebView
-            key={id}
-            id={id}
-            src={url}
-            className='webview'
-            partition={`persist:${id}`}
-            render={currentTab === id}
-          // persist
-          />
-        )
-      ))}
+      {Object.values(tabs).map(({ active, value }) => {
+
+        if (value === 'settings') {
+
+          return (
+            <WebView
+              key={value}
+              id='settings'
+              src='settings'
+              className='webview'
+              render={active}
+              persist
+            />
+          )
+        }
+        else if (webviews[value]) {
+          const data = webviews[value]
+          return (
+            <WebView
+              key={value}
+              id={value}
+              src={data.url}
+              label={data.label}
+              icon={data.icon}
+              className='webview'
+              partition={`persist:${value}`}
+              render={active}
+              dev
+            />
+          )
+        }
+
+        return null
+      })}
     </main>
   )
 }

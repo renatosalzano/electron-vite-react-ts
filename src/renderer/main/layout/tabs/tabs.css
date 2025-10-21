@@ -18,11 +18,9 @@
 
     font-size: 14px;
 
-
     border-radius: var(--ui-border-radius) var(--ui-border-radius) 0 0;
 
     transform: translate(var(--offset-x));
-
 
     .shape {
       position: absolute;
@@ -49,22 +47,26 @@
       flex: 1;
       display: flex;
       justify-content: space-between;
-      align-items: end;
+      align-items: center;
       padding: 0 8px;
-      padding-bottom: 4px;
+
       /* border-right: 1px solid var(--header-border-color); */
+      .icon {
+        height: 16px;
+      }
 
       .label {
-        line-height: 24px;
+        padding-bottom: 4px;
         opacity: 0.6;
       }
     }
 
     &:hover {
-      background-color: var(--primary_20);
 
       .content {
         border-right-color: transparent;
+        border-radius: var(--ui-border-radius);
+        background-color: var(--primary_20);
 
         .label {
           opacity: 1;

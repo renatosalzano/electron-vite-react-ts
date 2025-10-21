@@ -10,6 +10,7 @@ import { OptionsWebView } from '@webviews/options';
 import { windowApi } from 'vitron/client'
 
 import { VscChromeMinimize, VscChromeMaximize, VscChromeClose } from "react-icons/vsc"
+import { UiItem } from '@store/global';
 
 type Props = {}
 
@@ -17,11 +18,9 @@ const api = windowApi()
 
 export const Header: FC<Props> = () => {
 
-  const tabsHandler = useRef<TabsHandler>({} as TabsHandler)
   const {
     tabs,
     setTabs,
-    setCurrentTab,
     renderOptions,
     openOptions
   } = useGlobal()
@@ -40,40 +39,42 @@ export const Header: FC<Props> = () => {
   }
 
   const onChangeTab = (value: string) => {
-    setCurrentTab(value)
+    // setCurrentTab(value)
+    setTabs((tabs) => {
+
+      for (const id in tabs) {
+        tabs[id].active = tabs[id].value === value
+      }
+
+      return { ...tabs }
+
+    })
   }
 
-  const onCloseTab = (value: string) => {
+  const onCloseTab = (value: string, index: number, currentTabs: UiItem[]) => {
 
-    let currentTab = ''
+    // let currentTab = ''
 
     setTabs((tabs) => {
 
+      let currentTab = currentTabs[index - 1]
+
+      if (!currentTab) {
+        currentTab = currentTabs[0]
+      }
+
       delete tabs[value]
 
-      const firstTab = Object.values(tabs)[0]
-
-      if (firstTab) {
-        currentTab = firstTab.value
+      if (currentTab) {
+        tabs[currentTab.value].active = true
       }
 
       return { ...tabs }
     })
 
-    setCurrentTab(currentTab)
+    // setCurrentTab(currentTab)
   }
 
-  const combinedTabs = []
-
-  useEffect(() => {
-
-    Object
-      .values(tabs)
-      .forEach(tab => {
-        tabsHandler.current.addTab(tab)
-      })
-
-  }, [tabs])
 
 
   return (
@@ -93,15 +94,17 @@ export const Header: FC<Props> = () => {
         </Button>
 
         <OptionsWebView.Provider
-          dev
+          // dev
           modal
           className='options-position'
           borderRadius={8}
           render={renderOptions}
           onFocus={() => {
+            console.log('focus')
             setDisabled(true)
           }}
           onBlur={() => {
+            console.log('blur')
             openOptions(false)
             setTimeout(() => setDisabled(false), 100)
           }}
@@ -109,8 +112,7 @@ export const Header: FC<Props> = () => {
       </div>
       <div className="controls center">
         <Tabs
-          ref={tabsHandler}
-          tabs={combinedTabs}
+          tabs={Object.values(tabs)}
           onChange={onChangeTab}
           onCloseTab={onCloseTab}
         />
